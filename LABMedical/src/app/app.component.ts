@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { MenuLateralComponent } from './componentes/menu-lateral/menu-lateral.component';
+import { ToolbarComponent } from './componentes/toolbar/toolbar.component';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+    selector: 'app-root',
+    standalone: true,
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.scss',
+    imports: [RouterOutlet, MenuLateralComponent, ToolbarComponent]
 })
 export class AppComponent {
   title = 'LABMedical';
