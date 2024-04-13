@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-registrar-paciente',
@@ -8,5 +9,9 @@ import { Component } from '@angular/core';
   styleUrl: './registrar-paciente.component.scss'
 })
 export class RegistrarPacienteComponent {
+  loginForm!: FormGroup
 
+  constructor(){}
+
+    ngOnInit() {}
 }
