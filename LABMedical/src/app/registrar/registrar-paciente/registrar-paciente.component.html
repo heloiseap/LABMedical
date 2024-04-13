@@ -1,1 +1,181 @@
-<p>registrar-paciente works!</p>
+<form
+  class="formulario"
+  (ngSubmit)="registrarPaciente()"
+  [formGroup]="registroPacienteForm"
+>
+  <div class="secao">
+    <label for="nome">Nome completo</label>
+    <input type="text" id="nome" name="nome" formControlName="nome" />
+</div>
+<div>
+    <label for="genero">Gênero</label>
+    <select id="genero" name="genero" formControlName="genero">
+        <option value="mulherCis">Mulher cis</option>
+        <option value="mulherTrans">Mulher trans</option>
+        <option value="homemCis">Homem cis</option>
+        <option value="homemTrans">Homem trans</option>
+        <option value="naoBinario">Não binário</option>
+        <option value="naoInforma">Prefiro não informar</option>
+
+
+    </select>
+
+    <label for="data-nascimento">Data de nascimento</label>
+    <input
+      type="date"
+      id="data-nascimento"
+      name="dataNascimento"
+      formControlName="dataNascimento"
+    />
+
+    <label for="CPF">CPF</label>
+    <input type="number" id="cpf" name="cpf" formControlName="cpf" />
+
+    <label for="rg">RG</label>
+    <input type="text" id="rg" name="rg" formControlName="rg" />
+
+    <label for="estado-civil">Estado Civil</label>
+    <select id="estado-civil" name="estadoCivil" formControlName="estadoCivil">
+        <option value="solteira">Solteiro/a</option>
+        <option value="casada">Casado/a</option>
+        <option value="viuva">Viúvo/a</option>
+        <option value="separada">Separado/a</option>
+        <option value="divorciada">Divorciado/a</option>
+
+    </select>
+
+
+    <label for="naturalidade">Naturalidade</label>
+    <input
+      type="text"
+      id="naturalidade"
+      name="naturalidade"
+      formControlName="naturalidade"
+    />
+
+    <label for="alergias">Alergias</label>
+    <input
+      type="text"
+      id="alergias"
+      name="alergias"
+      formControlName="alergias"
+    />
+
+    <label for="cuidados">Cuidados específicos</label>
+    <input
+      type="text"
+      id="cuidados"
+      name="cuidados"
+      formControlName="cuidados"
+    />
+  </div>
+  <div class="secao">
+    <label for="telefone">Telefone</label>
+    <input
+      type="number"
+      id="telefone"
+      name="telefone"
+      formControlName="telefone"
+    />
+
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" formControlName="email" />
+    <label for="contato-emergencia">Contato de emergência</label>
+    <input
+      type="number"
+      id="contato-emergencia"
+      name="contatoEmergencia"
+      formControlName="contatoEmergencia"
+    />
+
+    <label for="cep">Cep</label>
+    <input
+      type="number"
+      id="cep"
+      name="cep"
+      formControlName="cep"
+    />
+  <label for="cidade">Cidade</label>
+  <input
+    type="text"
+    id="cidade"
+    name="cidade"
+    formControlName="cidade"
+  />
+
+  <label for="estado">Estado</label>
+  <input
+    type="text"
+    id="estado"
+    name="estado"
+    formControlName="estado"
+    />
+
+    <label for="logradouro">Logradouro</label>
+    <input
+    type="text"
+    id="logradouro"
+    name="logradouro"
+    formControlName="logradouro"
+    />
+
+    <label for="numero">Número</label>
+    <input
+    type="number"
+    id="numero"
+    name="numero"
+    formControlName="numero"/>
+
+    <label for="complemento">Complemento</label>
+    <input
+    type="text"
+    id="complemento"
+    name="complemento"
+    formControlName="complemento"
+    />
+
+
+    <label for="bairro">Bairro</label>
+    <input
+    type="text"
+    id="bairro"
+    name="bairro"
+    formControlName="bairro"/>
+
+    <label for="referencia">Ponto de referência</label>
+    <input 
+    type="text"
+    id="referencia"
+    name="referencia"
+    formControlName="referencia"/>
+
+
+</div>
+
+  <div class="secao">
+    <label for="convenio">Convênio</label>
+    <input
+      type="text"
+      id="convenio"
+      name="convenio"
+      formControlName="convenio"
+    />
+    <label for="n-convenio">Número do convenio</label>
+    <input
+      type="number"
+      id="n-convenio"
+      name="nConvenio"
+      formControlName="nConvenio"
+    />
+
+    <label for="validade-convenio">Validade do convênio</label>
+    <input
+      type="date"
+      id="validade-convenio"
+      name="validadeConvenio"
+      formControlName="validadeConvenio"
+    />
+  </div>
+
+  <button type="submit">Cadastrar</button>
+</form>
