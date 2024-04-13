@@ -6,6 +6,7 @@ import { RegistrarComponent } from './registrar/registrar.component';
 import { RegistrarExameComponent } from './registrar/registrar-exame/registrar-exame.component';
 import { RegistrarConsultaComponent } from './registrar/registrar-consulta/registrar-consulta.component';
 import { RegistrarPacienteComponent } from './registrar/registrar-paciente/registrar-paciente.component';
+import { CadastroComponent } from './cadastro/cadastro.component';
 
 export const routes: Routes = [
   {
@@ -15,6 +16,10 @@ export const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+  },
+  {
+    path: 'cadastro',
+    component: CadastroComponent,
   },
   {
     path: 'prontuarios',
