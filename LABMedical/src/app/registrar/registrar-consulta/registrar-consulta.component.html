@@ -1,1 +1,24 @@
-<p>registrar-consulta works!</p>
+<form
+  class="formulario"
+  (ngSubmit)="registrarConsulta()"
+  [formGroup]="registroConsultaForm"
+>
+
+    <label for="motivo">Motivo</label>
+    <input type="text" name="motivo" id="motivo" formControlName="motivo">
+
+    <label for="data">Data da consulta</label>
+    <input type="date" name="data" id="data" formControlName="data">
+
+    <label for="horario">Horário da consulta</label>
+    <input type="text" name="horario" id="horario" formControlName="horario">
+
+    <label for="descricao">Descrição</label>
+    <input type="text" name="descricao" id="descricao" formControlName="descricao">
+
+    <label for="medicacao">Medicação</label>
+    <input type="text" name="medicacao" id="medicacao" formControlName="medicacao">
+
+    <label for="dosagem-precaucoes">Dosagem e Precauções</label>
+    <input type="text" name="dosagemPrecaucoes" id="dosagem-precaucoes" formControlName="dosagem-precaucoes">
+</form>
