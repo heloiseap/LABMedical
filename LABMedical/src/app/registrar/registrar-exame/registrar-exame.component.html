@@ -1,1 +1,29 @@
-<p>registrar-exame works!</p>
+<form
+  class="formulario"
+  (ngSubmit)="registrarExame()"
+  [formGroup]="registroExameForm"
+>
+
+    <label for="nomeExame">Nome do exame</label>
+    <input type="text" name="nomeExame" id="nomeExame" formControlName="nomeExame">
+
+    <label for="dataExame">Data do exame</label>
+    <input type="date" name="dataExame" id="dataExame" formControlName="dataExame">
+
+    <label for="horarioExame">Horário do exame</label>
+    <input type="text" name="horarioExame" id="horarioExame" formControlName="horarioExame">
+
+    <label for="tipoExame">Tipo do exame</label>
+    <input type="text" name="tipoExame" id="tipoExame" formControlName="tipoExame">
+
+
+    <label for="laboratorio">Descrição</label>
+    <input type="text" name="laboratorio" id="laboratorio" formControlName="laboratorio">
+
+    <label for="urlDocumento">URL do documento</label>
+    <input type="urlDocumento" name="urlDocumento" id="urlDocumento" formControlName="urlDocumento">
+
+    <label for="resultado">Resultado</label>
+    <input type="text" name="resultado" id="resultado" formControlName="resultado">
+
+    <button type="submit">Registrar!</button>
