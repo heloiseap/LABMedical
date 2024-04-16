@@ -6,18 +6,16 @@
   <div class="secao">
     <label for="nome">Nome completo</label>
     <input type="text" id="nome" name="nome" formControlName="nome" />
-</div>
-<div>
+  </div>
+  <div>
     <label for="genero">Gênero</label>
     <select id="genero" name="genero" formControlName="genero">
-        <option value="mulherCis">Mulher cis</option>
-        <option value="mulherTrans">Mulher trans</option>
-        <option value="homemCis">Homem cis</option>
-        <option value="homemTrans">Homem trans</option>
-        <option value="naoBinario">Não binário</option>
-        <option value="naoInforma">Prefiro não informar</option>
-
-
+      <option value="mulherCis">Mulher cis</option>
+      <option value="mulherTrans">Mulher trans</option>
+      <option value="homemCis">Homem cis</option>
+      <option value="homemTrans">Homem trans</option>
+      <option value="naoBinario">Não binário</option>
+      <option value="naoInforma">Prefiro não informar</option>
     </select>
 
     <label for="data-nascimento">Data de nascimento</label>
@@ -28,7 +26,7 @@
       formControlName="dataNascimento"
     />
 
-    <label for="CPF">CPF</label>
+    <label for="cpf">CPF</label>
     <input type="number" id="cpf" name="cpf" formControlName="cpf" />
 
     <label for="rg">RG</label>
@@ -36,14 +34,12 @@
 
     <label for="estado-civil">Estado Civil</label>
     <select id="estado-civil" name="estadoCivil" formControlName="estadoCivil">
-        <option value="solteira">Solteiro/a</option>
-        <option value="casada">Casado/a</option>
-        <option value="viuva">Viúvo/a</option>
-        <option value="separada">Separado/a</option>
-        <option value="divorciada">Divorciado/a</option>
-
+      <option value="solteira">Solteiro/a</option>
+      <option value="casada">Casado/a</option>
+      <option value="viuva">Viúvo/a</option>
+      <option value="separada">Separado/a</option>
+      <option value="divorciada">Divorciado/a</option>
     </select>
-
 
     <label for="naturalidade">Naturalidade</label>
     <input
@@ -87,70 +83,50 @@
       name="contatoEmergencia"
       formControlName="contatoEmergencia"
     />
+  </div>
+  <div class="secao">
+    <h3>endereço</h3>
+    
+    <label for="cep">CEP</label>
+    <input type="number" id="cep" name="cep" formControlName="cep" />
+    <button type="button" id="pesquisarCep" (click)="pesquisarCep()">Pesquisar CEP</button>
 
-    <label for="cep">Cep</label>
-    <input
-      type="number"
-      id="cep"
-      name="cep"
-      formControlName="cep"
-    />
-  <label for="cidade">Cidade</label>
-  <input
-    type="text"
-    id="cidade"
-    name="cidade"
-    formControlName="cidade"
-  />
+    <label for="cidade">Cidade</label>
+    <input type="text" id="cidade" name="cidade" formControlName="cidade" />
 
-  <label for="estado">Estado</label>
-  <input
-    type="text"
-    id="estado"
-    name="estado"
-    formControlName="estado"
-    />
+    <label for="estado">Estado</label>
+    <input type="text" id="estado" name="estado" formControlName="estado" />
 
     <label for="logradouro">Logradouro</label>
     <input
-    type="text"
-    id="logradouro"
-    name="logradouro"
-    formControlName="logradouro"
+      type="text"
+      id="logradouro"
+      name="logradouro"
+      formControlName="logradouro"
     />
 
     <label for="numero">Número</label>
-    <input
-    type="number"
-    id="numero"
-    name="numero"
-    formControlName="numero"/>
+    <input type="number" id="numero" name="numero" formControlName="numero" />
 
     <label for="complemento">Complemento</label>
     <input
-    type="text"
-    id="complemento"
-    name="complemento"
-    formControlName="complemento"
+      type="text"
+      id="complemento"
+      name="complemento"
+      formControlName="complemento"
     />
 
-
     <label for="bairro">Bairro</label>
-    <input
-    type="text"
-    id="bairro"
-    name="bairro"
-    formControlName="bairro"/>
+    <input type="text" id="bairro" name="bairro" formControlName="bairro" />
 
     <label for="referencia">Ponto de referência</label>
-    <input 
-    type="text"
-    id="referencia"
-    name="referencia"
-    formControlName="referencia"/>
-
-
-</div>
+    <input
+      type="text"
+      id="referencia"
+      name="referencia"
+      formControlName="referencia"
+    />
+  </div>
 
   <div class="secao">
     <label for="convenio">Convênio</label>

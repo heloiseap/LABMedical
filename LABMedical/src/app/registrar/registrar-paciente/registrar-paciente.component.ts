@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { EnderecoService } from '../../mod-paciente/endereco.service';
 
 @Component({
   selector: 'app-registrar-paciente',
@@ -10,10 +11,43 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 })
 export class RegistrarPacienteComponent implements OnInit{
   registroPacienteForm!: FormGroup
+  endereco = {
+    cep: '',
+    cidade: '',
+    estado: '',
+    logradouro: '',
+    numero: '',
+    complemento: '',
+    bairro: '',
+    pontoReferencia: ''  
+
+  }
+  constructor(private enderecoService: EnderecoService){}
 
   ngOnInit(){
     this.registrarPaciente()
 };
+  pesquisarCep(): void {
+
+    this.enderecoService.pegarEndereco(this.registroPacienteForm.controls['cep'].value).subscribe((data:any)=>
+      this.endereco = {
+        cep: data.cep,
+        cidade: data.localidade,
+        estado: data.uf,
+        logradouro: data.logradouro,
+        numero: '',
+        complemento:'',
+        bairro: '',
+        pontoReferencia:''
+      })
+      this.registroPacienteForm.patchValue({
+        cidade: this.endereco.cidade,
+        estado: this.endereco.estado,
+        logradouro: this.endereco.logradouro
+      })
+    
+    }
+
   registrarPaciente() {
     this.registroPacienteForm = new FormGroup({
       nome: new FormControl('',[
