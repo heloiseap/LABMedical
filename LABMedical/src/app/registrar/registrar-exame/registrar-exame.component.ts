@@ -54,7 +54,7 @@ export class RegistrarExameComponent implements OnInit {
         dataExame: this.registroExameForm.controls.dataExame,
         horarioExame: this.registroExameForm.controls.horarioExame,
         tipoExame: this.registroExameForm.controls.tipoExame,
-        labolatorio: this.registroExameForm.controls.labolatorio,
+        laboratorio: this.registroExameForm.controls.laboratorio,
         urlDocumento: this.registroExameForm.controls.urlDocumento,
         resultado: this.registroExameForm.controls.resultado
       }

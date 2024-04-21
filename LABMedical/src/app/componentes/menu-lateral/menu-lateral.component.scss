@@ -5,15 +5,18 @@
     z-index: 1; /* Stay on top */
     top: 0; /* Stay at the top */
     left: 0;
-    background-color: #59a96a;
-    overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 120px;
+    background-color: #294D4A;
+    overflow-x: hidden; 
 }
 
 .link{
-    padding: 6px 8px 6px 16px;
+    padding: 20px 16px;
     text-decoration: none;
     font-size: 25px;
     color: #f2f7f2;
     display: block;
+}
+img {
+    width: 115px;
+    padding: 20px;
 }
