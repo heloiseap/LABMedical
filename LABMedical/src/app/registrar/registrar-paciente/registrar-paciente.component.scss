@@ -2,3 +2,13 @@
     display: flex;
     flex-direction: column;
 }
+
+.msg-erro{
+    color: red;
+    font-size: smaller;
+}
+
+.campo-erro input{
+    border-color: red;
+    
+}

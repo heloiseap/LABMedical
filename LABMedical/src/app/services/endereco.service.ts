@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class EnderecoService {
-  url: string = 'https://viacep.com.br/ws/' + + 'json/'
+  url: string = ''
   //url: string = 'https://viacep.com.br/ws/88064730/json/'
 
   constructor(private http: HttpClient) { }
