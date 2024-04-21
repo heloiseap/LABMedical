@@ -3,27 +3,183 @@
   (ngSubmit)="registrarExame()"
   [formGroup]="registroExameForm"
 >
+  <div class="secao">
+    <label for="nomeExame">Nome do exame *</label>
+    <input
+      type="text"
+      name="nomeExame"
+      id="nomeExame"
+      formControlName="nomeExame"
+    />
 
-    <label for="nomeExame">Nome do exame</label>
-    <input type="text" name="nomeExame" id="nomeExame" formControlName="nomeExame">
+    <p
+      class="msg-erro"
+      *ngIf="
+        registroExameForm.controls.nomeExame.errors &&
+        registroExameForm.controls.nomeExame.errors?.required &&
+        (registroExameForm.get('nomeExame')?.touched ||
+          registroExameForm.get('nomeExame')?.dirty)
+      "
+    >
+      Preenchimento obrigatório
+    </p>
+    <p
+      class="msg-erro"
+      *ngIf="
+        registroExameForm.controls.nomeExame.errors &&
+        (registroExameForm.controls.nomeExame.errors.minlength ||
+          registroExameForm.controls.nomeExame.errors.maxlength) &&
+        (registroExameForm.get('nomeExame')?.touched ||
+          registroExameForm.get('nomeExame')?.dirty)
+      "
+    >
+      Por favor utilize de 8 a 64 caracteres
+    </p>
 
-    <label for="dataExame">Data do exame</label>
-    <input type="date" name="dataExame" id="dataExame" formControlName="dataExame">
+    <label for="dataExame">Data do exame *</label>
+    <input
+      type="date"
+      name="dataExame"
+      id="dataExame"
+      formControlName="dataExame"
+    />
 
-    <label for="horarioExame">Horário do exame</label>
-    <input type="text" name="horarioExame" id="horarioExame" formControlName="horarioExame">
+    <p
+      class="msg-erro"
+      *ngIf="
+        registroExameForm.controls.dataExame.errors &&
+        registroExameForm.controls.dataExame.errors?.required &&
+        (registroExameForm.get('dataExame')?.touched ||
+          registroExameForm.get('dataExame')?.dirty)
+      "
+    >
+      Seleção obrigatória
+    </p>
 
-    <label for="tipoExame">Tipo do exame</label>
-    <input type="text" name="tipoExame" id="tipoExame" formControlName="tipoExame">
+    <label for="horarioExame">Horário do exame *</label>
+    <input
+      type="time"
+      name="horarioExame"
+      id="horarioExame"
+      formControlName="horarioExame"
+    />
+    <p
+      class="msg-erro"
+      *ngIf="
+        registroExameForm.controls.horarioExame.errors &&
+        registroExameForm.controls.horarioExame.errors?.required &&
+        (registroExameForm.get('horarioExame')?.touched ||
+          registroExameForm.get('horarioExame')?.dirty)
+      "
+    >
+      Preenchimento obrigatório
+    </p>
 
+    <label for="tipoExame">Tipo do exame *</label>
+    <input
+      type="text"
+      name="tipoExame"
+      id="tipoExame"
+      formControlName="tipoExame"
+    />
 
-    <label for="laboratorio">Descrição</label>
-    <input type="text" name="laboratorio" id="laboratorio" formControlName="laboratorio">
+    <p
+      class="msg-erro"
+      *ngIf="
+        registroExameForm.controls.tipoExame.errors &&
+        registroExameForm.controls.tipoExame.errors?.required &&
+        (registroExameForm.get('tipoExame')?.touched ||
+          registroExameForm.get('tipoExame')?.dirty)
+      "
+    >
+      Preenchimento obrigatório
+    </p>
+    <p
+      class="msg-erro"
+      *ngIf="
+        registroExameForm.controls.tipoExame.errors &&
+        (registroExameForm.controls.tipoExame.errors.minlength ||
+          registroExameForm.controls.tipoExame.errors.maxlength) &&
+        (registroExameForm.get('tipoExame')?.touched ||
+          registroExameForm.get('tipoExame')?.dirty)
+      "
+    >
+      Por favor utilize de 4 a 32 caracteres
+    </p>
+
+    <label for="laboratorio">Laboratório *</label>
+    <input
+      type="text"
+      name="laboratorio"
+      id="laboratorio"
+      formControlName="laboratorio"
+    />
+
+    <p
+      class="msg-erro"
+      *ngIf="
+        registroExameForm.controls.laboratorio.errors &&
+        registroExameForm.controls.laboratorio.errors?.required &&
+        (registroExameForm.get('laboratorio')?.touched ||
+          registroExameForm.get('laboratorio')?.dirty)
+      "
+    >
+      Preenchimento obrigatório
+    </p>
+    <p
+      class="msg-erro"
+      *ngIf="
+        registroExameForm.controls.laboratorio.errors &&
+        (registroExameForm.controls.laboratorio.errors.minlength ||
+          registroExameForm.controls.laboratorio.errors.maxlength) &&
+        (registroExameForm.get('laboratorio')?.touched ||
+          registroExameForm.get('laboratorio')?.dirty)
+      "
+    >
+      Por favor utilize de 4 a 32 caracteres
+    </p>
 
     <label for="urlDocumento">URL do documento</label>
-    <input type="urlDocumento" name="urlDocumento" id="urlDocumento" formControlName="urlDocumento">
+    <input
+      type="urlDocumento"
+      name="urlDocumento"
+      id="urlDocumento"
+      formControlName="urlDocumento"
+    />
 
-    <label for="resultado">Resultado</label>
-    <input type="text" name="resultado" id="resultado" formControlName="resultado">
+    <label for="resultado">Resultado *</label>
+    <input
+      type="text"
+      name="resultado"
+      id="resultado"
+      formControlName="resultado"
+    />
+
+    <p
+    class="msg-erro"
+    *ngIf="
+      registroExameForm.controls.resultado.errors &&
+      registroExameForm.controls.resultado.errors?.required &&
+      (registroExameForm.get('resultado')?.touched ||
+        registroExameForm.get('resultado')?.dirty)
+    "
+  >
+    Preenchimento obrigatório
+  </p>
+  <p
+    class="msg-erro"
+    *ngIf="
+      registroExameForm.controls.resultado.errors &&
+      (registroExameForm.controls.resultado.errors.minlength ||
+        registroExameForm.controls.resultado.errors.maxlength) &&
+      (registroExameForm.get('resultado')?.touched ||
+        registroExameForm.get('resultado')?.dirty)
+    "
+  >
+    Por favor utilize de 16 a 1024 caracteres
+  </p>
+
 
     <button type="submit">Registrar!</button>
+  </div>
+</form>

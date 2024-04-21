@@ -1,21 +1,21 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ExameService } from '../../mod-exame/exame.service';
 
 @Component({
   selector: 'app-registrar-exame',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './registrar-exame.component.html',
   styleUrl: './registrar-exame.component.scss',
 })
 export class RegistrarExameComponent implements OnInit {
   registroExameForm!: FormGroup;
 
-  ngOnInit(): void {
-    this.registrarExame();
-  }
+  exame = {}
 
-  registrarExame() {
+  ngOnInit(): void {
     this.registroExameForm = new FormGroup({
       nomeExame: new FormControl('',[
         Validators.required,
@@ -40,8 +40,25 @@ export class RegistrarExameComponent implements OnInit {
       ]),
       urlDocumento: new FormControl('',[]),
       resultado: new FormControl('',[
-        Validators.required
+        Validators.required,
+        Validators.minLength(16),
+        Validators.maxLength(1024)
       ]),
     });
+  }
+
+  registrarExame() {
+    if (this.registroExameForm.valid) {
+      this.exame = {
+        nomeExame: this.registroExameForm.controls.nomeExame,
+        dataExame: this.registroExameForm.controls.dataExame,
+        horarioExame: this.registroExameForm.controls.horarioExame,
+        tipoExame: this.registroExameForm.controls.tipoExame,
+        labolatorio: this.registroExameForm.controls.labolatorio,
+        urlDocumento: this.registroExameForm.controls.urlDocumento,
+        resultado: this.registroExameForm.controls.resultado
+      }
+    }
+
   }
 }
