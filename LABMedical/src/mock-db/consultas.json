@@ -1,57 +1,57 @@
 [
     {
-      "Motivo da Consulta": "Dor de cabeça persistente",
-      "Data da Consulta": "2024-04-15",
-      "Horário da Consulta": "09:00",
-      "Descrição do Problema": "Paciente relatando dor de cabeça intensa na região frontal há uma semana.",
-      "Medicação Receitada": "Dipirona",
-      "Dosagem e Precauções": "Tomar 1 comprimido de 500mg a cada 6 horas, não exceder 4 comprimidos em 24 horas.",
-      "ID do Paciente": 1
+      "motivo": "Dor de cabeça persistente",
+      "data": "2024-04-15",
+      "horario": "09:00",
+      "descricao": "Paciente relatando dor de cabeça intensa na região frontal há uma semana.",
+      "medicacao": "Dipirona",
+      "dosagemPrecaucoes": "Tomar 1 comprimido de 500mg a cada 6 horas, não exceder 4 comprimidos em 24 horas.",
+      "idPaciente": 1
     },
     {
-      "Motivo da Consulta": "Consulta de rotina",
-      "Data da Consulta": "2024-04-15",
-      "Horário da Consulta": "10:30",
-      "Descrição do Problema": "Consulta de rotina para verificar pressão arterial e sinais vitais.",
-      "Medicação Receitada": "",
-      "Dosagem e Precauções": "N/A",
-      "ID do Paciente": 2
+      "motivo": "Consulta de rotina",
+      "data": "2024-04-15",
+      "horario": "10:30",
+      "descricao": "Consulta de rotina para verificar pressão arterial e sinais vitais.",
+      "medicacao": "",
+      "dosagemPrecaucoes": "N/A",
+      "idPaciente": 2
     },
     {
-      "Motivo da Consulta": "Dor abdominal aguda",
-      "Data da Consulta": "2024-04-16",
-      "Horário da Consulta": "08:30",
-      "Descrição do Problema": "Paciente queixando-se de dor abdominal súbita e intensa no quadrante inferior direito.",
-      "Medicação Receitada": "Buscopan",
-      "Dosagem e Precauções": "Tomar 1 comprimido de 10mg a cada 8 horas, conforme necessário para alívio da dor.",
-      "ID do Paciente": 3
+      "motivo": "Dor abdominal aguda",
+      "data": "2024-04-16",
+      "horario": "08:30",
+      "descricao": "Paciente queixando-se de dor abdominal súbita e intensa no quadrante inferior direito.",
+      "medicacao": "Buscopan",
+      "dosagemPrecaucoes": "Tomar 1 comprimido de 10mg a cada 8 horas, conforme necessário para alívio da dor.",
+      "idPaciente": 3
     },
     {
-      "Motivo da Consulta": "Acompanhamento de gravidez",
-      "Data da Consulta": "2024-04-16",
-      "Horário da Consulta": "10:00",
-      "Descrição do Problema": "Paciente gestante realizando acompanhamento mensal de pré-natal.",
-      "Medicação Receitada": "",
-      "Dosagem e Precauções": "N/A",
-      "ID do Paciente": 4
+      "motivo": "Acompanhamento de gravidez",
+      "data": "2024-04-16",
+      "horario": "10:00",
+      "descricao": "Paciente gestante realizando acompanhamento mensal de pré-natal.",
+      "medicacao": "",
+      "dosagemPrecaucoes": "N/A",
+      "idPaciente": 4
     },
     {
-      "Motivo da Consulta": "Dor de garganta e febre",
-      "Data da Consulta": "2024-04-17",
-      "Horário da Consulta": "11:30",
-      "Descrição do Problema": "Paciente apresentando dor de garganta e febre de 38°C nas últimas 24 horas.",
-      "Medicação Receitada": "Amoxicilina",
-      "Dosagem e Precauções": "Tomar 1 cápsula de 500mg a cada 12 horas durante 10 dias.",
-      "ID do Paciente": 5
+      "motivo": "Dor de garganta e febre",
+      "data": "2024-04-17",
+      "horario": "11:30",
+      "descricao": "Paciente apresentando dor de garganta e febre de 38°C nas últimas 24 horas.",
+      "medicacao": "Amoxicilina",
+      "dosagemPrecaucoes": "Tomar 1 cápsula de 500mg a cada 12 horas durante 10 dias.",
+      "idPaciente": 5
     },
     {
-      "Motivo da Consulta": "Avaliação de check-up",
-      "Data da Consulta": "2024-04-18",
-      "Horário da Consulta": "14:00",
-      "Descrição do Problema": "Paciente solicitando avaliação médica geral para check-up de saúde.",
-      "Medicação Receitada": "",
-      "Dosagem e Precauções": "N/A",
-      "ID do Paciente": 6
+      "motivo": "Avaliação de check-up",
+      "data": "2024-04-18",
+      "horario": "14:00",
+      "descricao": "Paciente solicitando avaliação médica geral para check-up de saúde.",
+      "medicacao": "",
+      "dosagemPrecaucoes": "N/A",
+      "idPaciente": 6
     }
   ]
   
