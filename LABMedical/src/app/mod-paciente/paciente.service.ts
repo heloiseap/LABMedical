@@ -12,8 +12,15 @@ export class PacienteService {
     return pacientes.length;
   }
 
-  buscarPaciente(nome: string) {
-    return pacientes.filter((paciente) => paciente.nome === nome);
+  buscarPaciente(parametro: string) {
+    let porNome = pacientes.filter((paciente) => paciente.nome === parametro);
+    let porEmail = pacientes.filter((paciente) => paciente.email === parametro);
+    let porTelefone = pacientes.filter(
+      (paciente) => paciente.telefone === parametro
+    );
+    let resultado: any = [porNome, porEmail, porTelefone];
+
+    return resultado.filter((array: string | any[]) => array.length > 0)[0];
   }
 
   pegarNove() {

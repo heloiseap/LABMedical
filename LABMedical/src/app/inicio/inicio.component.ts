@@ -24,17 +24,15 @@ export class InicioComponent implements OnInit {
   numExames: number = this.exameService.quantidadeExames();
   pacienteLista = this.pacienteService.pegarNove();
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
 
-  }
-
-  nomePesquisa: string = ''
+  pesquisa: string = '';
 
   buscarPaciente() {
-    this.pacienteLista = this.pacienteService.buscarPaciente(this.nomePesquisa)
+    this.pacienteLista = this.pacienteService.buscarPaciente(this.pesquisa);
   }
 
   limparPesquisa() {
-    this.pacienteLista = this.pacienteService.pegarNove()
+    this.pacienteLista = this.pacienteService.pegarNove();
   }
 }

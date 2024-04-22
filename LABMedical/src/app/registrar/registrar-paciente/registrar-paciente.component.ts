@@ -54,8 +54,7 @@ export class RegistrarPacienteComponent implements OnInit {
     numero: 0,
     complemento: '',
     bairro: '',
-    pontoReferencia: ''   
-
+    pontoReferencia: '',
   };
   constructor(
     private enderecoService: EnderecoService,
