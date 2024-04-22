@@ -31,6 +31,10 @@ export class PacienteService {
     }
   }
 
+  pegarTodos() {
+    return this.listaPacientes;
+  }
+
   adicionarPaciente(pacienteNovo: any) {
     let ultimaId = Math.max.apply(
       null,

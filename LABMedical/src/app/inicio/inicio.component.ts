@@ -23,6 +23,7 @@ export class InicioComponent implements OnInit {
   numConsultas: number = this.consultaService.quantidadeConsultas();
   numExames: number = this.exameService.quantidadeExames();
   pacienteLista = this.pacienteService.pegarNove();
+  exibirParcial = true
 
   ngOnInit(): void {}
 
@@ -35,4 +36,10 @@ export class InicioComponent implements OnInit {
   limparPesquisa() {
     this.pacienteLista = this.pacienteService.pegarNove();
   }
+
+  mostrarTodos(){
+    this.pacienteLista = this.pacienteService.pegarTodos()
+    this.exibirParcial = false
+  }
+
 }

@@ -20,7 +20,7 @@
   <div class="titulo"><h2>Pacientes</h2></div>
 
   <div class="pesquisa">
-    <label for="nomePesquisa">Pesquisa por pacientes</label>
+    <label for="nomePesquisa"><h3>Pesquisa por pacientes</h3></label>
     <input
       type="text"
       placeholder="Nome, telefone ou email"
@@ -53,6 +53,9 @@
           Mais detalhes
         </button>
       </div>
+
+    
     </div>
+    <button *ngIf="this.exibirParcial" class="btn-normal" (click)="mostrarTodos()">Ver todos</button>
   </div>
 </div>
