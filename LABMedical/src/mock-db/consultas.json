@@ -13,7 +13,7 @@
       "data": "2024-04-15",
       "horario": "10:30",
       "descricao": "Consulta de rotina para verificar pressão arterial e sinais vitais.",
-      "medicacao": "",
+      "medicacao": "N/A",
       "dosagemPrecaucoes": "N/A",
       "idPaciente": 2
     },
@@ -31,7 +31,7 @@
       "data": "2024-04-16",
       "horario": "10:00",
       "descricao": "Paciente gestante realizando acompanhamento mensal de pré-natal.",
-      "medicacao": "",
+      "medicacao": "N/A",
       "dosagemPrecaucoes": "N/A",
       "idPaciente": 4
     },
@@ -49,9 +49,9 @@
       "data": "2024-04-18",
       "horario": "14:00",
       "descricao": "Paciente solicitando avaliação médica geral para check-up de saúde.",
-      "medicacao": "",
+      "medicacao": "N/A",
       "dosagemPrecaucoes": "N/A",
-      "idPaciente": 6
+      "idPaciente": 5
     }
   ]
   

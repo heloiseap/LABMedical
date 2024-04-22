@@ -18,7 +18,15 @@ import { ConsultaService } from '../../mod-consulta/consulta.service';
 })
 export class RegistrarConsultaComponent implements OnInit {
   registroConsultaForm!: FormGroup;
-  consulta = {};
+  consulta = {
+    motivo:'',
+    data: '',
+    horario: '',
+    descricao: '',
+    medicacao: 'N/A',
+    dosagemPrecaucoes: ''
+
+  };
 
   constructor(private consultaService: ConsultaService) {}
 

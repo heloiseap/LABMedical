@@ -10,12 +10,20 @@ export class ConsultaService {
   listaConsultas: Array<object> = consultas;
 
   quantidadeConsultas() {
-    return consultas.length
+    return consultas.length;
+  }
+  buscarConsultas(id: string) {
+    return consultas.map((consulta) => {
+      if (consulta.idPaciente == parseInt(id)) {
+        return consulta;
+      } else {
+        return ''
+      }
+    })
   }
 
   registroConsulta(consultaNova: object) {
     this.listaConsultas.push(consultaNova);
-    localStorage.setItem('consultas', JSON.stringify(this.listaConsultas))
+    localStorage.setItem('consultas', JSON.stringify(this.listaConsultas));
   }
-
 }

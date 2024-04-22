@@ -7,6 +7,7 @@ import { RegistrarExameComponent } from './registrar/registrar-exame/registrar-e
 import { RegistrarConsultaComponent } from './registrar/registrar-consulta/registrar-consulta.component';
 import { RegistrarPacienteComponent } from './registrar/registrar-paciente/registrar-paciente.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
+import { ProntuarioPacienteComponent } from './prontuarios/prontuario-paciente/prontuario-paciente.component';
 
 export const routes: Routes = [
   {
@@ -23,7 +24,17 @@ export const routes: Routes = [
   },
   {
     path: 'prontuarios',
-    component: ProntuariosComponent,
+    children: [
+      {
+        path: '',
+        component: ProntuariosComponent,
+      },
+      {
+        path: ':id',
+        component: ProntuarioPacienteComponent,
+      }
+    ]
+
   },
   {
     path: 'registrar',
@@ -46,8 +57,5 @@ export const routes: Routes = [
       },
     ],
   },
-  // {
-  //     path: "registrar/exame",
-  //     component: RegistrarExameComponent
-  // }
+
 ];

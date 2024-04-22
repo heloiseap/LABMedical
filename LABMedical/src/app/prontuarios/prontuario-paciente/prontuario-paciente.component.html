@@ -1,0 +1,63 @@
+<div class="prontuario-div">
+  <div class="info">
+    <h3>{{ this.paciente.nome }}</h3>
+    <h4>Convênio</h4>
+    <p>{{ this.paciente.convenio }}</p>
+    <h4>Contato de emergência</h4>
+
+    <p>
+      {{ this.paciente.nomeEmergencia }}:
+      {{ this.paciente.contatoEmergencia }}
+    </p>
+    <h4>Alergias</h4>
+    <p *ngIf="paciente.alergias.length == 0">Nenhuma informada</p>
+    <p *ngFor="let alergias of paciente.alergias">{{ alergias }}</p>
+    <h4>Cuidados específicos</h4>
+    <p *ngIf="paciente.cuidadosEspecificos.length == 0">Nenhum informado</p>
+    <p *ngFor="let cuidados of paciente.cuidadosEspecificos">{{ cuidados }}</p>
+    <p></p>
+  </div>
+
+  <div class="info">
+    <h3>Consultas</h3>
+    <div *ngIf="this.naoTemConsultas">
+      <p>Não há consultas cadastradas</p>
+    </div>
+    <div class="div-consulta" *ngFor="let consulta of consultas">
+      <div *ngIf="consulta != ''">
+        <h4>Consulta de {{ consulta.data }} {{ consulta.horario }}</h4>
+        <h4>Motivo</h4>
+        <p>{{ consulta.motivo }}</p>
+        <h4>Descricao do problema</h4>
+        <p>{{ consulta.descricao }}</p>
+        <h4>Medicação</h4>
+        <p>{{ consulta.medicacao }}</p>
+        <h4>Dosagem e precauções</h4>
+        <p>{{ consulta.dosagemPrecaucoes }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="info">
+    <h3>Exames</h3>
+    <div *ngIf="this.naoTemExames">
+      <p>Não há exames cadastrados</p>
+    </div>
+    <div class="div-exames" *ngFor="let exame of exames">
+      <div *ngIf="exame != ''">
+        <h4>
+          {{ exame.nomeExame }}: {{ exame.dataExame }}
+          {{ exame.horarioExame }}
+        </h4>
+        <h4>Tipo de exame:</h4>
+        <p>{{ exame.tipoExame }}</p>
+        <h4>Laboratório</h4>
+        <p>{{ exame.laboratorio }}</p>
+        <h4>URL documento</h4>
+        <p>{{ exame.urlDocumento }}</p>
+        <h4>Resultado</h4>
+        <p>{{ exame.resultado }}</p>
+      </div>
+    </div>
+  </div>
+</div>

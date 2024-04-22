@@ -1,22 +1,29 @@
 import { Injectable } from '@angular/core';
-import exames from '../../mock-db/exames.json'
+import exames from '../../mock-db/exames.json';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ExameService {
+  constructor() {}
 
-  constructor() { }
-
-  listaExames: Array<object> = exames
+  listaExames: Array<object> = exames;
 
   quantidadeExames() {
-    return exames.length
+    return exames.length;
   }
 
+  buscarExames(id: string) {
+    return exames.map((consulta) => {
+      if (consulta.idPaciente == parseInt(id)) {
+        return consulta;
+      } else {
+        return '';
+      }
+    });
+  }
   adicionarExame(exameNovo: object) {
-    this.listaExames.push(exameNovo)
-    localStorage.setItem('exames',JSON.stringify(this.listaExames))
-
+    this.listaExames.push(exameNovo);
+    localStorage.setItem('exames', JSON.stringify(this.listaExames));
   }
 }

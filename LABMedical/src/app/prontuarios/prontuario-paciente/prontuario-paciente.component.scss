@@ -1,0 +1,10 @@
+.prontuario-div {
+    display: flex;
+    flex-direction: column;
+    .info{
+        background-color: #c2b97f;
+        border-radius: 15px;
+        padding: 10px;
+        margin: 10px;
+    }
+}

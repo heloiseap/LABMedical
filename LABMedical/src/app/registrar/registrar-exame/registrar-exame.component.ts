@@ -12,8 +12,16 @@ import { ExameService } from '../../mod-exame/exame.service';
 })
 export class RegistrarExameComponent implements OnInit {
   registroExameForm!: FormGroup;
-
   exame = {}
+  // exame = {
+  //   nomeExame:'',
+  //   dataExame:'',
+  //   horarioExame:'',
+  //   tipoExame:'',
+  //   laboratorio:'',
+  //   urlDocumento: '',
+  //   resultado: ''
+  // }
 
   ngOnInit(): void {
     this.registroExameForm = new FormGroup({
