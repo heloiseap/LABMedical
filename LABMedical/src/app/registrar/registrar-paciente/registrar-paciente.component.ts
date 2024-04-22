@@ -44,7 +44,7 @@ export class RegistrarPacienteComponent implements OnInit {
     nomeEmergencia: '',
     alergias: [],
     cuidadosEspecificos: [],
-    convenio: '',
+    convenio: 'Sem convênio',
     numConvenio: '',
     valConvenio: '',
     cep: '',

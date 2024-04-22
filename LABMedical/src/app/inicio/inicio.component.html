@@ -1,1 +1,58 @@
-<p>inicio works!</p>
+<div class="inicio">
+  <div class="titulo">
+    <h2>Estatísticas</h2>
+  </div>
+
+  <div class="estatisticas">
+    <div class="dados">
+      <p>Pacientes cadastrados</p>
+      <h3>{{ this.numPacientes }}</h3>
+    </div>
+    <div class="dados">
+      <p>Consultas cadastradas</p>
+      <h3>{{ this.numConsultas }}</h3>
+    </div>
+    <div class="dados">
+      <p>Exames cadastrados</p>
+      <h3>{{ this.numConsultas }}</h3>
+    </div>
+  </div>
+  <div class="titulo"><h2>Pacientes</h2></div>
+
+  <div class="pesquisa">
+    <label for="nomePesquisa">Pesquisa por pacientes</label>
+    <input
+      type="text"
+      placeholder="Nome do paciente"
+      [(ngModel)]="nomePesquisa"
+      id="nomePesquisa"
+    />
+    <div>
+      <button class="btn-normal" (click)="buscarPaciente()">
+        Buscar paciente
+      </button>
+      <button class="btn-normal" (click)="limparPesquisa()">
+        Limpar pesquisa
+      </button>
+    </div>
+  </div>
+
+  <div class="mostrar-pacientes">
+    <div class="pacientes">
+      <div class="paciente" *ngFor="let paciente of pacienteLista">
+        <img src="https://placehold.jp/100x100.png" />
+        <h4>{{ paciente.nome }}</h4>
+        <!-- {{paciente.idade}} -->
+        <p>{{ paciente.telefone }}</p>
+        <p>{{ paciente?.convenio }}</p>
+        <button
+          class="btn-normal"
+          type="button"
+          routerLink="['paciente',{{ paciente.id }}]"
+        >
+          Mais detalhes
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

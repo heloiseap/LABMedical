@@ -10,6 +10,10 @@ export class ExameService {
 
   listaExames: Array<object> = exames
 
+  quantidadeExames() {
+    return exames.length
+  }
+
   adicionarExame(exameNovo: object) {
     this.listaExames.push(exameNovo)
     localStorage.setItem('exames',JSON.stringify(this.listaExames))

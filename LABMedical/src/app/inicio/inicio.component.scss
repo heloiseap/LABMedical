@@ -1,0 +1,123 @@
+.estatisticas {
+  display: flex;
+  justify-content: center;
+}
+.dados {
+  background-color: #c2b97f;
+  color: #f2f7f2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 15px;
+  padding: 10px;
+  margin: 5px;
+}
+
+.pacientes {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 10px;
+}
+.paciente {
+  background-color: #c2b97f;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 15px;
+  padding: 15px;
+  margin: 15px;
+  
+  h4 {
+    color: #294D4A;
+  }
+  img{
+    border-radius: 5px;
+  }
+}
+
+.mostrar-pacientes {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.pesquisa {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px 15px;
+   label{
+    margin: 5px;
+   }
+
+  input {
+    min-width: 250px;
+    margin: 5px;
+    background-color: #f2f7f2;
+    border-color: #c2b97f;
+    padding: 5px;
+
+}
+  div {
+    padding: 5px;
+    display: flex;
+    align-items: start;
+  }
+}
+.btn-normal {
+  appearance: none;
+  background-color: #776472;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  border-radius: 6px;
+  box-shadow: rgba(27, 31, 35, 0.1) 0 1px 0;
+  box-sizing: border-box;
+  color: #f2f7f2;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  padding: 6px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+  margin: 5px;
+}
+
+.btn-normal:focus:not(:focus-visible):not(.focus-visible) {
+  box-shadow: none;
+  outline: none;
+}
+
+.btn-normal:hover {
+  background-color: #445552;
+}
+
+.btn-normal:focus {
+  box-shadow: rgba(46, 164, 79, 0.4) 0 0 0 3px;
+  outline: none;
+}
+
+.btn-normal:disabled {
+  background-color: #94d3a2;
+  border-color: rgba(27, 31, 35, 0.1);
+  color: rgba(255, 255, 255, 0.8);
+  cursor: default;
+}
+
+.btn-normal:active {
+  background-color: #298e46;
+  box-shadow: rgba(20, 70, 32, 0.2) 0 1px 0 inset;
+}
+.titulo{
+    padding: 10px;
+    margin: 10px;
+    color: #294D4A;
+}

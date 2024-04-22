@@ -9,6 +9,10 @@ export class ConsultaService {
 
   listaConsultas: Array<object> = consultas;
 
+  quantidadeConsultas() {
+    return consultas.length
+  }
+
   registroConsulta(consultaNova: object) {
     this.listaConsultas.push(consultaNova);
     localStorage.setItem('consultas', JSON.stringify(this.listaConsultas))
