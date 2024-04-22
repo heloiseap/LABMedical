@@ -1,1 +1,38 @@
-<p>prontuarios works!</p>
+<div class="pesquisa">
+  <label for="nomePesquisa"><h3>Pesquisa por pacientes</h3></label>
+  <input
+    type="text"
+    placeholder="Nome, telefone ou email"
+    [(ngModel)]="pesquisa"
+    id="nomePesquisa"
+  />
+  <div>
+    <div>
+      <button class="btn-normal" (click)="buscarPaciente()">
+        Buscar paciente
+      </button>
+      <button class="btn-normal" (click)="limparPesquisa()">
+        Limpar pesquisa
+      </button>
+      <button class="btn-normal" (click)="mostrarTodos()">Mostrar Todos</button>
+    </div>
+  </div>
+</div>
+<div>
+    <div class="pacientes" *ngIf="this.mostrar">
+      <div class="paciente" *ngFor="let paciente of listaPacientes">
+        <img src="https://placehold.jp/100x100.png" />
+        <h4>{{ paciente.nome }}</h4>
+        <!-- {{paciente.idade}} -->
+        <p>{{ paciente.telefone }}</p>
+        <p>{{ paciente?.convenio }}</p>
+        <button
+          class="btn-normal"
+          type="button"
+          routerLink="['paciente',{{ paciente.id }}]"
+        >
+          Mais detalhes
+        </button>
+      </div>
+    </div>
+</div>

@@ -14,9 +14,14 @@
 }
 
 .pacientes {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 10px;
+  display: flex;
+//   flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
 }
 .paciente {
   background-color: #c2b97f;
@@ -26,8 +31,7 @@
   align-items: center;
   border-radius: 15px;
   padding: 10px;
-  margin: 10px 0px;
-  
+  margin: 10px;
   h4 {
     color: #294D4A;
   }

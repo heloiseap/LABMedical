@@ -14,7 +14,7 @@ export class PacienteService {
 
   buscarPaciente(parametro: string) {
     let porNome = pacientes.filter((paciente) => paciente.nome === parametro);
-    let porEmail = pacientes.filter((paciente) => paciente.email === parametro);
+    let porEmail = pacientes.filter((paciente) => paciente.email === parametro && paciente.email!='');
     let porTelefone = pacientes.filter(
       (paciente) => paciente.telefone === parametro
     );
