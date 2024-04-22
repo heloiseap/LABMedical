@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-registrar',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './registrar.component.html',
   styleUrl: './registrar.component.scss'
 })
