@@ -9,9 +9,9 @@ export class ConsultaService {
 
   listaConsultas: Array<object> = consultas;
 
-  registrarConsulta(consultaNova: object) {
+  registroConsulta(consultaNova: object) {
     this.listaConsultas.push(consultaNova);
-    localStorage.setItem('consultas', JSON.stringify(this.listaConsultas));
-    console.log(this.listaConsultas)
+    localStorage.setItem('consultas', JSON.stringify(this.listaConsultas))
   }
+
 }

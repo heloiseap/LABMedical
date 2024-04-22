@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MenuLateralComponent } from './componentes/menu-lateral/menu-lateral.component';
 import { ToolbarComponent } from './componentes/toolbar/toolbar.component';
@@ -10,6 +10,9 @@ import { ToolbarComponent } from './componentes/toolbar/toolbar.component';
     styleUrl: './app.component.scss',
     imports: [RouterOutlet, MenuLateralComponent, ToolbarComponent]
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'LABMedical';
+  ngOnInit(): void {
+  }
+
 }

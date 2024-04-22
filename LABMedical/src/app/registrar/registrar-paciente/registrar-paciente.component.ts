@@ -29,7 +29,34 @@ export class RegistrarPacienteComponent implements OnInit {
     bairro: '',
     referencia: '',
   };
-  paciente = {};
+  paciente = {
+    id: 0,
+    nome: '',
+    genero: '',
+    dataNascimento: '',
+    CPF: 0,
+    rg: '',
+    estadoCivil: '',
+    telefone: '',
+    email: '',
+    naturalidade: '',
+    contatoEmergencia: '',
+    nomeEmergencia: '',
+    alergias: [],
+    cuidadosEspecificos: [],
+    convenio: '',
+    numConvenio: '',
+    valConvenio: '',
+    cep: '',
+    cidade: '',
+    estado: '',
+    logradouro: '',
+    numero: 0,
+    complemento: '',
+    bairro: '',
+    pontoReferencia: ''   
+
+  };
   constructor(
     private enderecoService: EnderecoService,
     private pacienteService: PacienteService,
@@ -37,14 +64,6 @@ export class RegistrarPacienteComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    // if (
-    //   localStorage.getItem('ultimaId') == null ||
-    //   localStorage.getItem('ultimaId') == undefined
-    // ) {
-    //   let ultimaId = 11;
-    //   localStorage.setItem('ultimaId', ultimaId.toString());
-    // }
-
     this.registroPacienteForm = new FormGroup({
       nome: new FormControl('', [
         Validators.required,
@@ -138,45 +157,46 @@ export class RegistrarPacienteComponent implements OnInit {
   }
 
   registrarPaciente() {
-    if (this.registroPacienteForm.valid) {
-      //confirm('aceitar dados')
-      let nomeInserido = this.registroPacienteForm.controls['nome'].value;
+    this.pacienteService.adicionarPaciente(this.paciente);
+    // if (this.registroPacienteForm.valid) {
+    //   //confirm('aceitar dados')
+    //   let nomeInserido = this.registroPacienteForm.controls['nome'].value;
 
-      if (this.pacienteService.buscarPaciente(nomeInserido).length === 0) {
-        this.paciente = {
-          id: 0, //como add isso
-          nome: this.registroPacienteForm.controls['nome'].value,
-          genero: this.registroPacienteForm.controls['genero'].value,
-          dataNascimento:
-            this.registroPacienteForm.controls['dataNascimento'].value,
-          CPF: this.registroPacienteForm.controls['cpf'].value,
-          rg: this.registroPacienteForm.controls['rg'].value,
-          estadoCivil: this.registroPacienteForm.controls['estadoCivil'].value,
-          telefone: this.registroPacienteForm.controls['telefone'].value,
-          email: this.registroPacienteForm.controls['email'].value,
-          naturalidade:
-            this.registroPacienteForm.controls['naturalidade'].value,
-          contadoEmergencia:
-            this.registroPacienteForm.controls['contatoEmergencia'].value,
-          alergias: this.registroPacienteForm.controls['alergias'].value,
-          cuidados: this.registroPacienteForm.controls['cuidados'].value,
-          convenio: this.registroPacienteForm.controls['convenio'].value,
-          nConvenio: this.registroPacienteForm.controls['nConvenio'].value,
-          validadeConvenio:
-            this.registroPacienteForm.controls['validadeConvenio'].value,
-          cep: this.registroPacienteForm.controls['cep'].value,
-          cidade: this.registroPacienteForm.controls['cidade'].value,
-          estado: this.registroPacienteForm.controls['estado'].value,
-          logradouro: this.registroPacienteForm.controls['logradouro'].value,
-          numero: this.registroPacienteForm.controls['numero'].value,
-          complemento: this.registroPacienteForm.controls['complemento'].value,
-          bairro: this.registroPacienteForm.controls['bairro'].value,
-          referencia: this.registroPacienteForm.controls['referencia'].value,
-        };
-        this.pacienteService.adicionarPaciente(this.paciente);
-      } else {
-        alert('Paciente já cadastrado');
-      }
-    }
+    //   if (this.pacienteService.buscarPaciente(nomeInserido).length === 0) {
+    //     this.paciente = {
+    //       id: 0, //como add isso
+    //       nome: this.registroPacienteForm.controls['nome'].value,
+    //       genero: this.registroPacienteForm.controls['genero'].value,
+    //       dataNascimento:
+    //         this.registroPacienteForm.controls['dataNascimento'].value,
+    //       CPF: this.registroPacienteForm.controls['cpf'].value,
+    //       rg: this.registroPacienteForm.controls['rg'].value,
+    //       estadoCivil: this.registroPacienteForm.controls['estadoCivil'].value,
+    //       telefone: this.registroPacienteForm.controls['telefone'].value,
+    //       email: this.registroPacienteForm.controls['email'].value,
+    //       naturalidade:
+    //         this.registroPacienteForm.controls['naturalidade'].value,
+    //       contatoEmergencia:
+    //         this.registroPacienteForm.controls['contatoEmergencia'].value,
+    //       alergias: this.registroPacienteForm.controls['alergias'].value,
+    //       cuidados: this.registroPacienteForm.controls['cuidados'].value,
+    //       convenio: this.registroPacienteForm.controls['convenio'].value,
+    //       nConvenio: this.registroPacienteForm.controls['nConvenio'].value,
+    //       validadeConvenio:
+    //         this.registroPacienteForm.controls['validadeConvenio'].value,
+    //       cep: this.registroPacienteForm.controls['cep'].value,
+    //       cidade: this.registroPacienteForm.controls['cidade'].value,
+    //       estado: this.registroPacienteForm.controls['estado'].value,
+    //       logradouro: this.registroPacienteForm.controls['logradouro'].value,
+    //       numero: this.registroPacienteForm.controls['numero'].value,
+    //       complemento: this.registroPacienteForm.controls['complemento'].value,
+    //       bairro: this.registroPacienteForm.controls['bairro'].value,
+    //       referencia: this.registroPacienteForm.controls['referencia'].value,
+    //     };
+    //     this.pacienteService.adicionarPaciente(this.paciente);
+    //   } else {
+    //     alert('Paciente já cadastrado');
+    //   }
+    // }
   }
 }

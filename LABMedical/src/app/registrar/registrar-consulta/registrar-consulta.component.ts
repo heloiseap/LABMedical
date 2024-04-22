@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import { ConsultaService } from '../../mod-consulta/consulta.service';
 
+
 @Component({
   selector: 'app-registrar-consulta',
   standalone: true,
@@ -55,7 +56,7 @@ export class RegistrarConsultaComponent implements OnInit {
         dosagemPrecaucoes:
           this.registroConsultaForm.controls.dosagemPrecaucoes.value,
       };
-      this.consultaService.registrarConsulta(this.consulta);
+      this.consultaService.registroConsulta(this.consulta);
     }
   }
 }
