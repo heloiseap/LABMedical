@@ -5,10 +5,12 @@ import { ConsultaService } from '../mod-consulta/consulta.service';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { CalculoIdadePipe } from '../pipes/calculo-idade.pipe';
+
 @Component({
   selector: 'app-inicio',
   standalone: true,
-  imports: [CommonModule, RouterLink, FormsModule],
+  imports: [CommonModule, RouterLink, FormsModule, CalculoIdadePipe],
   templateUrl: './inicio.component.html',
   styleUrl: './inicio.component.scss',
 })
@@ -25,7 +27,8 @@ export class InicioComponent implements OnInit {
   pacienteLista = this.pacienteService.pegarNove();
   exibirParcial = true
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   pesquisa: string = '';
 

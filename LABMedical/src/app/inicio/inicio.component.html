@@ -42,7 +42,7 @@
       <div class="paciente" *ngFor="let paciente of pacienteLista">
         <img src="https://placehold.jp/100x100.png" />
         <h4>{{ paciente.nome }}</h4>
-        <!-- {{paciente.idade}} -->
+        {{paciente.dataNascimento | calculoIdade}} anos
         <p>{{ paciente.telefone }}</p>
         <p>{{ paciente?.convenio }}</p>
         <button
