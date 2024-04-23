@@ -11,16 +11,24 @@ import { ProntuarioPacienteComponent } from './prontuarios/prontuario-paciente/p
 
 export const routes: Routes = [
   {
+    path: '',
+    redirectTo: '/inicio',
+    pathMatch: 'full'
+  },
+  {
     path: 'inicio',
     component: InicioComponent,
+    pathMatch: 'full'
   },
   {
     path: 'login',
     component: LoginComponent,
+    pathMatch: 'full'
   },
   {
     path: 'cadastro',
     component: CadastroComponent,
+    pathMatch: 'full'
   },
   {
     path: 'prontuarios',
@@ -28,10 +36,12 @@ export const routes: Routes = [
       {
         path: '',
         component: ProntuariosComponent,
+        pathMatch: 'full'
       },
       {
         path: ':id',
         component: ProntuarioPacienteComponent,
+        pathMatch: 'full'
       }
     ]
 
@@ -42,18 +52,22 @@ export const routes: Routes = [
       {
         path: '',
         component: RegistrarComponent,
+        pathMatch: 'full'
       },
       {
         path: 'exame',
         component: RegistrarExameComponent,
+        pathMatch: 'full'
       },
       {
         path: 'consulta',
         component: RegistrarConsultaComponent,
+        pathMatch: 'full'
       },
       {
         path: 'paciente',
         component: RegistrarPacienteComponent,
+        pathMatch: 'full'
       },
     ],
   },
