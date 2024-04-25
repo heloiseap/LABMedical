@@ -1,0 +1,22 @@
+[
+  {
+    "nome": "John Doe",
+    "email": "john.doe@email.com",
+    "senha": "password123"
+  },
+  {
+    "nome": "Jane Smith",
+    "email": "jane.smith@email.com",
+    "senha": "abc123"
+  },
+  {
+    "nome": "Michael Johnson",
+    "email": "michael.johnson@email.com",
+    "senha": "qwerty"
+  },
+  {
+    "nome": "Jeremias dos Santos Silva Costa Marinha",
+    "email": "jeremias_sscm@email.com",
+    "senha": "senhasecreta"
+  }
+]

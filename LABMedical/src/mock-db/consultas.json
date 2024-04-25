@@ -32,7 +32,7 @@
       "horario": "10:00",
       "descricao": "Paciente gestante realizando acompanhamento mensal de pré-natal.",
       "medicacao": "N/A",
-      "dosagemPrecaucoes": "N/A",
+      "dosagemPrecaucoes": "Retornar próximo mês",
       "idPaciente": 4
     },
     {
@@ -50,7 +50,7 @@
       "horario": "14:00",
       "descricao": "Paciente solicitando avaliação médica geral para check-up de saúde.",
       "medicacao": "N/A",
-      "dosagemPrecaucoes": "N/A",
+      "dosagemPrecaucoes": "Encaminhamento com nutricionista",
       "idPaciente": 5
     }
   ]
