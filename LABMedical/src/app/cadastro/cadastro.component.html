@@ -1,1 +1,35 @@
-<p>cadastro works!</p>
+<form
+    class="formulario"
+    (ngSubmit)="cadastrarUser()"
+    [formGroup]="cadastroUserForm">
+
+    <label for="nomeUser">Nome completo</label>
+    <input 
+        type="text"
+        id="nomeUser"
+        name="nomeUser"
+        formControlName="nomeUser"/>
+
+    <label for="emailUser">Email</label>
+    <input 
+        type="email"
+        id="emailUser"
+        name="emailUser"
+        formControlName="emailUser"/>
+
+    <label for="senhaUser">Senha</label>
+    <input 
+        type="password"
+        id="senhaUser"
+        name="senhaUser"
+        formControlName="senhaUser"/>
+
+    <label for="senhaRepetir">Repetir senha</label>
+    <input 
+        type="password"
+        id="senhaRepetir"
+        name="senhaRepetir"
+        formControlName="senhaRepetir"/>    
+    
+    <button type="submit">Cadastre-se</button>
+</form>

@@ -1,1 +1,23 @@
-<p>login works!</p>
+<form
+    class="formulario"
+    (ngSubmit)="fazerLogin()"
+    [formGroup]="loginForm">
+
+    <label for="emailUser">Email</label>
+    <input 
+        type="email"
+        id="emailUser"
+        name="emailUser"
+        formControlName="emailUser"/>
+
+    <label for="senhaUser">Senha</label>
+    <input 
+        type="password"
+        id="senhaUser"
+        name="senhaUser"
+        formControlName="senhaUser"/>
+    
+    <button type="button" (click)="criarConta()">Criar Conta</button>
+    <button type="button" (click)="resetarSenha()">Resetar senha</button>
+    <button type="submit">Entrar</button>
+</form>
