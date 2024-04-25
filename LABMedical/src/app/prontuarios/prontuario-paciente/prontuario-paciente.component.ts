@@ -56,6 +56,5 @@ export class ProntuarioPacienteComponent implements OnInit {
       }
     }
 
-    console.log(this.naoTemExames,this.naoTemConsultas)
   } 
 }

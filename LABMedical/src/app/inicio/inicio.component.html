@@ -42,13 +42,13 @@
       <div class="paciente" *ngFor="let paciente of pacienteLista">
         <img src="https://placehold.jp/100x100.png" />
         <h4>{{ paciente.nome }}</h4>
-        {{paciente.dataNascimento | calculoIdade}} anos
+        {{paciente.dataNascimento | calculoIdade }} anos
         <p>{{ paciente.telefone }}</p>
         <p>{{ paciente?.convenio }}</p>
         <button
           class="btn-normal"
           type="button"
-          routerLink="['paciente',{{ paciente.id }}]"
+          routerLink="['prontuarios',{{ paciente.id }}]"
         >
           Mais detalhes
         </button>
