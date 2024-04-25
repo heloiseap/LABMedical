@@ -3,7 +3,7 @@ import { PacienteService } from '../mod-paciente/paciente.service';
 import { ExameService } from '../mod-exame/exame.service';
 import { ConsultaService } from '../mod-consulta/consulta.service';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CalculoIdadePipe } from '../pipes/calculo-idade.pipe';
 
@@ -15,10 +15,13 @@ import { CalculoIdadePipe } from '../pipes/calculo-idade.pipe';
   styleUrl: './inicio.component.scss',
 })
 export class InicioComponent implements OnInit {
+  
   constructor(
     private consultaService: ConsultaService,
     private exameService: ExameService,
-    private pacienteService: PacienteService
+    private pacienteService: PacienteService,
+    private router: Router,
+    private r: ActivatedRoute
   ) {}
 
   numPacientes: number = this.pacienteService.quantidadePacientes();

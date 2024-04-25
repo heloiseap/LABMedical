@@ -42,17 +42,13 @@
       <div class="paciente" *ngFor="let paciente of pacienteLista">
         <img src="https://placehold.jp/100x100.png" />
         <h4>{{ paciente.nome }}</h4>
-<<<<<<< Updated upstream
         {{paciente.dataNascimento | calculoIdade }} anos
-=======
-        <p>{{paciente.dataNascimento | calculoIdade}} anos</p>
->>>>>>> Stashed changes
         <p>{{ paciente.telefone }}</p>
         <p>{{ paciente?.convenio }}</p>
         <button
           class="btn-normal"
           type="button"
-          routerLink="['prontuarios',{{ paciente.id }}]"
+          routerLink="../prontuarios/{{ paciente.id }}"
         >
           Mais detalhes
         </button>

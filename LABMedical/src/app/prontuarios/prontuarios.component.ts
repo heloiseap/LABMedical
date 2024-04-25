@@ -47,9 +47,6 @@ export class ProntuariosComponent {
     this.resultadoVazio = false;
   }
 
-  navegarDetalhamento(id: string) {
-    this.router.navigate(['/', id]);
-  }
 
   exibirProntuario() {}
 }
