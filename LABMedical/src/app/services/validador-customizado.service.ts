@@ -1,11 +1,18 @@
 import { Injectable } from '@angular/core';
-import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
+import {
+  AbstractControl,
+  FormArray,
+  FormGroup,
+  ValidationErrors,
+  ValidatorFn,
+} from '@angular/forms';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ValidadorCustomizadoService {
   constructor() {}
+
   validacaoNomeCompleto(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
       const nomes: Array<string> = control.value.split(' ');
@@ -13,7 +20,6 @@ export class ValidadorCustomizadoService {
         return { validacaoNomeCompleto: true };
       }
       return null;
-
     };
   }
 
@@ -29,20 +35,60 @@ export class ValidadorCustomizadoService {
 
   validacaoCep(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
-      const cep = control.value
-      if(cep.toString().length!=8) {
-        return { validacaoCep: true }
+      const cep = control.value;
+      if (cep.toString().length != 8) {
+        return { validacaoCep: true };
       }
       return null;
     };
   }
   validacaoRg(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
-      const rg = control.value.split('/')
-      const estados: Array<string> = ['AC','AL','AP','AM','BA','CE','DF','ES','GO','MA','MT','MS','MG','PA','PB','PR','PE','PI','RJ','RN','RS','RO','RR','SC','SP','SE','TO']
-      if(rg.length=!2 || rg[0].length!=7 || !estados.includes(rg[1].toUpperCase())) {
-
-        return { validacaoRg: true }
+      const rg = control.value.split('/');
+      const estados: Array<string> = [
+        'AC',
+        'AL',
+        'AP',
+        'AM',
+        'BA',
+        'CE',
+        'DF',
+        'ES',
+        'GO',
+        'MA',
+        'MT',
+        'MS',
+        'MG',
+        'PA',
+        'PB',
+        'PR',
+        'PE',
+        'PI',
+        'RJ',
+        'RN',
+        'RS',
+        'RO',
+        'RR',
+        'SC',
+        'SP',
+        'SE',
+        'TO',
+      ];
+      if (
+        (rg.length =
+          !2 || rg[0].length != 7 || !estados.includes(rg[1].toUpperCase()))
+      ) {
+        return { validacaoRg: true };
+      }
+      return null;
+    };
+  }
+  checarSenhas(formGroup: FormGroup): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const senhaUser = control.get('senhaUser')?.value;
+      const senhaRepetir = formGroup.controls.senhaRepetir?.value;
+      if (senhaUser !== senhaRepetir) {
+        return { checarSenhas: true };
       }
       return null;
     };

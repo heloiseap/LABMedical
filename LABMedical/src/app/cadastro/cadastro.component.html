@@ -1,35 +1,158 @@
 <form
-    class="formulario"
-    (ngSubmit)="cadastrarUser()"
-    [formGroup]="cadastroUserForm">
+  class="formulario"
+  (ngSubmit)="cadastrarUser()"
+  [formGroup]="cadastroUserForm"
+>
+  <div>
+    <div class="campo-form">
+      <div><label for="nomeUser">Nome completo *</label></div>
+      <div>
+        <input
+          type="text"
+          id="nomeUser"
+          name="nomeUser"
+          formControlName="nomeUser"
+        />
+      </div>
 
-    <label for="nomeUser">Nome completo</label>
-    <input 
-        type="text"
-        id="nomeUser"
-        name="nomeUser"
-        formControlName="nomeUser"/>
+      <p
+        class="msg-erro"
+        *ngIf="
+          cadastroUserForm.controls.nomeUser.errors &&
+          cadastroUserForm.controls.nomeUser.errors?.required &&
+          (cadastroUserForm.get('nomeUser')?.touched ||
+            cadastroUserForm.get('nomeUser')?.dirty)
+        "
+      >
+        Preenchimento obrigatório
+      </p>
 
-    <label for="emailUser">Email</label>
-    <input 
-        type="email"
-        id="emailUser"
-        name="emailUser"
-        formControlName="emailUser"/>
+      <p
+        class="msg-erro"
+        *ngIf="
+          cadastroUserForm.controls.nomeUser.errors &&
+          (cadastroUserForm.controls.nomeUser.errors?.minlength ||
+            cadastroUserForm.controls.nomeUser.errors?.maxlength) &&
+          (cadastroUserForm.get('nomeUser')?.touched ||
+            cadastroUserForm.get('nomeUser')?.dirty)
+        "
+      >
+        Por favor, utilize de 8 a 64 caracteres.
+      </p>
 
-    <label for="senhaUser">Senha</label>
-    <input 
-        type="password"
-        id="senhaUser"
-        name="senhaUser"
-        formControlName="senhaUser"/>
+      <p
+        class="msg-erro"
+        *ngIf="
+          cadastroUserForm.controls.nomeUser.errors &&
+          cadastroUserForm.controls.nomeUser.errors?.validacaoNomeCompleto &&
+          (cadastroUserForm.get('nomeUser')?.touched ||
+            cadastroUserForm.get('nomeUser')?.dirty)
+        "
+      >
+        Por favor, preencha com nome e sobrenome.
+      </p>
+    </div>
+    <div class="campo-form">
+      <div>
+        <label for="emailUser">Email *</label>
+      </div>
+      <div>
+        <input
+          type="email"
+          id="emailUser"
+          name="emailUser"
+          formControlName="emailUser"
+        />
+      </div>
+      <p
+        class="msg-erro"
+        *ngIf="
+          cadastroUserForm.controls.emailUser.errors &&
+          cadastroUserForm.controls.emailUser.errors?.required &&
+          (cadastroUserForm.get('emailUser')?.touched ||
+            cadastroUserForm.get('emailUser')?.dirty)
+        "
+      >
+        Preenchimento obrigatório
+      </p>
 
-    <label for="senhaRepetir">Repetir senha</label>
-    <input 
-        type="password"
-        id="senhaRepetir"
-        name="senhaRepetir"
-        formControlName="senhaRepetir"/>    
-    
-    <button type="submit">Cadastre-se</button>
+      <p
+      class="msg-erro"
+      *ngIf="
+        cadastroUserForm.controls.emailUser.errors &&
+        cadastroUserForm.controls.emailUser.errors?.email &&
+        (cadastroUserForm.get('emailUser')?.touched ||
+          cadastroUserForm.get('emailUser')?.dirty)
+      "
+    >
+      Email inválido
+    </p>
+    </div>
+    <div class="campo-form">
+      <div>
+        <label for="senhaUser">Senha *</label>
+      </div>
+
+      <div>
+        <input
+          type="password"
+          id="senhaUser"
+          name="senhaUser"
+          formControlName="senhaUser"
+        />
+      </div>
+      <p
+        class="msg-erro"
+        *ngIf="
+          cadastroUserForm.controls.senhaUser.errors &&
+          cadastroUserForm.controls.senhaUser.errors?.required &&
+          (cadastroUserForm.get('senhaUser')?.touched ||
+            cadastroUserForm.get('senhaUser')?.dirty)
+        "
+      >
+        Preenchimento obrigatório
+      </p>
+    </div>
+    <div class="campo-form">
+      <div>
+        <label for="senhaRepetir">Repetir senha *</label>
+      </div>
+      <div>
+        <input
+          type="password"
+          id="senhaRepetir"
+          name="senhaRepetir"
+          formControlName="senhaRepetir"
+        />
+      </div>
+      <p
+        class="msg-erro"
+        *ngIf="
+          cadastroUserForm.controls.senhaRepetir.errors &&
+          cadastroUserForm.controls.senhaRepetir.errors?.required &&
+          (cadastroUserForm.get('senhaRepetir')?.touched ||
+            cadastroUserForm.get('senhaRepetir')?.dirty)
+        "
+      >
+        Preenchimento obrigatório
+      </p>
+
+      <p
+        class="msg-erro"
+        *ngIf="
+          cadastroUserForm.controls.senhaRepetir.errors &&
+          cadastroUserForm.controls.senhaRepetir.errors?.checarSenhas &&
+          (cadastroUserForm.get('senhaRepetir')?.touched ||
+            cadastroUserForm.get('senhaRepetir')?.dirty)
+        "
+      >
+        Senhas diferentes
+      </p>
+    </div>
+    <div>
+      <button type="submit" class="btn-normal" (clique)="cadastrarUser()">
+        Cadastre-se
+      </button>
+    </div>
+  </div>
 </form>
