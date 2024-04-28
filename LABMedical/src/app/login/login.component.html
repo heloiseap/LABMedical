@@ -1,23 +1,30 @@
-<form
-    class="formulario"
-    (ngSubmit)="fazerLogin()"
-    [formGroup]="loginForm">
-
-    <label for="emailUser">Email</label>
-    <input 
+<form class="formulario" (ngSubmit)="fazerLogin()" [formGroup]="loginForm">
+  <div>
+    <div><label for="emailUser">Email</label></div>
+    <div>
+      <input
         type="email"
         id="emailUser"
         name="emailUser"
-        formControlName="emailUser"/>
+        formControlName="emailUser"
+      />
+    </div>
+  </div>
 
-    <label for="senhaUser">Senha</label>
-    <input 
+  <div>
+    <div><label for="senhaUser">Senha</label></div>
+    <div>
+      <input
         type="password"
         id="senhaUser"
         name="senhaUser"
-        formControlName="senhaUser"/>
-    
-    <button type="button" (click)="criarConta()">Criar Conta</button>
-    <button type="button" (click)="resetarSenha()">Resetar senha</button>
-    <button type="submit">Entrar</button>
+        formControlName="senhaUser"
+      />
+    </div>
+  </div>
+  <div><button class="btn-normal" type="submit">Entrar</button></div>
+  <span class="links">
+    <a class="link" routerLink="cadastro">Criar Conta</a>
+    <a class="link" routerLink="reset-senha">Resetar senha</a>
+  </span>
 </form>
