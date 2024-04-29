@@ -8,6 +8,7 @@ import { RegistrarConsultaComponent } from './registrar/registrar-consulta/regis
 import { RegistrarPacienteComponent } from './registrar/registrar-paciente/registrar-paciente.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { ProntuarioPacienteComponent } from './prontuarios/prontuario-paciente/prontuario-paciente.component';
+import { ResetSenhaComponent } from './reset-senha/reset-senha.component';
 
 export const routes: Routes = [
   {
@@ -71,5 +72,10 @@ export const routes: Routes = [
       },
     ],
   },
+  {
+    path: 'reset-senha',
+    component: ResetSenhaComponent,
+    pathMatch: 'full'
+  }
 
 ];

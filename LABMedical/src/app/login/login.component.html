@@ -9,6 +9,17 @@
         formControlName="emailUser"
       />
     </div>
+    <p
+    *ngIf="
+      loginForm.controls.emailUser.errors &&
+      loginForm.controls.emailUser.errors.required &&
+      (loginForm.get('emailUser')?.touched ||
+      loginForm.get('emailUser')?.dirty)
+    "
+    class="msg-erro"
+  >
+    Preenchimento obrigatório
+  </p>
   </div>
 
   <div>
@@ -20,11 +31,22 @@
         name="senhaUser"
         formControlName="senhaUser"
       />
+      <p
+      *ngIf="
+        loginForm.controls.senhaUser.errors &&
+        loginForm.controls.senhaUser.errors.required &&
+        (loginForm.get('senhaUser')?.touched ||
+        loginForm.get('senhaUser')?.dirty)
+      "
+      class="msg-erro"
+    >
+      Preenchimento obrigatório
+    </p>
     </div>
   </div>
   <div><button class="btn-normal" type="submit">Entrar</button></div>
   <span class="links">
-    <a class="link" routerLink="cadastro">Criar Conta</a>
-    <a class="link" routerLink="reset-senha">Resetar senha</a>
+    <a class="link" (click)="criarConta()">Criar Conta</a>
+    <a class="link" (click)="mudarSenha()">Resetar senha</a>
   </span>
 </form>

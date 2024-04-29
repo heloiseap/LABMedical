@@ -8,12 +8,12 @@ import {
 import { ValidadorCustomizadoService } from '../services/validador-customizado.service';
 import { CommonModule } from '@angular/common';
 import usuarios from '../../mock-db/usuarios.json';
-import { Subscription } from 'rxjs';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-cadastro',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, RouterLink],
   templateUrl: './cadastro.component.html',
   styleUrl: './cadastro.component.scss',
 })
@@ -29,7 +29,8 @@ export class CadastroComponent {
   formSubscription: any;
 
   constructor(
-    private validadorCustomizadoService: ValidadorCustomizadoService
+    private validadorCustomizadoService: ValidadorCustomizadoService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -53,22 +54,18 @@ export class CadastroComponent {
         // this.validadorCustomizadoService.checarSenhas(this.cadastroUserForm),
       ]),
     });
-    this.formSubscription = this.cadastroUserForm.valueChanges.subscribe(() => {
-      this.cadastroUserForm.controls['senhaRepetir'].setValidators(
-        this.validadorCustomizadoService.checarSenhas(this.cadastroUserForm)
-      );
-      this.cadastroUserForm.controls['senhaRepetir'].updateValueAndValidity();
-    });
-    
   }
 
-
-  ngOnDestroy() {
-    if (this.formSubscription) {
-      this.formSubscription.unsubscribe();
+  senhasIguais() {
+    if (
+      this.cadastroUserForm.controls.senhaUser.value ==
+      this.cadastroUserForm.controls.senhaRepetir.value
+    ) {
+      return true;
     }
+    return false;
   }
-  
+
   cadastrarUser() {
     if (this.cadastroUserForm.valid) {
       this.usuario = {
@@ -76,13 +73,21 @@ export class CadastroComponent {
         email: this.cadastroUserForm.controls.senhaUser.value,
         senha: this.cadastroUserForm.controls.senhaUser.value,
       };
-      this.listaUsuarios.push(this.usuario);
-      console.log(this.cadastroUserForm);
-      localStorage.setItem('usuarios', JSON.stringify(this.listaUsuarios));
+      if (
+        this.listaUsuarios.filter(
+          (user) =>
+            user.email == this.usuario.email || user.nome == this.usuario.nome
+        ).length != 0
+      ) {
+        alert('Usuário já cadastrado');
+      } else {
+        this.listaUsuarios.push(this.usuario);
+        localStorage.setItem('usuarios', JSON.stringify(this.listaUsuarios));
+        localStorage.setItem('logado', 'true');
+        this.router.navigate(['inicio']);
+      }
     } else {
-      console.log(this.cadastroUserForm.controls.senhaUser);
-      console.log(this.cadastroUserForm.controls.senhaRepetir);
-      //mostrar erros
+      this.cadastroUserForm.markAllAsTouched();
     }
   }
 }

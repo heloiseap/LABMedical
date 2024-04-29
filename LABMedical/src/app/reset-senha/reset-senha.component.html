@@ -1,0 +1,98 @@
+<form class="formulario" (ngSubmit)="mudarSenha()" [formGroup]="mudarSenhaForm">
+    <div>
+        <div><label for="codigo">Digite o código recebido por email:</label></div>
+        <span>Por coincidência é o email</span>
+        <div>
+          <input
+            type="password"
+            id="codigo"
+            name="codigo"
+            formControlName="codigo"
+          />
+        </div>
+        <p
+          *ngIf="
+            mudarSenhaForm.controls.senha1.errors &&
+            mudarSenhaForm.controls.senha1.errors.required &&
+            (mudarSenhaForm.get('senha1')?.touched ||
+              mudarSenhaForm.get('senha1')?.dirty)
+          "
+          class="msg-erro"
+        >
+          Preenchimento obrigatório
+        </p>
+      </div>
+    
+
+    <div>
+    <div><label for="senha1">Digite sua nova senha:</label></div>
+    <div>
+      <input
+        type="password"
+        id="senha1"
+        name="senha1"
+        formControlName="senha1"
+      />
+    </div>
+    <p
+      *ngIf="
+        mudarSenhaForm.controls.senha1.errors &&
+        mudarSenhaForm.controls.senha1.errors.required &&
+        (mudarSenhaForm.get('senha1')?.touched ||
+          mudarSenhaForm.get('senha1')?.dirty)
+      "
+      class="msg-erro"
+    >
+      Preenchimento obrigatório
+    </p>
+    <p
+    class="msg-erro"
+    *ngIf="
+      mudarSenhaForm.controls.senha1.errors &&
+      (mudarSenhaForm.controls.senha1.errors?.minlength ||
+      mudarSenhaForm.controls.senha1.errors?.maxlength) &&
+      (mudarSenhaForm.get('senha1')?.touched ||
+      mudarSenhaForm.get('senha1')?.dirty)
+    "
+  >
+    Utilize de 6 a 20 caracteres
+  </p>
+  </div>
+
+  <div>
+    <div><label for="senha2">Repita sua nova senha:</label></div>
+    <div>
+      <input
+        type="password"
+        id="senha2"
+        name="senha2"
+        formControlName="senha2"
+      />
+    </div>
+    <p
+      *ngIf="
+        mudarSenhaForm.controls.senha2.errors &&
+        mudarSenhaForm.controls.senha2.errors.required &&
+        (mudarSenhaForm.get('senha2')?.touched ||
+          mudarSenhaForm.get('senha2')?.dirty)
+      "
+      class="msg-erro"
+    >
+      Preenchimento obrigatório
+    </p>
+
+    <p
+    class="msg-erro"
+    *ngIf="
+      !this.senhasIguais() &&
+      (mudarSenhaForm.get('senha2')?.touched ||
+      mudarSenhaForm.get('senha2')?.dirty)
+    "
+  >
+    Senhas diferentes
+  </p>
+  </div>
+  <div>
+    <button class="btn-normal" type="submit">Confirmar mudança</button>
+  </div>
+</form>

@@ -83,14 +83,14 @@ export class ValidadorCustomizadoService {
       return null;
     };
   }
-  checarSenhas(formGroup: FormGroup): ValidatorFn {
-    return (control: AbstractControl): ValidationErrors | null => {
-      const senhaUser = control.get('senhaUser')?.value;
-      const senhaRepetir = formGroup.controls.senhaRepetir?.value;
-      if (senhaUser !== senhaRepetir) {
-        return { checarSenhas: true };
-      }
-      return null;
-    };
-  }
+  // checarSenhas(formGroup: FormGroup): ValidatorFn {
+  //   return (control: AbstractControl): ValidationErrors | null => {
+  //     const senhaUser = control.get('senhaUser')?.value;
+  //     const senhaRepetir = formGroup.controls.senhaRepetir?.value;
+  //     if (senhaUser !== senhaRepetir) {
+  //       return { checarSenhas: true };
+  //     }
+  //     return null;
+  //   };
+  // }
 }
