@@ -7,6 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { ConsultaService } from '../../mod-consulta/consulta.service';
+import { PacienteService } from '../../mod-paciente/paciente.service';
 
 
 @Component({
@@ -24,14 +25,32 @@ export class RegistrarConsultaComponent implements OnInit {
     horario: '',
     descricao: '',
     medicacao: 'N/A',
-    dosagemPrecaucoes: ''
-
+    dosagemPrecaucoes: '',
+    idPaciente: ''
   };
 
-  constructor(private consultaService: ConsultaService) {}
+  paciente: any
+  pacienteEncontrado: boolean = true
+  constructor(private consultaService: ConsultaService, private pacienteService: PacienteService) {}
+
+  procurarPaciente(){
+    this.paciente = this.pacienteService.buscarPaciente(this.registroConsultaForm.controls.paciente.value) || '';
+    if(this.paciente.length!=0){
+      this.pacienteEncontrado = true
+      return this.pacienteEncontrado  
+    } else {
+      this.pacienteEncontrado = false
+      return false
+    }
+  }
 
   ngOnInit() {
+
+
     this.registroConsultaForm = new FormGroup({
+      paciente: new FormControl('',[
+        Validators.required
+      ]),
       motivo: new FormControl('', [
         Validators.required,
         Validators.minLength(8),
@@ -54,7 +73,9 @@ export class RegistrarConsultaComponent implements OnInit {
   }
 
   registrarConsulta() {
-    if (this.registroConsultaForm.valid) {
+
+    if (this.registroConsultaForm.valid && this.procurarPaciente()) {
+      confirm("Confirma os dados?")
       this.consulta = {
         motivo: this.registroConsultaForm.controls.motivo.value,
         data: this.registroConsultaForm.controls.data.value,
@@ -63,8 +84,14 @@ export class RegistrarConsultaComponent implements OnInit {
         medicacao: this.registroConsultaForm.controls.medicacao.value,
         dosagemPrecaucoes:
           this.registroConsultaForm.controls.dosagemPrecaucoes.value,
+        idPaciente: this.paciente[0].id
       };
       this.consultaService.registroConsulta(this.consulta);
+      alert("Consulta registrada com sucesso")
+
+    } else{
+      this.procurarPaciente()
+      this.registroConsultaForm.markAllAsTouched()
     }
   }
 }

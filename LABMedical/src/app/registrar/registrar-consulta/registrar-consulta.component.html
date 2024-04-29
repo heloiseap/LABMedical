@@ -3,135 +3,182 @@
   (ngSubmit)="registrarConsulta()"
   [formGroup]="registroConsultaForm"
 >
-<div class="secao">  
-<label for="motivo">Motivo *</label>
-  <input type="text" name="motivo" id="motivo" formControlName="motivo" />
-  <p
-    class="msg-erro"
-    *ngIf="
-      registroConsultaForm.controls.motivo.errors &&
-      registroConsultaForm.controls.motivo.errors?.required &&
-      (registroConsultaForm.get('motivo')?.touched ||
-        registroConsultaForm.get('motivo')?.dirty)
-    "
-  >
-    Preenchimento obrigatório
-  </p>
+  <div class="secao">
+    <div>
+      <label for="paciente">Paciente *</label>
+      <input
+        type="text"
+        name="paciente"
+        id="paciente"
+        formControlName="paciente"
+      />
+      <button type="button" class="btn-normal" (click)="procurarPaciente()">Procurar</button>
 
-  <p
-    class="msg-erro"
-    *ngIf="
-      registroConsultaForm.controls.motivo.errors &&
-      (registroConsultaForm.controls.motivo.errors.minlength ||
-        registroConsultaForm.controls.motivo.errors.maxlength) &&
-      (registroConsultaForm.get('motivo')?.touched ||
-        registroConsultaForm.get('motivo')?.dirty)
-    "
-  >
-    Por favor utilize de 8 a 64 caracteres
-  </p>
+      <p
+        class="msg-erro"
+        *ngIf="
+          registroConsultaForm.controls.paciente.errors &&
+          registroConsultaForm.controls.paciente.errors?.required &&
+          (registroConsultaForm.get('motivo')?.touched ||
+            registroConsultaForm.get('motivo')?.dirty)
+        "
+      >
+        Preenchimento obrigatório
+      </p>
+      <p
+        class="msg-erro"
+        *ngIf="
+          registroConsultaForm.controls.paciente.errors &&
+          registroConsultaForm.controls.paciente.errors?.required &&
+          !this.pacienteEncontrado
+        "
+      >
+        Paciente não encontrado
+      </p>
+    </div>
 
-  <label for="data">Data da consulta</label>
-  <input type="date" name="data" id="data" formControlName="data" />
+    <div>
+      <label for="motivo">Motivo *</label>
+      <input type="text" name="motivo" id="motivo" formControlName="motivo" />
+      <p
+        class="msg-erro"
+        *ngIf="
+          registroConsultaForm.controls.motivo.errors &&
+          registroConsultaForm.controls.motivo.errors?.required &&
+          (registroConsultaForm.get('motivo')?.touched ||
+            registroConsultaForm.get('motivo')?.dirty)
+        "
+      >
+        Preenchimento obrigatório
+      </p>
 
-  <p
-    class="msg-erro"
-    *ngIf="
-      registroConsultaForm.controls.data.errors &&
-      registroConsultaForm.controls.data.errors?.required &&
-      (registroConsultaForm.get('data')?.touched ||
-        registroConsultaForm.get('data')?.dirty)
-    "
-  >
-    Seleção obrigatória
-  </p>
+      <p
+        class="msg-erro"
+        *ngIf="
+          registroConsultaForm.controls.motivo.errors &&
+          (registroConsultaForm.controls.motivo.errors.minlength ||
+            registroConsultaForm.controls.motivo.errors.maxlength) &&
+          (registroConsultaForm.get('motivo')?.touched ||
+            registroConsultaForm.get('motivo')?.dirty)
+        "
+      >
+        Por favor utilize de 8 a 64 caracteres
+      </p>
+    </div>
+    <div>
+      <label for="data">Data da consulta</label>
+      <input type="date" name="data" id="data" formControlName="data" />
 
-  <label for="horario">Horário da consulta *</label>
-  <input type="time" name="horario" id="horario" formControlName="horario" />
-  <p
-    class="msg-erro"
-    *ngIf="
-      registroConsultaForm.controls.horario.errors &&
-      registroConsultaForm.controls.horario.errors?.required &&
-      (registroConsultaForm.get('horario')?.touched ||
-        registroConsultaForm.get('horario')?.dirty)
-    "
-  >
-    Seleção obrigatória
-  </p>
+      <p
+        class="msg-erro"
+        *ngIf="
+          registroConsultaForm.controls.data.errors &&
+          registroConsultaForm.controls.data.errors?.required &&
+          (registroConsultaForm.get('data')?.touched ||
+            registroConsultaForm.get('data')?.dirty)
+        "
+      >
+        Seleção obrigatória
+      </p>
+    </div>
+    <div>
+      <label for="horario">Horário da consulta *</label>
+      <input
+        type="time"
+        name="horario"
+        id="horario"
+        formControlName="horario"
+      />
+      <p
+        class="msg-erro"
+        *ngIf="
+          registroConsultaForm.controls.horario.errors &&
+          registroConsultaForm.controls.horario.errors?.required &&
+          (registroConsultaForm.get('horario')?.touched ||
+            registroConsultaForm.get('horario')?.dirty)
+        "
+      >
+        Seleção obrigatória
+      </p>
+    </div>
+    <div>
+      <label for="descricao">Descrição *</label>
 
-  <label for="descricao">Descrição *</label>
+      <input
+        type="text"
+        name="descricao"
+        id="descricao"
+        formControlName="descricao"
+      />
+      <p
+        class="msg-erro"
+        *ngIf="
+          registroConsultaForm.controls.descricao.errors &&
+          registroConsultaForm.controls.descricao.errors?.required &&
+          (registroConsultaForm.get('descricao')?.touched ||
+            registroConsultaForm.get('descricao')?.dirty)
+        "
+      >
+        Preenchimento obrigatório
+      </p>
 
-  <input
-    type="text"
-    name="descricao"
-    id="descricao"
-    formControlName="descricao"
-  />
-  <p
-    class="msg-erro"
-    *ngIf="
-      registroConsultaForm.controls.descricao.errors &&
-      registroConsultaForm.controls.descricao.errors?.required &&
-      (registroConsultaForm.get('descricao')?.touched ||
-        registroConsultaForm.get('descricao')?.dirty)
-    "
-  >
-    Preenchimento obrigatório
-  </p>
+      <p
+        class="msg-erro"
+        *ngIf="
+          registroConsultaForm.controls.descricao.errors &&
+          (registroConsultaForm.controls.descricao.errors.minlength ||
+            registroConsultaForm.controls.descricao.errors.maxlength) &&
+          (registroConsultaForm.get('descricao')?.touched ||
+            registroConsultaForm.get('descricao')?.dirty)
+        "
+      >
+        Por favor utilize de 12 a 1024 caracteres
+      </p>
+    </div>
 
-  <p
-    class="msg-erro"
-    *ngIf="
-      registroConsultaForm.controls.descricao.errors &&
-      (registroConsultaForm.controls.descricao.errors.minlength ||
-        registroConsultaForm.controls.descricao.errors.maxlength) &&
-      (registroConsultaForm.get('descricao')?.touched ||
-        registroConsultaForm.get('descricao')?.dirty)
-    "
-  >
-    Por favor utilize de 12 a 1024 caracteres
-  </p>
-
-  <label for="medicacao">Medicação</label>
-  <input
-    type="text"
-    name="medicacao"
-    id="medicacao"
-    formControlName="medicacao"
-  />
-
-  <label for="dosagemPrecaucoes">Dosagem e Precauções *</label>
-  <input
-    type="text"
-    name="dosagemPrecaucoes"
-    id="dosagemPrecaucoes"
-    formControlName="dosagemPrecaucoes"
-  />
-  <p
-    class="msg-erro"
-    *ngIf="
-      registroConsultaForm.controls.dosagemPrecaucoes.errors &&
-      registroConsultaForm.controls.dosagemPrecaucoes.errors?.required &&
-      (registroConsultaForm.get('dosagemPrecaucoes')?.touched ||
-        registroConsultaForm.get('dosagemPrecaucoes')?.dirty)
-    "
-  >
-    Preenchimento obrigatório
-  </p>
-  <p
-    class="msg-erro"
-    *ngIf="
-      registroConsultaForm.controls.dosagemPrecaucoes.errors &&
-      (registroConsultaForm.controls.dosagemPrecaucoes.errors.minlength ||
-        registroConsultaForm.controls.dosagemPrecaucoes.errors.maxlength) &&
-      (registroConsultaForm.get('dosagemPrecaucoes')?.touched ||
-        registroConsultaForm.get('dosagemPrecaucoes')?.dirty)
-    "
-  >
-    Por favor utilize de 16 a 256 caracteres
-  </p>
-
-  <button type="button" class="btn-normal" (click)="registrarConsulta()">Registrar</button>
-</div>
+    <div>
+      <label for="medicacao">Medicação</label>
+      <input
+        type="text"
+        name="medicacao"
+        id="medicacao"
+        formControlName="medicacao"
+      />
+    </div>
+    <div>
+      <label for="dosagemPrecaucoes">Dosagem e Precauções *</label>
+      <input
+        type="text"
+        name="dosagemPrecaucoes"
+        id="dosagemPrecaucoes"
+        formControlName="dosagemPrecaucoes"
+      />
+      <p
+        class="msg-erro"
+        *ngIf="
+          registroConsultaForm.controls.dosagemPrecaucoes.errors &&
+          registroConsultaForm.controls.dosagemPrecaucoes.errors?.required &&
+          (registroConsultaForm.get('dosagemPrecaucoes')?.touched ||
+            registroConsultaForm.get('dosagemPrecaucoes')?.dirty)
+        "
+      >
+        Preenchimento obrigatório
+      </p>
+      <p
+        class="msg-erro"
+        *ngIf="
+          registroConsultaForm.controls.dosagemPrecaucoes.errors &&
+          (registroConsultaForm.controls.dosagemPrecaucoes.errors.minlength ||
+            registroConsultaForm.controls.dosagemPrecaucoes.errors.maxlength) &&
+          (registroConsultaForm.get('dosagemPrecaucoes')?.touched ||
+            registroConsultaForm.get('dosagemPrecaucoes')?.dirty)
+        "
+      >
+        Por favor utilize de 16 a 256 caracteres
+      </p>
+    </div>
+    <button type="button" class="btn-normal" (click)="registrarConsulta()">
+      Registrar
+    </button>
+  </div>
 </form>
