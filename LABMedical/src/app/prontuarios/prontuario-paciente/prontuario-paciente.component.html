@@ -1,10 +1,8 @@
 <div class="prontuario-div">
   <div class="info">
-    <h3>{{ this.paciente.nome }}</h3>
-    <h4>Convênio</h4>
-    <p>{{ this.paciente.convenio }}</p>
-    <h4>Contato de emergência</h4>
+    <h2>{{ this.paciente.nome }}</h2>
 
+    <h4>Contato de emergência</h4>
     <p>
       {{ this.paciente.nomeEmergencia }}:
       {{ this.paciente.contatoEmergencia }}
@@ -15,17 +13,39 @@
     <h4>Cuidados específicos</h4>
     <p *ngIf="paciente.cuidadosEspecificos.length == 0">Nenhum informado</p>
     <p *ngFor="let cuidados of paciente.cuidadosEspecificos">{{ cuidados }}</p>
+
+    <h4>Informações gerais</h4>
+    <p>Genero: {{ paciente.genero }}</p>
+    <p>Data nascimento: {{ paciente.dataNascimento }}</p>
+    <p>CPF: {{ paciente.cpf }}</p>
+    <p>RG: {{ paciente.rg }}</p>
+    <p>Estado civil: {{ paciente.estadoCivil }}</p>
+    <p>Naturalidade: {{ paciente.naturalidade }}</p>
+
+    <h4>Contato</h4>
+    <p>Telefone: {{ paciente.telefone }}</p>
+    <h4>Endereço</h4>
+    <p>CEP: {{ paciente.cep }}</p>
     <p></p>
+    <p>
+      Número e complemento: {{ paciente.numero }} {{ paciente.complemento }}
+    </p>
+    <h4>Convênio</h4>
+    <p>Nome: {{ this.paciente.convenio }}</p>
+    <p>Número: {{ this.paciente.nConvenio }}</p>
+
+    <button class="btn-normal" (click)="editarPaciente()">Editar</button>
+    <button class="btn-normal" (click)="excluirPaciente()">Excluir</button>
   </div>
 
   <div class="info">
-    <h3>Consultas</h3>
+    <h2>Consultas</h2>
     <div *ngIf="this.naoTemConsultas">
       <p>Não há consultas cadastradas</p>
     </div>
     <div class="div-consulta" *ngFor="let consulta of consultas">
       <div *ngIf="consulta != ''">
-        <h4>Consulta de {{ consulta.data }} {{ consulta.horario }}</h4>
+        <h3>Consulta de {{ consulta.data }} {{ consulta.horario }}</h3>
         <h4>Motivo</h4>
         <p>{{ consulta.motivo }}</p>
         <h4>Descricao do problema</h4>
@@ -34,21 +54,24 @@
         <p>{{ consulta.medicacao }}</p>
         <h4>Dosagem e precauções</h4>
         <p>{{ consulta.dosagemPrecaucoes }}</p>
+        <button class="btn-normal" (click)="editarConsulta()">Editar</button>
+        <button class="btn-normal" (click)="excluirConsulta()">Excluir</button>
       </div>
+
     </div>
   </div>
 
   <div class="info">
-    <h3>Exames</h3>
+    <h2>Exames</h2>
     <div *ngIf="this.naoTemExames">
       <p>Não há exames cadastrados</p>
     </div>
     <div class="div-exames" *ngFor="let exame of exames">
       <div *ngIf="exame != ''">
-        <h4>
+        <h3>
           {{ exame.nomeExame }}: {{ exame.dataExame }}
           {{ exame.horarioExame }}
-        </h4>
+        </h3>
         <h4>Tipo de exame:</h4>
         <p>{{ exame.tipoExame }}</p>
         <h4>Laboratório</h4>
@@ -57,7 +80,10 @@
         <p>{{ exame.urlDocumento }}</p>
         <h4>Resultado</h4>
         <p>{{ exame.resultado }}</p>
+        <button class="btn-normal" (click)="editarExame()">Editar</button>
+        <button class="btn-normal" (click)="excluirExame()">Excluir</button>
       </div>
+
     </div>
   </div>
 </div>

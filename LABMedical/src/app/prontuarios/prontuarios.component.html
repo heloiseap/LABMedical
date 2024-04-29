@@ -21,7 +21,6 @@
 <div>
   <div class="pacientes" *ngIf="this.mostrar">
     <div class="paciente" *ngFor="let paciente of listaPacientes">
-      <img src="https://placehold.jp/100x100.png" />
       <h4>{{ paciente.nome }}</h4>
       {{ paciente.dataNascimento | calculoIdade }} anos
       <p>{{ paciente.telefone }}</p>
@@ -33,7 +32,7 @@
       >
         Mais detalhes
       </button>
-    </div>
+
   </div>
   <div class="mensagem-erro" *ngIf="resultadoVazio">Nenhum paciente encontrado</div>
 

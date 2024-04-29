@@ -17,8 +17,6 @@ import { CalculoIdadePipe } from '../pipes/calculo-idade.pipe';
 export class ProntuariosComponent {
   constructor(
     private pacienteService: PacienteService,
-    private consultaService: ConsultaService,
-    private exameService: ExameService,
     private router: Router
   ) {}
 
@@ -47,6 +45,17 @@ export class ProntuariosComponent {
     this.resultadoVazio = false;
   }
 
+  editarPaciente(id: string) {
+    // console.log('ok')
+    // this.router.navigate(['../registrar/paciente'+ {id}])
+    // let editar = true
+    //todo
+  }
 
-  exibirProntuario() {}
+  excluirPaciente(idExcluir: string) {
+    let pacienteExclusao = this.listaPacientes.filter((paciente: { id: string; }) => paciente.id == idExcluir)
+    // this.listaPacientes.splice(paciente,1)
+    
+    //todo
+  }
 }

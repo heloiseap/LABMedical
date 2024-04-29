@@ -28,6 +28,7 @@ export class ProntuarioPacienteComponent implements OnInit {
   consultas: any
   exames: any
   numId: number = 0
+
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.id = params['id'];
@@ -57,4 +58,12 @@ export class ProntuarioPacienteComponent implements OnInit {
     }
 
   } 
+  editarPaciente(){}
+  excluirPaciente(){}
+
+  editarConsulta(){}
+  excluirConsulta(){}
+
+  editarExame(){}
+  excluirExame(){}
 }
