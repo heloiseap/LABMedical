@@ -21,22 +21,14 @@ export class RegistrarExameComponent implements OnInit {
   pacienteEncontrado: boolean = true;
   exame = {};
   paciente: any;
-  // exame = {
-  //   nomeExame:'',
-  //   dataExame:'',
-  //   horarioExame:'',
-  //   tipoExame:'',
-  //   laboratorio:'',
-  //   urlDocumento: '',
-  //   resultado: ''
-  // }
+
   constructor(
     private pacienteService: PacienteService,
     private exameService: ExameService
   ) {}
   ngOnInit(): void {
     this.registroExameForm = new FormGroup({
-      paciente: new FormControl('', [Validators.required]),
+      pacienteNome: new FormControl('', [Validators.required]),
       nomeExame: new FormControl('', [
         Validators.required,
         Validators.minLength(8),
@@ -66,7 +58,7 @@ export class RegistrarExameComponent implements OnInit {
   procurarPaciente() {
     this.paciente =
       this.pacienteService.buscarPaciente(
-        this.registroExameForm.controls.paciente.value
+        this.registroExameForm.controls.pacienteNome.value
       ) || '';
     if (this.paciente.length != 0) {
       this.pacienteEncontrado = true;
@@ -77,16 +69,17 @@ export class RegistrarExameComponent implements OnInit {
     }
   }
   registrarExame() {
-    if (this.registroExameForm.valid) {
+    this.procurarPaciente()
+    if (this.registroExameForm.valid && this.procurarPaciente()) {
       confirm('Confirma os dados?');
       this.exame = {
-        nomeExame: this.registroExameForm.controls.nomeExame,
-        dataExame: this.registroExameForm.controls.dataExame,
-        horarioExame: this.registroExameForm.controls.horarioExame,
-        tipoExame: this.registroExameForm.controls.tipoExame,
-        laboratorio: this.registroExameForm.controls.laboratorio,
-        urlDocumento: this.registroExameForm.controls.urlDocumento,
-        resultado: this.registroExameForm.controls.resultado,
+        nomeExame: this.registroExameForm.controls.nomeExame.value,
+        dataExame: this.registroExameForm.controls.dataExame.value,
+        horarioExame: this.registroExameForm.controls.horarioExame.value,
+        tipoExame: this.registroExameForm.controls.tipoExame.value,
+        laboratorio: this.registroExameForm.controls.laboratorio.value,
+        urlDocumento: this.registroExameForm.controls.urlDocumento.value,
+        resultado: this.registroExameForm.controls.resultado.value,
         idPaciente: this.paciente[0].id,
       };
       this.exameService.adicionarExame(this.exame);

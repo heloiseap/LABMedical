@@ -73,7 +73,7 @@ export class RegistrarConsultaComponent implements OnInit {
   }
 
   registrarConsulta() {
-
+    this.procurarPaciente()
     if (this.registroConsultaForm.valid && this.procurarPaciente()) {
       confirm("Confirma os dados?")
       this.consulta = {

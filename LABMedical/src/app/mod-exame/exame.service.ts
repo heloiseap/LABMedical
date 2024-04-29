@@ -24,6 +24,6 @@ export class ExameService {
   }
   adicionarExame(exameNovo: object) {
     this.listaExames.push(exameNovo);
-    localStorage.setItem('exames', JSON.stringify(this.listaExames));
+    localStorage.setItem('exames', JSON.stringify(this.listaExames));  
   }
 }

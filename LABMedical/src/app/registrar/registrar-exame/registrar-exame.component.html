@@ -5,12 +5,12 @@
 >
   <div class="secao">
     <div>
-      <label for="paciente">Paciente *</label>
+      <label for="pacienteNome">Paciente *</label>
       <input
         type="text"
-        name="paciente"
-        id="paciente"
-        formControlName="paciente"
+        name="pacienteNome"
+        id="pacienteNome"
+        formControlName="pacienteNome"
       />
       <button type="button" class="btn-normal" (click)="procurarPaciente()">
         Procurar
@@ -19,10 +19,10 @@
       <p
         class="msg-erro"
         *ngIf="
-          registroExameForm.controls.paciente.errors &&
-          registroExameForm.controls.paciente.errors?.required &&
-          (registroExameForm.get('motivo')?.touched ||
-            registroExameForm.get('motivo')?.dirty)
+          registroExameForm.controls.pacienteNome.errors &&
+          registroExameForm.controls.pacienteNome.errors?.required &&
+          (registroExameForm.get('pacienteNome')?.touched ||
+            registroExameForm.get('pacienteNome')?.dirty)
         "
       >
         Preenchimento obrigatório
@@ -30,8 +30,8 @@
       <p
         class="msg-erro"
         *ngIf="
-          registroExameForm.controls.paciente.errors &&
-          registroExameForm.controls.paciente.errors?.required &&
+          registroExameForm.controls.pacienteNome.errors &&
+          registroExameForm.controls.pacienteNome.errors?.required &&
           !this.pacienteEncontrado
         "
       >
