@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ExameService } from '../../mod-exame/exame.service';
+import { PacienteService } from '../../mod-paciente/paciente.service';
 
 @Component({
   selector: 'app-registrar-exame',
@@ -12,7 +13,9 @@ import { ExameService } from '../../mod-exame/exame.service';
 })
 export class RegistrarExameComponent implements OnInit {
   registroExameForm!: FormGroup;
+  pacienteEncontrado: boolean = true
   exame = {}
+  paciente: any;
   // exame = {
   //   nomeExame:'',
   //   dataExame:'',
@@ -22,9 +25,10 @@ export class RegistrarExameComponent implements OnInit {
   //   urlDocumento: '',
   //   resultado: ''
   // }
-
+  constructor(private pacienteService:PacienteService ){}
   ngOnInit(): void {
     this.registroExameForm = new FormGroup({
+      paciente: new FormControl('', [Validators.required]),
       nomeExame: new FormControl('',[
         Validators.required,
         Validators.minLength(8),
@@ -55,6 +59,19 @@ export class RegistrarExameComponent implements OnInit {
     });
   }
 
+  procurarPaciente() {
+    this.paciente =
+      this.pacienteService.buscarPaciente(
+        this.registroExameForm.controls.paciente.value
+      ) || '';
+    if (this.paciente.length != 0) {
+      this.pacienteEncontrado = true;
+      return this.pacienteEncontrado;
+    } else {
+      this.pacienteEncontrado = false;
+      return false;
+    }
+  }
   registrarExame() {
     if (this.registroExameForm.valid) {
       this.exame = {
@@ -64,7 +81,8 @@ export class RegistrarExameComponent implements OnInit {
         tipoExame: this.registroExameForm.controls.tipoExame,
         laboratorio: this.registroExameForm.controls.laboratorio,
         urlDocumento: this.registroExameForm.controls.urlDocumento,
-        resultado: this.registroExameForm.controls.resultado
+        resultado: this.registroExameForm.controls.resultado,
+        // idPaciente,
       }
     }
 
