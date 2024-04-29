@@ -19,9 +19,7 @@ export class InicioComponent implements OnInit {
   constructor(
     private consultaService: ConsultaService,
     private exameService: ExameService,
-    private pacienteService: PacienteService,
-    private router: Router,
-    private r: ActivatedRoute
+    private pacienteService: PacienteService
   ) {}
 
   numPacientes: number = this.pacienteService.quantidadePacientes();

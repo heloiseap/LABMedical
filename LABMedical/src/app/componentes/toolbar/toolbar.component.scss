@@ -4,6 +4,7 @@
   background-color: #445552;
   overflow: hidden;
   border-radius: 15px;
+  align-items: center;
 }
 .toolbar div {
   display: flex;
@@ -20,10 +21,19 @@
 .toolbar .usuario {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  .menos-dest {
+    color: #967e8f;
+  }
+  a {
+    color: #967e8f;
+    text-decoration: none;
+    // cursor: pointer;
+    // #id:hover {
+    //   color: #f2f2f2;
+    // }
+  }
 }
-a {
-  color: #f2f2f2;
-  text-decoration: none;
-}
+
 
 
