@@ -27,17 +27,17 @@ export class ProntuarioPacienteComponent implements OnInit {
   paciente: any
   consultas: any
   exames: any
-  numId: number = 0
+  numId: string = ''
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      this.id = params['id'];
+      this.numId = params['id'];
     });
-    this.mostrarPronturario(this.id)
+    this.mostrarPronturario(this.numId)
   }
 
   mostrarPronturario(id: string) {
-    this.numId = parseInt(id)
+    this.numId = id
     this.paciente = this.pacienteService.buscarPacienteId(id)
     this.consultas = this.consultaService.buscarConsultas(id)
     this.exames = this.exameService.buscarExames(id)
@@ -58,12 +58,24 @@ export class ProntuarioPacienteComponent implements OnInit {
     }
 
   } 
-  editarPaciente(){}
-  excluirPaciente(){}
+  editarPaciente(){
+    //todo
+  }
+  excluirPaciente(){
+    //todo
+  }
 
-  editarConsulta(){}
-  excluirConsulta(){}
+  editarConsulta(){
+    //todo
+  }
+  excluirConsulta(){
+    //todo
+  }
 
-  editarExame(){}
-  excluirExame(){}
+  editarExame(){
+    //todo
+  }
+  excluirExame(){
+    //todo
+  }
 }
