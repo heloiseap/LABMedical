@@ -1,6 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { ExameService } from '../../mod-exame/exame.service';
 import { PacienteService } from '../../mod-paciente/paciente.service';
 
@@ -13,8 +18,8 @@ import { PacienteService } from '../../mod-paciente/paciente.service';
 })
 export class RegistrarExameComponent implements OnInit {
   registroExameForm!: FormGroup;
-  pacienteEncontrado: boolean = true
-  exame = {}
+  pacienteEncontrado: boolean = true;
+  exame = {};
   paciente: any;
   // exame = {
   //   nomeExame:'',
@@ -25,36 +30,35 @@ export class RegistrarExameComponent implements OnInit {
   //   urlDocumento: '',
   //   resultado: ''
   // }
-  constructor(private pacienteService:PacienteService ){}
+  constructor(
+    private pacienteService: PacienteService,
+    private exameService: ExameService
+  ) {}
   ngOnInit(): void {
     this.registroExameForm = new FormGroup({
       paciente: new FormControl('', [Validators.required]),
-      nomeExame: new FormControl('',[
+      nomeExame: new FormControl('', [
         Validators.required,
         Validators.minLength(8),
-        Validators.maxLength(64)
+        Validators.maxLength(64),
       ]),
-      dataExame: new FormControl('',[
-        Validators.required
-      ]),
-      horarioExame: new FormControl('',[
-        Validators.required
-      ]),
-      tipoExame: new FormControl('',[
+      dataExame: new FormControl('', [Validators.required]),
+      horarioExame: new FormControl('', [Validators.required]),
+      tipoExame: new FormControl('', [
         Validators.required,
         Validators.minLength(4),
-        Validators.maxLength(32)
+        Validators.maxLength(32),
       ]),
-      laboratorio: new FormControl('',[
+      laboratorio: new FormControl('', [
         Validators.required,
         Validators.minLength(4),
-        Validators.maxLength(32)
+        Validators.maxLength(32),
       ]),
-      urlDocumento: new FormControl('',[]),
-      resultado: new FormControl('',[
+      urlDocumento: new FormControl('', []),
+      resultado: new FormControl('', [
         Validators.required,
         Validators.minLength(16),
-        Validators.maxLength(1024)
+        Validators.maxLength(1024),
       ]),
     });
   }
@@ -74,6 +78,7 @@ export class RegistrarExameComponent implements OnInit {
   }
   registrarExame() {
     if (this.registroExameForm.valid) {
+      confirm('Confirma os dados?');
       this.exame = {
         nomeExame: this.registroExameForm.controls.nomeExame,
         dataExame: this.registroExameForm.controls.dataExame,
@@ -82,9 +87,13 @@ export class RegistrarExameComponent implements OnInit {
         laboratorio: this.registroExameForm.controls.laboratorio,
         urlDocumento: this.registroExameForm.controls.urlDocumento,
         resultado: this.registroExameForm.controls.resultado,
-        // idPaciente,
-      }
+        idPaciente: this.paciente[0].id,
+      };
+      this.exameService.adicionarExame(this.exame);
+      alert('Consulta registrada com sucesso');
+    } else {
+      this.procurarPaciente();
+      this.registroExameForm.markAllAsTouched();
     }
-
   }
 }
