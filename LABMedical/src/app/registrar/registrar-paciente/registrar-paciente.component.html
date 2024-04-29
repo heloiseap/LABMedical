@@ -2,428 +2,488 @@
   class="formulario"
   (ngSubmit)="registrarPaciente()"
   [formGroup]="registroPacienteForm"
->
+> <div>
   <div class="secao">
-    <h3>paciente</h3>
-    <label for="nome">Nome completo *</label>
+    <h3>Paciente</h3>
 
-    <input
-      type="text"
-      id="nome"
-      name="nome"
-      formControlName="nome"
-      placeholder="exemplo: João da Silva"
-    />
-    <p
-      class="msg-erro"
-      *ngIf="
-        registroPacienteForm.controls.nome.errors &&
-        registroPacienteForm.controls.nome.errors?.required &&
-        (registroPacienteForm.get('nome')?.touched ||
-          registroPacienteForm.get('nome')?.dirty)
-      "
-    >
-      Preenchimento obrigatório
-    </p>
-    <p
-      class="msg-erro"
-      *ngIf="
-        registroPacienteForm.controls.nome.errors &&
-        (registroPacienteForm.controls.nome.errors.minlength ||
-          registroPacienteForm.controls.nome.errors.maxlength) &&
-        (registroPacienteForm.get('nome')?.touched ||
-          registroPacienteForm.get('nome')?.dirty)
-      "
-    >
-      Por favor utilize de 8 a 64 caracteres
-    </p>
-    <p
-    class="msg-erro"
-    *ngIf="
-      registroPacienteForm.controls.nome.errors &&
-      (registroPacienteForm.controls.nome.errors.validacaoNomeCompleto) &&
-      (registroPacienteForm.get('nome')?.touched ||
-        registroPacienteForm.get('nome')?.dirty)
-    "
-  >
-    Por favor digite o nome e sobrenome separados com espaço 
-  </p>
+    <div>
+      <label for="nome">Nome completo *</label>
+      <input
+        type="text"
+        id="nome"
+        name="nome"
+        formControlName="nome"
+        placeholder="exemplo: João da Silva"
+      />
+      <p
+        class="msg-erro"
+        *ngIf="
+          registroPacienteForm.controls.nome.errors &&
+          registroPacienteForm.controls.nome.errors?.required &&
+          (registroPacienteForm.get('nome')?.touched ||
+            registroPacienteForm.get('nome')?.dirty)
+        "
+      >
+        Preenchimento obrigatório
+      </p>
+      <p
+        class="msg-erro"
+        *ngIf="
+          registroPacienteForm.controls.nome.errors &&
+          (registroPacienteForm.controls.nome.errors.minlength ||
+            registroPacienteForm.controls.nome.errors.maxlength) &&
+          (registroPacienteForm.get('nome')?.touched ||
+            registroPacienteForm.get('nome')?.dirty)
+        "
+      >
+        Por favor utilize de 8 a 64 caracteres
+      </p>
+      <p
+        class="msg-erro"
+        *ngIf="
+          registroPacienteForm.controls.nome.errors &&
+          registroPacienteForm.controls.nome.errors.validacaoNomeCompleto &&
+          (registroPacienteForm.get('nome')?.touched ||
+            registroPacienteForm.get('nome')?.dirty)
+        "
+      >
+        Por favor digite o nome e sobrenome separados com espaço
+      </p>
+    </div>
 
+    <div>
+      <label for="genero">Gênero *</label>
+      <select id="genero" name="genero" formControlName="genero">
+        <option value="mulherCis">Mulher cis</option>
+        <option value="mulherTrans">Mulher trans</option>
+        <option value="homemCis">Homem cis</option>
+        <option value="homemTrans">Homem trans</option>
+        <option value="naoBinario">Não binário</option>
+        <option value="naoInforma">Prefiro não informar</option>
+      </select>
+      <p
+        *ngIf="
+          registroPacienteForm.controls.genero.errors &&
+          registroPacienteForm.controls.genero.errors.required &&
+          (registroPacienteForm.get('genero')?.touched ||
+            registroPacienteForm.get('genero')?.dirty)
+        "
+        class="msg-erro"
+      >
+        Seleção obrigatória
+      </p>
+    </div>
 
+    <div>
+      <label for="data-nascimento">Data de nascimento *</label>
+      <input
+        type="date"
+        id="data-nascimento"
+        name="dataNascimento"
+        formControlName="dataNascimento"
+      />
+      <p
+        *ngIf="
+          registroPacienteForm.controls.dataNascimento.errors &&
+          registroPacienteForm.controls.dataNascimento.errors.required &&
+          (registroPacienteForm.get('dataNascimento')?.touched ||
+            registroPacienteForm.get('dataNascimento')?.dirty)
+        "
+        class="msg-erro"
+      >
+        Seleção obrigatória
+      </p>
+    </div>
 
-    <label for="genero">Gênero *</label>
-    <select id="genero" name="genero" formControlName="genero">
-      <option value="mulherCis">Mulher cis</option>
-      <option value="mulherTrans">Mulher trans</option>
-      <option value="homemCis">Homem cis</option>
-      <option value="homemTrans">Homem trans</option>
-      <option value="naoBinario">Não binário</option>
-      <option value="naoInforma">Prefiro não informar</option>
-    </select>
-    <p
-      *ngIf="
-        registroPacienteForm.controls.genero.errors &&
-        registroPacienteForm.controls.genero.errors.required &&
-        (registroPacienteForm.get('genero')?.touched ||
-          registroPacienteForm.get('genero')?.dirty)
-      "
-      class="msg-erro"
-    >
-      Seleção obrigatória
-    </p>
+    <div>
+      <label for="cpf">CPF *</label>
+      <input
+        type="text"
+        id="cpf"
+        name="cpf"
+        formControlName="cpf"
+        placeholder="123.456.789-10"
+      />
+      <p
+        *ngIf="
+          registroPacienteForm.controls.cpf.errors &&
+          registroPacienteForm.controls.cpf.errors.required &&
+          (registroPacienteForm.get('cpf')?.touched ||
+            registroPacienteForm.get('cpf')?.dirty)
+        "
+        class="msg-erro"
+      >
+        Preenchimento obrigatório
+      </p>
 
-    <label for="data-nascimento">Data de nascimento *</label>
-    <input
-      type="date"
-      id="data-nascimento"
-      name="dataNascimento"
-      formControlName="dataNascimento"
-    />
-    <p
-      *ngIf="
-        registroPacienteForm.controls.dataNascimento.errors &&
-        registroPacienteForm.controls.dataNascimento.errors.required &&
-        (registroPacienteForm.get('dataNascimento')?.touched ||
-          registroPacienteForm.get('dataNascimento')?.dirty)
-      "
-      class="msg-erro"
-    >
-      Seleção obrigatória
-    </p>
+      <p
+        *ngIf="
+          registroPacienteForm.controls.cpf.errors &&
+          registroPacienteForm.controls.cpf.errors.pattern &&
+          (registroPacienteForm.get('cpf')?.touched ||
+            registroPacienteForm.get('cpf')?.dirty)
+        "
+        class="msg-erro"
+      >
+        Insira um CPF válido
+      </p>
+    </div>
 
-    <label for="cpf">CPF *</label>
-    <input
-      type="text"
-      id="cpf"
-      name="cpf"
-      formControlName="cpf"
-      placeholder="123.456.789-10"
-    />
-    <p
-      *ngIf="
-        registroPacienteForm.controls.cpf.errors &&
-        registroPacienteForm.controls.cpf.errors.required &&
-        (registroPacienteForm.get('cpf')?.touched ||
-          registroPacienteForm.get('cpf')?.dirty)
-      "
-      class="msg-erro"
-    >
-      Preenchimento obrigatório
-    </p>
+    <div>
+      <label for="rg">RG *</label>
+      <input
+        type="text"
+        id="rg"
+        name="rg"
+        formControlName="rg"
+        placeholder="Número e UF: 1234567/UF"
+      />
+      <p
+        *ngIf="
+          registroPacienteForm.controls.rg.errors &&
+          registroPacienteForm.controls.rg.errors.required &&
+          (registroPacienteForm.get('rg')?.touched ||
+            registroPacienteForm.get('rg')?.dirty)
+        "
+        class="msg-erro"
+      >
+        Preenchimento obrigatório
+      </p>
 
-    <p
-      *ngIf="
-        registroPacienteForm.controls.cpf.errors &&
-        registroPacienteForm.controls.cpf.errors.pattern &&
-        (registroPacienteForm.get('cpf')?.touched ||
-          registroPacienteForm.get('cpf')?.dirty)
-      "
-      class="msg-erro"
-    >
-      Insira um CPF válido
-    </p>
+      <p
+        *ngIf="
+          registroPacienteForm.controls.rg.errors &&
+          registroPacienteForm.controls.rg.errors.validacaoRg &&
+          (registroPacienteForm.get('rg')?.touched ||
+            registroPacienteForm.get('rg')?.dirty)
+        "
+        class="msg-erro"
+      >
+        Insira um RG válido
+      </p>
+    </div>
 
-    <label for="rg">RG *</label>
-    <input
-      type="text"
-      id="rg"
-      name="rg"
-      formControlName="rg"
-      placeholder="Número e UF: 1234567/UF"
-    />
-    <p
-      *ngIf="
-        registroPacienteForm.controls.rg.errors &&
-        registroPacienteForm.controls.rg.errors.required &&
-        (registroPacienteForm.get('rg')?.touched ||
-          registroPacienteForm.get('rg')?.dirty)
-      "
-      class="msg-erro"
-    >
-      Preenchimento obrigatório
-    </p>
+    <div>
+      <label for="estado-civil">Estado Civil *</label>
+      <select
+        id="estado-civil"
+        name="estadoCivil"
+        formControlName="estadoCivil"
+      >
+        <option value="solteira">Solteiro/a</option>
+        <option value="casada">Casado/a</option>
+        <option value="viuva">Viúvo/a</option>
+        <option value="separada">Separado/a</option>
+        <option value="divorciada">Divorciado/a</option>
+      </select>
 
-    <p
-      *ngIf="
-        registroPacienteForm.controls.rg.errors &&
-        registroPacienteForm.controls.rg.errors.validacaoRg &&
-        (registroPacienteForm.get('rg')?.touched ||
-          registroPacienteForm.get('rg')?.dirty)
-      "
-      class="msg-erro"
-    >
-      Insira um RG válido
-    </p>
+      <p
+        *ngIf="
+          registroPacienteForm.controls.estadoCivil.errors &&
+          registroPacienteForm.controls.estadoCivil.errors.required &&
+          (registroPacienteForm.get('estadoCivil')?.touched ||
+            registroPacienteForm.get('estadoCivil')?.dirty)
+        "
+        class="msg-erro"
+      >
+        Seleção obrigatória
+      </p>
+    </div>
 
-    <label for="estado-civil">Estado Civil *</label>
-    <select id="estado-civil" name="estadoCivil" formControlName="estadoCivil">
-      <option value="solteira">Solteiro/a</option>
-      <option value="casada">Casado/a</option>
-      <option value="viuva">Viúvo/a</option>
-      <option value="separada">Separado/a</option>
-      <option value="divorciada">Divorciado/a</option>
-    </select>
+    <div>
+      <label for="naturalidade">Naturalidade *</label>
+      <input
+        type="text"
+        id="naturalidade"
+        name="naturalidade"
+        formControlName="naturalidade"
+      />
+      <p
+        *ngIf="
+          registroPacienteForm.controls.naturalidade.errors &&
+          registroPacienteForm.controls.naturalidade.errors.required &&
+          (registroPacienteForm.get('naturalidade')?.touched ||
+            registroPacienteForm.get('naturalidade')?.dirty)
+        "
+        class="msg-erro"
+      >
+        Preenchimento obrigatório
+      </p>
+    </div>
 
-    <p
-      *ngIf="
-        registroPacienteForm.controls.estadoCivil.errors &&
-        registroPacienteForm.controls.estadoCivil.errors.required &&
-        (registroPacienteForm.get('estadoCivil')?.touched ||
-          registroPacienteForm.get('estadoCivil')?.dirty)
-      "
-      class="msg-erro"
-    >
-      Seleção obrigatória
-    </p>
+    <div>
+      <label for="alergias">Alergias</label>
+      <span>Separar com vírgula</span>
+      <input
+        type="text"
+        id="alergias"
+        name="alergias"
+        formControlName="alergias"
+      />
+    </div>
 
-    <label for="naturalidade">Naturalidade *</label>
-    <input
-      type="text"
-      id="naturalidade"
-      name="naturalidade"
-      formControlName="naturalidade"
-    />
-    <p
-      *ngIf="
-        registroPacienteForm.controls.naturalidade.errors &&
-        registroPacienteForm.controls.naturalidade.errors.required &&
-        (registroPacienteForm.get('naturalidade')?.touched ||
-          registroPacienteForm.get('naturalidade')?.dirty)
-      "
-      class="msg-erro"
-    >
-      Preenchimento obrigatório
-    </p>
-
-    <label for="alergias">Alergias</label>
-    <input
-      type="text"
-      id="alergias"
-      name="alergias"
-      formControlName="alergias"
-    />
-
-    <label for="cuidados">Cuidados específicos</label>
-    <input
-      type="text"
-      id="cuidados"
-      name="cuidados"
-      formControlName="cuidados"
-    />
+    <div>
+      <label for="cuidados">Cuidados específicos</label>
+      <span>Separar com vírgula</span>
+      <input
+        type="text"
+        id="cuidados"
+        name="cuidados"
+        formControlName="cuidados"
+      />
+    </div>
   </div>
+
   <div class="secao">
-    <h3>contato</h3>
-    <label for="telefone">Telefone *</label>
-    <input
-      type="text"
-      id="telefone"
-      name="telefone"
-      formControlName="telefone"
-      placeholder="ex: (99) 9 9999-9999"
-    />
+    <h3>Contato</h3>
 
-    <p
-      *ngIf="
-        registroPacienteForm.controls.telefone.errors &&
-        registroPacienteForm.controls.telefone.errors.required &&
-        (registroPacienteForm.get('telefone')?.touched ||
-          registroPacienteForm.get('telefone')?.dirty)
-      "
-      class="msg-erro"
-    >
-      Preenchimento obrigatório
-    </p>
+    <div>
+      <label for="telefone">Telefone *</label>
+      <input
+        type="text"
+        id="telefone"
+        name="telefone"
+        formControlName="telefone"
+        placeholder="ex: (99) 9 9999-9999"
+      />
 
-    <p
-      *ngIf="
-        registroPacienteForm.controls.telefone.errors &&
-        registroPacienteForm.controls.telefone.errors.pattern &&
-        (registroPacienteForm.get('telefone')?.touched ||
-          registroPacienteForm.get('telefone')?.dirty)
-      "
-      class="msg-erro"
-    >
-      Preencha com um número de telefone válido
-    </p>
+      <p
+        *ngIf="
+          registroPacienteForm.controls.telefone.errors &&
+          registroPacienteForm.controls.telefone.errors.required &&
+          (registroPacienteForm.get('telefone')?.touched ||
+            registroPacienteForm.get('telefone')?.dirty)
+        "
+        class="msg-erro"
+      >
+        Preenchimento obrigatório
+      </p>
 
-    <label for="email">Email</label>
-    <input type="email" id="email" name="email" formControlName="email" />
+      <p
+        *ngIf="
+          registroPacienteForm.controls.telefone.errors &&
+          registroPacienteForm.controls.telefone.errors.pattern &&
+          (registroPacienteForm.get('telefone')?.touched ||
+            registroPacienteForm.get('telefone')?.dirty)
+        "
+        class="msg-erro"
+      >
+        Preencha com um número de telefone válido
+      </p>
+    </div>
 
-    <label for="contatoEmergencia">Contato de emergência *</label>
-    <input
-      type="text"
-      id="contatoEmergencia"
-      name="contatoEmergencia"
-      formControlName="contatoEmergencia"
-      placeholder="ex: (99) 9 9999-9999"
-    />
-    <p
-      *ngIf="
-        registroPacienteForm.controls.contatoEmergencia.errors &&
-        registroPacienteForm.controls.contatoEmergencia.errors.required &&
-        (registroPacienteForm.get('contatoEmergencia')?.touched ||
-          registroPacienteForm.get('contatoEmergencia')?.dirty)
-      "
-      class="msg-erro"
-    >
-      Preenchimento obrigatório
-    </p>
+    <div>
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" formControlName="email" />
+    </div>
 
-    <p
-      *ngIf="
-        registroPacienteForm.controls.contatoEmergencia.errors &&
-        registroPacienteForm.controls.contatoEmergencia.errors.pattern &&
-        (registroPacienteForm.get('contatoEmergencia')?.touched ||
-          registroPacienteForm.get('contatoEmergencia')?.dirty)
-      "
-      class="msg-erro"
-    >
-      Preencha com um número de telefone válido
-    </p>
+    <div>
+      <label for="contatoEmergencia">Contato de emergência *</label>
+      <input
+        type="text"
+        id="contatoEmergencia"
+        name="contatoEmergencia"
+        formControlName="contatoEmergencia"
+        placeholder="ex: (99) 9 9999-9999"
+      />
+      <p
+        *ngIf="
+          registroPacienteForm.controls.contatoEmergencia.errors &&
+          registroPacienteForm.controls.contatoEmergencia.errors.required &&
+          (registroPacienteForm.get('contatoEmergencia')?.touched ||
+            registroPacienteForm.get('contatoEmergencia')?.dirty)
+        "
+        class="msg-erro"
+      >
+        Preenchimento obrigatório
+      </p>
 
-    <label for="emergenciaNome">Nome do contato de emergência *</label>
-    <input
-      type="text"
-      id="emergenciaNome"
-      name="emergenciaNome"
-      formControlName="emergenciaNome"
-    />
-    <p
-      *ngIf="
-        registroPacienteForm.controls.emergenciaNome.errors &&
-        registroPacienteForm.controls.emergenciaNome.errors.required &&
-        (registroPacienteForm.get('emergenciaNome')?.touched ||
-          registroPacienteForm.get('emergenciaNome')?.dirty)
-      "
-      class="msg-erro"
-    >
-      Preenchimento obrigatório
-    </p>
+      <p
+        *ngIf="
+          registroPacienteForm.controls.contatoEmergencia.errors &&
+          registroPacienteForm.controls.contatoEmergencia.errors.pattern &&
+          (registroPacienteForm.get('contatoEmergencia')?.touched ||
+            registroPacienteForm.get('contatoEmergencia')?.dirty)
+        "
+        class="msg-erro"
+      >
+        Preencha com um número de telefone válido
+      </p>
+    </div>
 
-    <p
-      class="msg-erro"
-      *ngIf="
-        registroPacienteForm.controls.emergenciaNome.errors &&
-        (registroPacienteForm.controls.emergenciaNome.errors.minlength ||
-          registroPacienteForm.controls.emergenciaNome.errors.maxlength) &&
-        (registroPacienteForm.get('emergenciaNome')?.touched ||
-          registroPacienteForm.get('emergenciaNome')?.dirty)
-      "
-    >
-      Por favor utilize de 8 a 64 caracteres
-    </p>
+    <div>
+      <label for="emergenciaNome">Nome do contato *</label>
+      <input
+        type="text"
+        id="emergenciaNome"
+        name="emergenciaNome"
+        formControlName="emergenciaNome"
+      />
+      <p
+        *ngIf="
+          registroPacienteForm.controls.emergenciaNome.errors &&
+          registroPacienteForm.controls.emergenciaNome.errors.required &&
+          (registroPacienteForm.get('emergenciaNome')?.touched ||
+            registroPacienteForm.get('emergenciaNome')?.dirty)
+        "
+        class="msg-erro"
+      >
+        Preenchimento obrigatório
+      </p>
 
-    <h3>endereço</h3>
+      <p
+        class="msg-erro"
+        *ngIf="
+          registroPacienteForm.controls.emergenciaNome.errors &&
+          (registroPacienteForm.controls.emergenciaNome.errors.minlength ||
+            registroPacienteForm.controls.emergenciaNome.errors.maxlength) &&
+          (registroPacienteForm.get('emergenciaNome')?.touched ||
+            registroPacienteForm.get('emergenciaNome')?.dirty)
+        "
+      >
+        Por favor utilize de 8 a 64 caracteres
+      </p>
+    </div>
   </div>
+
   <div class="secao">
-    <label for="cep">CEP *</label>
-    <input
-      type="number"
-      id="cep"
-      name="cep"
-      formControlName="cep"
-      placeholder="Apenas números: 12345678"
-    />
-    <button type="button" id="pesquisarCep" (click)="pesquisarCep()"
-    >
-      Pesquisar CEP
+    <h3>Endereço</h3>
+
+    <div>
+      <label for="cep">CEP *</label>
+      <input
+        type="number"
+        id="cep"
+        name="cep"
+        formControlName="cep"
+        placeholder="Apenas números: 12345678"
+      />
+      <button type="button" class="btn-normal" id="pesquisarCep" (click)="pesquisarCep()">
+        Pesquisar CEP
+      </button>
+      <p
+        *ngIf="
+          registroPacienteForm.controls.cep.errors &&
+          registroPacienteForm.controls.cep.errors.required &&
+          (registroPacienteForm.get('cep')?.touched ||
+            registroPacienteForm.get('cep')?.dirty)
+        "
+        class="msg-erro"
+      >
+        Preenchimento obrigatório
+      </p>
+
+      <p
+        *ngIf="
+          registroPacienteForm.controls.cep.errors &&
+          registroPacienteForm.controls.cep.errors.validacaoCep &&
+          (registroPacienteForm.get('cep')?.touched ||
+            registroPacienteForm.get('cep')?.dirty)
+        "
+        class="msg-erro"
+      >
+        Digite um CEP válido
+      </p>
+    </div>
+
+    <div>
+      <label for="cidade">Cidade</label>
+      <input type="text" id="cidade" name="cidade" formControlName="cidade" />
+    </div>
+
+    <div>
+      <label for="estado">Estado</label>
+      <input type="text" id="estado" name="estado" formControlName="estado" />
+    </div>
+
+    <div>
+      <label for="logradouro">Logradouro</label>
+      <input
+        type="text"
+        id="logradouro"
+        name="logradouro"
+        formControlName="logradouro"
+      />
+    </div>
+
+    <div>
+      <label for="numero">Número *</label>
+      <input type="number" id="numero" name="numero" formControlName="numero" />
+      <p
+        *ngIf="
+          registroPacienteForm.controls.numero.errors &&
+          registroPacienteForm.controls.numero.errors.required &&
+          (registroPacienteForm.get('numero')?.touched ||
+            registroPacienteForm.get('numero')?.dirty)
+        "
+        class="msg-erro"
+      >
+        Preenchimento obrigatório
+      </p>
+    </div>
+    <div>
+      <label for="complemento">Complemento</label>
+      <input
+        type="text"
+        id="complemento"
+        name="complemento"
+        formControlName="complemento"
+      />
+    </div>
+    <div>
+      <label for="bairro">Bairro</label>
+      <input type="text" id="bairro" name="bairro" formControlName="bairro" />
+    </div>
+    <div>
+      <label for="referencia">Ponto de referência</label>
+      <input
+        type="text"
+        id="referencia"
+        name="referencia"
+        formControlName="referencia"
+      />
+    </div>
+  </div>
+
+  <div class="secao">
+    <h3>Convênio</h3>
+
+    <div>
+      <label for="convenio">Convênio</label>
+      <input
+        type="text"
+        id="convenio"
+        name="convenio"
+        formControlName="convenio"
+      />
+    </div>
+
+    <div>
+      <label for="nConvenio">Número do convenio</label>
+      <input
+        type="number"
+        id="nConvenio"
+        name="nConvenio"
+        formControlName="nConvenio"
+      />
+    </div>
+
+    <div>
+      <label for="validadeConvenio">Validade do convênio</label>
+      <input
+        type="date"
+        id="validadeConvenio"
+        name="validadeConvenio"
+        formControlName="validadeConvenio"
+      />
+    </div>
+  </div>
+</div>
+  <div class="secao">
+    <button type="submit" class="btn-normal" (click)="registrarPaciente()">
+      Registrar
     </button>
-    <p
-      *ngIf="
-        registroPacienteForm.controls.cep.errors &&
-        registroPacienteForm.controls.cep.errors.required &&
-        (registroPacienteForm.get('cep')?.touched ||
-          registroPacienteForm.get('cep')?.dirty)
-      "
-      class="msg-erro"
-    >
-      Preenchimento obrigatório
-    </p>
-
-    <p
-      *ngIf="
-        registroPacienteForm.controls.cep.errors &&
-        registroPacienteForm.controls.cep.errors.validacaoCep &&
-        (registroPacienteForm.get('cep')?.touched ||
-          registroPacienteForm.get('cep')?.dirty)
-      "
-      class="msg-erro"
-    >
-      Digite um CEP válido
-    </p>
-
-    <label for="cidade">Cidade</label>
-    <input type="text" id="cidade" name="cidade" formControlName="cidade" />
-
-    <label for="estado">Estado</label>
-    <input type="text" id="estado" name="estado" formControlName="estado" />
-
-    <label for="logradouro">Logradouro</label>
-    <input
-      type="text"
-      id="logradouro"
-      name="logradouro"
-      formControlName="logradouro"
-    />
-
-    <label for="numero">Número *</label>
-    <input type="number" id="numero" name="numero" formControlName="numero" />
-    <p
-      *ngIf="
-        registroPacienteForm.controls.numero.errors &&
-        registroPacienteForm.controls.numero.errors.required &&
-        (registroPacienteForm.get('numero')?.touched ||
-          registroPacienteForm.get('numero')?.dirty)
-      "
-      class="msg-erro"
-    >
-      Preenchimento obrigatório
-    </p>
-    <label for="complemento">Complemento</label>
-    <input
-      type="text"
-      id="complemento"
-      name="complemento"
-      formControlName="complemento"
-    />
-
-    <label for="bairro">Bairro</label>
-    <input type="text" id="bairro" name="bairro" formControlName="bairro" />
-
-    <label for="referencia">Ponto de referência</label>
-    <input
-      type="text"
-      id="referencia"
-      name="referencia"
-      formControlName="referencia"
-    />
+    <button type="button" class="btn-normal">Editar</button>
+    <button type="button" class="btn-normal">Deletar</button>
   </div>
-
-  <div class="secao">
-    <h3>convênio</h3>
-    <label for="convenio">Convênio</label>
-    <input
-      type="text"
-      id="convenio"
-      name="convenio"
-      formControlName="convenio"
-    />
-    <label for="nConvenio">Número do convenio</label>
-    <input
-      type="number"
-      id="nConvenio"
-      name="nConvenio"
-      formControlName="nConvenio"
-    />
-
-    <label for="validadeConvenio">Validade do convênio</label>
-    <input
-      type="date"
-      id="validadeConvenio"
-      name="validadeConvenio"
-      formControlName="validadeConvenio"
-    />
-  </div>
-
-  <button type="button" class="btn-normal" (click)="registrarPaciente()">Registrar</button>
 </form>

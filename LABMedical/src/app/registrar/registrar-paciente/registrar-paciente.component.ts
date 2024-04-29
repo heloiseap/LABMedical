@@ -157,45 +157,50 @@ export class RegistrarPacienteComponent implements OnInit {
 
   registrarPaciente() {
     this.pacienteService.adicionarPaciente(this.paciente);
-    // if (this.registroPacienteForm.valid) {
-    //   //confirm('aceitar dados')
-    //   let nomeInserido = this.registroPacienteForm.controls['nome'].value;
+    if (this.registroPacienteForm.valid) {
 
-    //   if (this.pacienteService.buscarPaciente(nomeInserido).length === 0) {
-    //     this.paciente = {
-    //       id: 0, //como add isso
-    //       nome: this.registroPacienteForm.controls['nome'].value,
-    //       genero: this.registroPacienteForm.controls['genero'].value,
-    //       dataNascimento:
-    //         this.registroPacienteForm.controls['dataNascimento'].value,
-    //       CPF: this.registroPacienteForm.controls['cpf'].value,
-    //       rg: this.registroPacienteForm.controls['rg'].value,
-    //       estadoCivil: this.registroPacienteForm.controls['estadoCivil'].value,
-    //       telefone: this.registroPacienteForm.controls['telefone'].value,
-    //       email: this.registroPacienteForm.controls['email'].value,
-    //       naturalidade:
-    //         this.registroPacienteForm.controls['naturalidade'].value,
-    //       contatoEmergencia:
-    //         this.registroPacienteForm.controls['contatoEmergencia'].value,
-    //       alergias: this.registroPacienteForm.controls['alergias'].value,
-    //       cuidados: this.registroPacienteForm.controls['cuidados'].value,
-    //       convenio: this.registroPacienteForm.controls['convenio'].value,
-    //       nConvenio: this.registroPacienteForm.controls['nConvenio'].value,
-    //       validadeConvenio:
-    //         this.registroPacienteForm.controls['validadeConvenio'].value,
-    //       cep: this.registroPacienteForm.controls['cep'].value,
-    //       cidade: this.registroPacienteForm.controls['cidade'].value,
-    //       estado: this.registroPacienteForm.controls['estado'].value,
-    //       logradouro: this.registroPacienteForm.controls['logradouro'].value,
-    //       numero: this.registroPacienteForm.controls['numero'].value,
-    //       complemento: this.registroPacienteForm.controls['complemento'].value,
-    //       bairro: this.registroPacienteForm.controls['bairro'].value,
-    //       referencia: this.registroPacienteForm.controls['referencia'].value,
-    //     };
-    //     this.pacienteService.adicionarPaciente(this.paciente);
-    //   } else {
-    //     alert('Paciente já cadastrado');
-    //   }
-    // }
+      // confirm('Confirmar os dados inseridos?')
+      let nomeInserido = this.registroPacienteForm.controls['nome'].value;
+
+      if (this.pacienteService.buscarPaciente(nomeInserido).length === 0) {
+        this.paciente = {
+          id: 0,
+          nome: this.registroPacienteForm.controls['nome'].value,
+          genero: this.registroPacienteForm.controls['genero'].value,
+          dataNascimento:
+            this.registroPacienteForm.controls['dataNascimento'].value,
+          CPF: this.registroPacienteForm.controls['cpf'].value,
+          rg: this.registroPacienteForm.controls['rg'].value,
+          estadoCivil: this.registroPacienteForm.controls['estadoCivil'].value,
+          telefone: this.registroPacienteForm.controls['telefone'].value,
+          email: this.registroPacienteForm.controls['email'].value,
+          naturalidade:
+            this.registroPacienteForm.controls['naturalidade'].value,
+          contatoEmergencia:
+            this.registroPacienteForm.controls['contatoEmergencia'].value,
+          nomeEmergencia: this.registroPacienteForm.controls['emergenciaNome'].value,
+          alergias: this.registroPacienteForm.controls['alergias'].value.split(","),
+          cuidadosEspecificos: this.registroPacienteForm.controls['cuidados'].value.split(","),
+          convenio: this.registroPacienteForm.controls['convenio'].value,
+          numConvenio: this.registroPacienteForm.controls['nConvenio'].value,
+          valConvenio:
+            this.registroPacienteForm.controls['validadeConvenio'].value,
+          cep: this.registroPacienteForm.controls['cep'].value,
+          cidade: this.registroPacienteForm.controls['cidade'].value,
+          estado: this.registroPacienteForm.controls['estado'].value,
+          logradouro: this.registroPacienteForm.controls['logradouro'].value,
+          numero: this.registroPacienteForm.controls['numero'].value,
+          complemento: this.registroPacienteForm.controls['complemento'].value,
+          bairro: this.registroPacienteForm.controls['bairro'].value,
+          pontoReferencia: this.registroPacienteForm.controls['referencia'].value,
+        };
+        this.pacienteService.adicionarPaciente(this.paciente);
+
+      } else {
+        alert('Paciente já cadastrado');
+      }
+    } else {
+      this.registroPacienteForm.markAllAsTouched();
+    }
   }
 }
