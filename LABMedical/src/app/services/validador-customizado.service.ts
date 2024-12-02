@@ -42,9 +42,11 @@ export class ValidadorCustomizadoService {
       return null;
     };
   }
+  
   validacaoRg(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
-      const rg = control.value.split('/');
+      // const rg = control.value.split('/');
+      let erros = [];
       const estados: Array<string> = [
         'AC',
         'AL',
@@ -74,12 +76,13 @@ export class ValidadorCustomizadoService {
         'SE',
         'TO',
       ];
-      if (
-        (rg.length =
-          !2 || rg[0].length != 7 || !estados.includes(rg[1].toUpperCase()))
-      ) {
-        return { validacaoRg: true };
-      }
+      if (control.value.includes("/")) {
+        let rg = control.value.split("/");
+        if (rg[0].length !== 7 && estados.includes(rg[1])){
+          return { validacaoRg: true};
+        }
+        return null;
+      } 
       return null;
     };
   }

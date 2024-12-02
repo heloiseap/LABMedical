@@ -18,5 +18,10 @@
     "nome": "Jeremias dos Santos Silva Costa Marinha",
     "email": "jeremias_sscm@email.com",
     "senha": "senhasecreta"
+  },
+  {
+    "nome": "Admin",
+    "email": "admin@example.com",
+    "senha": "admin123"    
   }
 ]

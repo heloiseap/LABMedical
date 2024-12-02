@@ -9,6 +9,7 @@ import { RegistrarPacienteComponent } from './registrar/registrar-paciente/regis
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { ProntuarioPacienteComponent } from './prontuarios/prontuario-paciente/prontuario-paciente.component';
 import { ResetSenhaComponent } from './reset-senha/reset-senha.component';
+import { authGuard } from './shared/auth.guard';
 
 export const routes: Routes = [
   {
@@ -19,7 +20,8 @@ export const routes: Routes = [
   {
     path: 'inicio',
     component: InicioComponent,
-    pathMatch: 'full'
+    pathMatch: 'full',
+    canActivate: [authGuard]
   },
   {
     path: 'login',
@@ -37,12 +39,14 @@ export const routes: Routes = [
       {
         path: '',
         component: ProntuariosComponent,
-        pathMatch: 'full'
+        pathMatch: 'full',
+        canActivate: [authGuard]
       },
       {
         path: ':id',
         component: ProntuarioPacienteComponent,
-        pathMatch: 'full'
+        pathMatch: 'full',
+        canActivate: [authGuard]
       }
     ]
 
@@ -53,22 +57,26 @@ export const routes: Routes = [
       {
         path: '',
         component: RegistrarComponent,
-        pathMatch: 'full'
+        pathMatch: 'full',
+        canActivate: [authGuard]
       },
       {
         path: 'exame',
         component: RegistrarExameComponent,
-        pathMatch: 'full'
+        pathMatch: 'full',
+        canActivate: [authGuard]
       },
       {
         path: 'consulta',
         component: RegistrarConsultaComponent,
-        pathMatch: 'full'
+        pathMatch: 'full',
+        canActivate: [authGuard]
       },
       {
         path: 'paciente',
         component: RegistrarPacienteComponent,
-        pathMatch: 'full'
+        pathMatch: 'full',
+        canActivate: [authGuard]
       },
     ],
   },
