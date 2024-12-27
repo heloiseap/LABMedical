@@ -74,7 +74,7 @@ export class RegistrarPacienteComponent implements OnInit {
       dataNascimento: new FormControl('', [Validators.required]),
       cpf: new FormControl('', [
         Validators.required,
-        // this.validadorCustomizadoService.validacaoCpf(),
+        this.validadorCustomizadoService.validacaoCpf(),
         Validators.pattern(
           '([0-9]{2}[\\.\\-]?[0-9]{3}[\\.\\-]?[0-9]{3}[\\/\\-]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\\.\\-]?[0-9]{3}[\\.\\-]?[0-9]{3}[-]?[0-9]{2})'
         ),
@@ -98,9 +98,10 @@ export class RegistrarPacienteComponent implements OnInit {
       ]),
       contatoEmergencia: new FormControl('', [
         Validators.required,
-        Validators.pattern(
-          '([0-9]{2}[\\.\\-]?[0-9]{3}[\\.\\-]?[0-9]{3}[\\/\\-]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\\.\\-]?[0-9]{3}[\\.\\-]?[0-9]{3}[-]?[0-9]{2})'
-        ),
+        this.validadorCustomizadoService.validacaoCpf(),
+        // Validators.pattern(
+        //   '([0-9]{2}[\\.\\-]?[0-9]{3}[\\.\\-]?[0-9]{3}[\\/\\-]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\\.\\-]?[0-9]{3}[\\.\\-]?[0-9]{3}[-]?[0-9]{2})'
+        // ),
       ]),
       emergenciaNome: new FormControl('', [
         Validators.required,

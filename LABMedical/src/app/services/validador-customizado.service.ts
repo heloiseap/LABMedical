@@ -23,15 +23,63 @@ export class ValidadorCustomizadoService {
     };
   }
 
-  // validacaoCpf(): ValidatorFn {
-  //   return (control: AbstractControl): ValidationErrors | null => {
-  //     const cpf = control.value
-  //     if(cpf.toString().length!=10) {
-  //       return { validacaoCpf: true }
-  //     }
-  //     return null;
-  //   };
-  // }
+  validacaoCpf(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const cpf = control.value.toString();
+      const cpfTamanho = cpf.length;
+      if (cpfTamanho == 11) {
+        const digitosVerificadores = cpf.slice(9);
+        let cpfParcial = cpf.slice(0,9)
+        cpfParcial += this.digitosValidacao(cpfParcial);
+        cpfParcial += this.digitosValidacao(cpfParcial);
+        
+        if (digitosVerificadores == cpfParcial.slice(9)){
+          console.log(cpfParcial.slice(9))
+          return { validacaoCpf: true };
+
+        }
+        
+
+        // soma =
+        //   parseInt(cpf[8]) * 2 +
+        //   parseInt(cpf[7]) * 3 +
+        //   parseInt(cpf[6]) * 4 +
+        //   parseInt(cpf[5]) * 5 +
+        //   parseInt(cpf[4]) * 6 +
+        //   parseInt(cpf[3]) * 7 +
+        //   parseInt(cpf[2]) * 8 +
+        //   parseInt(cpf[1]) * 9 +
+        //   parseInt(cpf[0]) * 10;
+        // resto = soma % 11;
+        // digitosVerificadores.push(resto < 2 ? 0 : 11 - resto);
+        // soma =
+        //   digitosVerificadores[0] * 2 +
+        //   parseInt(cpf[8]) * 3 +
+        //   parseInt(cpf[7]) * 4 +
+        //   parseInt(cpf[6]) * 5 +
+        //   parseInt(cpf[5]) * 6 +
+        //   parseInt(cpf[4]) * 7 +
+        //   parseInt(cpf[3]) * 8 +
+        //   parseInt(cpf[2]) * 9 +
+        //   parseInt(cpf[1]) * 10 +
+        //   parseInt(cpf[0]) * 11;
+        // resto = soma % 11;
+        // digitosVerificadores.push(resto < 2 ? 0 : 11 - resto);
+
+      }
+      return null;
+    };
+  }
+
+  digitosValidacao(cpfParcial: string) {
+    let soma = 0;
+    for (let i = cpfParcial.length - 1; i > -1; i--) {
+        soma += parseInt(cpfParcial[i]) * (cpfParcial.length+1-i);
+        console.log(i, soma);
+    }
+    let resto = soma % 11;
+    return resto < 2 ? '0' : (11 - resto).toString();
+  }
 
   validacaoCep(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
@@ -42,7 +90,7 @@ export class ValidadorCustomizadoService {
       return null;
     };
   }
-  
+
   validacaoRg(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
       // const rg = control.value.split('/');
@@ -76,13 +124,13 @@ export class ValidadorCustomizadoService {
         'SE',
         'TO',
       ];
-      if (control.value.includes("/")) {
-        let rg = control.value.split("/");
-        if (rg[0].length !== 7 && estados.includes(rg[1])){
-          return { validacaoRg: true};
+      if (control.value.includes('/')) {
+        let rg = control.value.split('/');
+        if (rg[0].length !== 7 && estados.includes(rg[1])) {
+          return { validacaoRg: true };
         }
         return null;
-      } 
+      }
       return null;
     };
   }
@@ -97,3 +145,7 @@ export class ValidadorCustomizadoService {
   //   };
   // }
 }
+function somaParaValidacao(cpfParcial: any) {
+  throw new Error('Function not implemented.');
+}
+
