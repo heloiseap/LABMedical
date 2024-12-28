@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterLink, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
       if (check.length !=0) {
         if (check[0].senha == this.loginForm.controls.senhaUser.value){
           //
-          const token = 'generated-jwt-token'; //TODO
+          const token = this.gerarMockToken(check[0].email)
           //
           localStorage.setItem("token", token)
           localStorage.setItem("logado","true")
@@ -65,5 +65,10 @@ export class LoginComponent implements OnInit {
 
   mudarSenha() {
     this.router.navigate(['reset-senha'])
+  }
+
+  //gerar token sem backend
+  gerarMockToken(email: string): string {
+    return `mock-token-${email}-${new Date().getTime()}`
   }
 }

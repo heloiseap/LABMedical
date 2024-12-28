@@ -3,7 +3,7 @@
   justify-content: center;
 }
 .dados {
-  background-color: lightgreen;
+  background-color: #4aa73e;
   color: #f2f7f2;
   display: flex;
   flex-direction: column;
@@ -24,7 +24,7 @@
 
 }
 .paciente {
-  background-color: lightgreen;
+  background-color: #4aa73e;
   color: black;
   display: flex;
   flex-direction: column;
@@ -73,10 +73,10 @@
 }
 .btn-normal {
   appearance: none;
-  background-color: #776472;
-  border: 1px solid rgba(27, 31, 35, 0.15);
+  background-color: #3e7237;
+  border: 1px solid #3e7237;
   border-radius: 6px;
-  box-shadow: rgba(27, 31, 35, 0.1) 0 1px 0;
+  box-shadow: #1f3a1c 0 1px 0;
   box-sizing: border-box;
   color: #f2f7f2;
   cursor: pointer;
@@ -102,11 +102,11 @@
 }
 
 .btn-normal:hover {
-  background-color: #445552;
+  background-color: #1f3a1c;
 }
 
 .btn-normal:focus {
-  box-shadow: rgba(46, 164, 79, 0.4) 0 0 0 3px;
+  box-shadow: #1f3a1c 0 0 0 3px;
   outline: none;
 }
 
