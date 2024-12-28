@@ -13,7 +13,7 @@ import { ToolbarComponent } from './componentes/toolbar/toolbar.component';
 export class AppComponent implements OnInit{
   title = 'LABMedical';
   ngOnInit(){
-    localStorage.setItem("login", "ray@gmail.com");
+    localStorage.setItem("login", "heloise@email.com");
     localStorage.setItem("password", "123456");
     localStorage.setItem("permition", "doutor");
   

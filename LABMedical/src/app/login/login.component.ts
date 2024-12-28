@@ -39,7 +39,10 @@ export class LoginComponent implements OnInit {
       let check = this.listaUsuarios.filter(usuario => usuario.email == this.loginForm.controls.emailUser.value)  
       if (check.length !=0) {
         if (check[0].senha == this.loginForm.controls.senhaUser.value){
-          localStorage.setItem("nomeUser", check[0].nome)
+          //
+          const token = 'generated-jwt-token'; //TODO
+          //
+          localStorage.setItem("token", token)
           localStorage.setItem("logado","true")
           this.router.navigate(['inicio'])
 

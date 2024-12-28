@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class AuthService {
-  isLogged: boolean = false;
+  // isLogged: boolean = false;
 
   constructor() {}
 
@@ -13,11 +13,23 @@ export class AuthService {
     let passwordStorage = localStorage.getItem("password");
   
     if(email === emailStorage && password === passwordStorage){
-      this.isLogged = true;
+      console.log(email, emailStorage, password, passwordStorage)
+      // this.isLogged = true;
+      localStorage.setItem("logado", "true");
     }
+  }
+
+  estaAutenticado(): boolean {
+    return !!localStorage.getItem("token")
+  }
+
+  logout() {
+    localStorage.removeItem('token')
+    localStorage.removeItem('logado')
   }
 
   getPermition(){
     return localStorage.getItem("permition") || "";
   }
+  
 }

@@ -23,5 +23,10 @@
     "nome": "Admin",
     "email": "admin@example.com",
     "senha": "admin123"    
+  },
+  {
+    "nome": "Heloise Adriano",
+    "email": "heloise@email.com",
+    "senha": "123456"
   }
 ]
