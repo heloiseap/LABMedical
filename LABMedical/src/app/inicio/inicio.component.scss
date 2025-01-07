@@ -18,7 +18,6 @@
 //   flex-direction: column;
   flex-wrap: wrap;
   align-items: center;
-  display: flex;
   justify-content: center;
   align-items: center;
 
@@ -29,11 +28,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-radius: 15px;
+  // width: 200px;
+  border-radius: 10px;
   padding: 10px;
   margin: 10px;
-  h4 {
-    color: #294D4A;
+  // box-sizing: border-box;
+  .nome{
+    color: white;
+    font-size: large;
   }
   img{
     border-radius: 5px;

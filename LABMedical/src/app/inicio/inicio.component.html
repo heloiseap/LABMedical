@@ -40,22 +40,32 @@
   <div class="mostrar-pacientes">
     <div class="pacientes">
       <div class="paciente" *ngFor="let paciente of pacienteLista">
-        <img src="https://placehold.jp/100x100.png" />
-        <h4>{{ paciente.nome }}</h4>
-        {{paciente.dataNascimento | calculoIdade }} anos
-        <p>{{ paciente.telefone }}</p>
-        <p>{{ paciente?.convenio }}</p>
+        <img src="https://placehold.jp/150x150.png" />
+        <p class="nome">{{ paciente.nome }}</p>
+        <div>
+          <p><b>Idade </b></p>
+          <p>{{ paciente.dataNascimento | calculoIdade }} anos</p>
+          <p><b>Telefone </b></p>
+          <p>{{ paciente.telefone }}</p>
+          <p><b>Convênio </b></p>
+          <p>{{ paciente?.convenio }}</p>
+        </div>
+        <div>
         <button
           class="btn-normal"
           type="button"
           routerLink="../prontuarios/{{ paciente.id }}"
         >
           Mais detalhes
-        </button>
+        </button></div>
       </div>
-
-    
     </div>
-    <button *ngIf="this.exibirParcial" class="btn-normal" (click)="mostrarTodos()">Ver todos</button>
+    <button
+      *ngIf="this.exibirParcial"
+      class="btn-normal"
+      (click)="mostrarTodos()"
+    >
+      Ver todos
+    </button>
   </div>
 </div>

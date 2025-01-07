@@ -13,11 +13,12 @@ export class PacienteService {
   }
 
   buscarPaciente(parametro: string) {
-    let porNome = pacientes.filter((paciente) => paciente.nome === parametro);
-    let porEmail = pacientes.filter((paciente) => paciente.email === parametro && paciente.email!='');
+    let porNome = pacientes.filter((paciente) => paciente.nome.includes(parametro));
+    let porEmail = pacientes.filter((paciente) => paciente.email.includes(parametro) && paciente.email!='');
     let porTelefone = pacientes.filter(
-      (paciente) => paciente.telefone === parametro
+      (paciente) => paciente.telefone.includes(parametro)
     );
+    
 
     let resultado: any = [porNome, porEmail, porTelefone];
 
@@ -28,9 +29,9 @@ export class PacienteService {
     return pacientes.filter((paciente) => paciente.id === parseInt(parametro))[0];
   }
 
-  pegarNove() {
-    if (this.listaPacientes.length > 9) {
-      return this.listaPacientes.slice(0, 9);
+  pegarDez() {
+    if (this.listaPacientes.length > 10) {
+      return this.listaPacientes.slice(0, 10);
     } else {
       return this.listaPacientes;
     }
