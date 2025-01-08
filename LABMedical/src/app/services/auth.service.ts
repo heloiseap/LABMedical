@@ -17,9 +17,31 @@ export class AuthService {
       localStorage.setItem("logado", "true");
     }
   }
+  isLocalStorageAvailable(): boolean {
+    try {
+      const testKey = '__test_key__';
+      localStorage.setItem(testKey, testKey);
+      localStorage.removeItem(testKey);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  nomeUser() {
+    if (this.isLocalStorageAvailable()) {
+      return localStorage.getItem('nomeUser') || '';
+    } else {
+      return '';
+    }
+  }
 
   estaAutenticado(): boolean {
-    return !!localStorage.getItem("token")
+    if (!!localStorage) {
+      return !!localStorage.getItem("token")
+    } else {
+      return false
+    }
   }
 
   logout() {

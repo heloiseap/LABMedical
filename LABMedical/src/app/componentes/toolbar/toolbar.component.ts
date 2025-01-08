@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, OnInit }
 import { NavigationEnd, Router, RouterLink } from '@angular/router';
 import { TokenService } from '../../services/token.service';
 import { filter } from 'rxjs';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-toolbar',
@@ -12,14 +13,15 @@ import { filter } from 'rxjs';
   styleUrl: './toolbar.component.scss',
 })
 export class ToolbarComponent implements OnInit {
-  constructor(private tokenService: TokenService, private router: Router,private changeDetectorRef: ChangeDetectorRef) {}
+  constructor(private tokenService: TokenService, private authService: AuthService, private router: Router,private changeDetectorRef: ChangeDetectorRef) {}
   temPermissao: boolean = false;
   nomeUser: string = '';
   mostrar = false
   
   ngOnInit() {
-    this.temPermissao = this.tokenService.temPermissao()
-    this.nomeUser = this.tokenService.nomeMedico() || ''
+    this.temPermissao = this.authService.estaAutenticado()//this.tokenService.temPermissao()
+    //todo fix
+    this.nomeUser = this.authService.nomeUser()//this.tokenService.nomeMedico() || ''
     this.changeDetectorRef.detectChanges();
 
     this.router.events
