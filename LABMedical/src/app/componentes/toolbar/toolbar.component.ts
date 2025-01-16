@@ -28,8 +28,8 @@ export class ToolbarComponent implements OnInit {
     .pipe(filter(event => event instanceof NavigationEnd))
     .subscribe(() => {
       // Update properties and trigger change detection
-      this.temPermissao = this.tokenService.temPermissao();
-      this.nomeUser = this.tokenService.nomeMedico() || '';
+      this.temPermissao = this.authService.estaAutenticado()
+      this.nomeUser = this.authService.nomeUser();
       this.changeDetectorRef.detectChanges();
     });
   }
@@ -38,6 +38,7 @@ export class ToolbarComponent implements OnInit {
   sair() {
     this.tokenService.setLogado('false');
     this.tokenService.setMedico('');
+    this.tokenService.setUser('');
     this.changeDetectorRef.detectChanges()
     this.router.navigate(['login'])
   }

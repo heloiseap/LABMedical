@@ -1,10 +1,14 @@
 import { Injectable } from '@angular/core';
+import { LocalStorageService } from './local-storage.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TokenService {
-  constructor() {}
+  setUser(user: string) {
+    this.localStorageService.setItem('nomeUser', '');
+  }
+  constructor(private localStorageService: LocalStorageService) {}
 
   isLocalStorageAvailable(): boolean {
     try {
@@ -17,36 +21,34 @@ export class TokenService {
     }
   }
 
-
   get logado() {
     if (this.isLocalStorageAvailable()) {
-      return localStorage.getItem('logado') || '';
+      return this.localStorageService.getItem('logado');
     } else {
       return '';
     }
   }
 
-  get medico() {
+  get medico(): string {
     if (this.isLocalStorageAvailable()) {
-      return localStorage.getItem('nomeUser') || '';
+      return JSON.stringify(this.localStorageService.getItem('nomeUser'));
     } else {
       return '';
     }
   }
-
 
   setLogado(value: string) {
     if (this.isLocalStorageAvailable()) {
-      localStorage.setItem('logado', value);
+      this.localStorageService.setItem('logado', value);
     }
   }
 
   setMedico(value: string) {
     if (this.isLocalStorageAvailable()) {
-      localStorage.setItem('nomeUser', value);
+      this.localStorageService.setItem('nomeUser', value);
     }
   }
-  
+
   temPermissao() {
     if (this.logado == 'true') {
       return true;
@@ -56,11 +58,15 @@ export class TokenService {
   }
 
   nomeMedico() {
-    if (this.medico!=''){
-      return localStorage.getItem('nomeUser')
+    if (this.medico != '') {
+      return JSON.stringify(this.localStorageService.getItem('nomeUser'));
     } else {
-      return ''
+      return '';
     }
+  }
 
+  //gerar token sem backend
+  gerarMockToken(email: string): string {
+    return `mock-token-${email}-${new Date().getTime()}`;
   }
 }

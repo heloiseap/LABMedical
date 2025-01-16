@@ -14,9 +14,9 @@ export class AppComponent implements OnInit{
   title = 'LABMedical';
   ngOnInit(){
     if ( typeof localStorage !== 'undefined') {
-      localStorage.setItem("login", "heloise@email.com");
-      localStorage.setItem("password", "123456");
-      localStorage.setItem("permition", "medico");
+        // localStorage.setItem("login", "heloise@email.com");
+        // localStorage.setItem("password", "123456");
+        // localStorage.setItem("permition", "medico");
     } else {
       console.warn("localStorage indisponível")
     }
