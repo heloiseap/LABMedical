@@ -1,91 +1,125 @@
 <div class="prontuario-div">
   <h2>{{ this.paciente.nome }}</h2>
   <div class="info">
-    <button class="btn btn-success rounded-pill px-3" type="button" data-bs-toggle="collapse" data-bs-target="#demo" aria-expanded="false" aria-controls="demo">Dados pessoais</button>
-    <h5>Contato de emergência</h5>
-    <p>
-      {{ this.paciente.nomeEmergencia }}:
-      {{ this.paciente.contatoEmergencia }}
-    </p>
-    <h5>Alergias</h5>
-    <p *ngIf="paciente.alergias.length == 0">Nenhuma informada</p>
-    <p *ngFor="let alergias of paciente.alergias">{{ alergias }}</p>
-    <h5>Cuidados específicos</h5>
-    <p *ngIf="paciente.cuidadosEspecificos.length == 0">Nenhum informado</p>
-    <p *ngFor="let cuidados of paciente.cuidadosEspecificos">{{ cuidados }}</p>
+    <button
+      class="btn btn-success rounded-pill px-3"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#info-paciente"
+      aria-expanded="false"
+      aria-controls="info-paciente"
+    >
+      Dados pessoais
+    </button>
+    <div id="info-paciente" class="collapse">
+      <h5>Contato de emergência</h5>
+      <p>
+        {{ this.paciente.nomeEmergencia }}:
+        {{ this.paciente.contatoEmergencia }}
+      </p>
+      <h5>Alergias</h5>
+      <p *ngIf="paciente.alergias.length == 0">Nenhuma informada</p>
+      <p *ngFor="let alergias of paciente.alergias">{{ alergias }}</p>
+      <h5>Cuidados específicos</h5>
+      <p *ngIf="paciente.cuidadosEspecificos.length == 0">Nenhum informado</p>
+      <p *ngFor="let cuidados of paciente.cuidadosEspecificos">
+        {{ cuidados }}
+      </p>
 
-    <h4>Informações gerais</h4>
-    <p>Genero: {{ paciente.genero }}</p>
-    <p>Data nascimento: {{ paciente.dataNascimento }}</p>
-    <p>CPF: {{ paciente.cpf }}</p>
-    <p>RG: {{ paciente.rg }}</p>
-    <p>Estado civil: {{ paciente.estadoCivil }}</p>
-    <p>Naturalidade: {{ paciente.naturalidade }}</p>
+      <h4>Informações gerais</h4>
+      <p>Genero: {{ paciente.genero }}</p>
+      <p>Data nascimento: {{ paciente.dataNascimento }}</p>
+      <p>CPF: {{ paciente.cpf }}</p>
+      <p>RG: {{ paciente.rg }}</p>
+      <p>Estado civil: {{ paciente.estadoCivil }}</p>
+      <p>Naturalidade: {{ paciente.naturalidade }}</p>
 
-    <h5>Contato</h5>
-    <p>Telefone: {{ paciente.telefone }}</p>
-    <h4>Endereço</h4>
-    <p>CEP: {{ paciente.cep }}</p>
-    <p></p>
-    <p>
-      Número e complemento: {{ paciente.numero }} {{ paciente.complemento }}
-    </p>
-    <h5>Convênio</h5>
-    <p>Nome: {{ this.paciente.convenio }}</p>
-    <p>Número: {{ this.paciente.nConvenio }}</p>
+      <h5>Contato</h5>
+      <p>Telefone: {{ paciente.telefone }}</p>
+      <h4>Endereço</h4>
+      <p>CEP: {{ paciente.cep }}</p>
+      <p></p>
+      <p>
+        Número e complemento: {{ paciente.numero }} {{ paciente.complemento }}
+      </p>
+      <h5>Convênio</h5>
+      <p>Nome: {{ this.paciente.convenio }}</p>
+      <p>Número: {{ this.paciente.nConvenio }}</p>
 
-    <button class="btn-normal" (click)="editarPaciente()">Editar</button>
-    <button class="btn-normal" (click)="excluirPaciente()">Excluir</button> 
-    <div id="demo" class="collapse">
+      <button class="btn-normal" (click)="editarPaciente()">Editar</button>
+      <button class="btn-normal" (click)="excluirPaciente()">Excluir</button>
     </div>
-    <!-- <h2>{{ this.paciente.nome }}</h2>
-
--->
   </div>
+  <h2>Consultas</h2>
 
   <div class="info">
-    <h2>Consultas</h2>
-    <div *ngIf="this.naoTemConsultas">
-      <p>Não há consultas cadastradas</p>
-    </div>
-    <div class="div-consulta" *ngFor="let consulta of consultas">
-      <div *ngIf="consulta != ''">
-        <h3>Consulta de {{ consulta.data }} {{ consulta.horario }}</h3>
-        <h4>Motivo</h4>
-        <p>{{ consulta.motivo }}</p>
-        <h4>Descricao do problema</h4>
-        <p>{{ consulta.descricao }}</p>
-        <h4>Medicação</h4>
-        <p>{{ consulta.medicacao }}</p>
-        <h4>Dosagem e precauções</h4>
-        <p>{{ consulta.dosagemPrecaucoes }}</p>
-        <button class="btn-normal" (click)="editarConsulta()">Editar</button>
-        <button class="btn-normal" (click)="excluirConsulta()">Excluir</button>
+    <button
+      class="btn btn-success rounded-pill px-3"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#consultas-paciente"
+      aria-expanded="false"
+      aria-controls="consultas-paciente"
+    >
+      Mostrar consultas
+    </button>
+    <div id="consultas-paciente" class="collapse">
+      <div *ngIf="this.naoTemConsultas">
+        <p>Não há consultas cadastradas</p>
+      </div>
+      <div class="div-consulta" *ngFor="let consulta of consultas">
+        <div *ngIf="consulta != ''">
+          <h3>Consulta de {{ consulta.data }} {{ consulta.horario }}</h3>
+          <h4>Motivo</h4>
+          <p>{{ consulta.motivo }}</p>
+          <h4>Descricao do problema</h4>
+          <p>{{ consulta.descricao }}</p>
+          <h4>Medicação</h4>
+          <p>{{ consulta.medicacao }}</p>
+          <h4>Dosagem e precauções</h4>
+          <p>{{ consulta.dosagemPrecaucoes }}</p>
+          <button class="btn-normal" (click)="editarConsulta()">Editar</button>
+          <button class="btn-normal" (click)="excluirConsulta()">
+            Excluir
+          </button>
+        </div>
       </div>
     </div>
   </div>
+  <h2>Exames</h2>
 
   <div class="info">
-    <h2>Exames</h2>
-    <div *ngIf="this.naoTemExames">
-      <p>Não há exames cadastrados</p>
-    </div>
-    <div class="div-exames" *ngFor="let exame of exames">
-      <div *ngIf="exame != ''">
-        <h3>
-          {{ exame.nomeExame }}: {{ exame.dataExame }}
-          {{ exame.horarioExame }}
-        </h3>
-        <h4>Tipo de exame:</h4>
-        <p>{{ exame.tipoExame }}</p>
-        <h4>Laboratório</h4>
-        <p>{{ exame.laboratorio }}</p>
-        <h4>URL documento</h4>
-        <p>{{ exame.urlDocumento }}</p>
-        <h4>Resultado</h4>
-        <p>{{ exame.resultado }}</p>
-        <button class="btn-normal" (click)="editarExame()">Editar</button>
-        <button class="btn-normal" (click)="excluirExame()">Excluir</button>
+    <button
+      class="btn btn-success rounded-pill px-3"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#exames-paciente"
+      aria-expanded="false"
+      aria-controls="exames-paciente"
+    >
+      Mostrar Exames
+    </button>
+    <div id="exames-paciente" class="collapse">
+      <div *ngIf="this.naoTemExames">
+        <p>Não há exames cadastrados</p>
+      </div>
+      <div class="div-exames" *ngFor="let exame of exames">
+        <div *ngIf="exame != ''">
+          <h3>
+            {{ exame.nomeExame }}: {{ exame.dataExame }}
+            {{ exame.horarioExame }}
+          </h3>
+          <h4>Tipo de exame:</h4>
+          <p>{{ exame.tipoExame }}</p>
+          <h4>Laboratório</h4>
+          <p>{{ exame.laboratorio }}</p>
+          <h4>URL documento</h4>
+          <p>{{ exame.urlDocumento }}</p>
+          <h4>Resultado</h4>
+          <p>{{ exame.resultado }}</p>
+          <button class="btn-normal" (click)="editarExame()">Editar</button>
+          <button class="btn-normal" (click)="excluirExame()">Excluir</button>
+        </div>
       </div>
     </div>
   </div>
