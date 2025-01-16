@@ -3,6 +3,8 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { Router, RouterLink } from '@angular/router';
 import usuarios from '../../mock-db/usuarios.json';
 import { CommonModule } from '@angular/common';
+import { TokenService } from '../services/token.service';
+import { LocalStorageService } from '../services/local-storage.service';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +23,7 @@ export class LoginComponent implements OnInit {
     senhaUser: ''
   }
 
-  constructor(private router: Router){}
+  constructor(private router: Router, private tokenService: TokenService, private localStorageService: LocalStorageService){}
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
@@ -40,10 +42,13 @@ export class LoginComponent implements OnInit {
       if (check.length !=0) {
         if (check[0].senha == this.loginForm.controls.senhaUser.value){
           //
-          const token = this.gerarMockToken(check[0].email)
+          let token = this.tokenService.gerarMockToken(check[0].email)
           //
-          localStorage.setItem("token", token)
-          localStorage.setItem("logado","true")
+          this.localStorageService.setItem("nomeUser", check[0].nome)
+          this.localStorageService.setItem("token", token)
+          //localStorage.setItem("nomeUser", check[0].nome)
+          // localStorage.setItem("token", token)
+          // localStorage.setItem("logado","true")
           this.router.navigate(['inicio'])
 
         } else {
@@ -65,10 +70,5 @@ export class LoginComponent implements OnInit {
 
   mudarSenha() {
     this.router.navigate(['reset-senha'])
-  }
-
-  //gerar token sem backend
-  gerarMockToken(email: string): string {
-    return `mock-token-${email}-${new Date().getTime()}`
   }
 }

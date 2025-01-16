@@ -1,16 +1,16 @@
 <div class="prontuario-div">
+  <h2>{{ this.paciente.nome }}</h2>
   <div class="info">
-    <h2>{{ this.paciente.nome }}</h2>
-
-    <h4>Contato de emergência</h4>
+    <button class="btn btn-success rounded-pill px-3" type="button" data-bs-toggle="collapse" data-bs-target="#demo" aria-expanded="false" aria-controls="demo">Dados pessoais</button>
+    <h5>Contato de emergência</h5>
     <p>
       {{ this.paciente.nomeEmergencia }}:
       {{ this.paciente.contatoEmergencia }}
     </p>
-    <h4>Alergias</h4>
+    <h5>Alergias</h5>
     <p *ngIf="paciente.alergias.length == 0">Nenhuma informada</p>
     <p *ngFor="let alergias of paciente.alergias">{{ alergias }}</p>
-    <h4>Cuidados específicos</h4>
+    <h5>Cuidados específicos</h5>
     <p *ngIf="paciente.cuidadosEspecificos.length == 0">Nenhum informado</p>
     <p *ngFor="let cuidados of paciente.cuidadosEspecificos">{{ cuidados }}</p>
 
@@ -22,7 +22,7 @@
     <p>Estado civil: {{ paciente.estadoCivil }}</p>
     <p>Naturalidade: {{ paciente.naturalidade }}</p>
 
-    <h4>Contato</h4>
+    <h5>Contato</h5>
     <p>Telefone: {{ paciente.telefone }}</p>
     <h4>Endereço</h4>
     <p>CEP: {{ paciente.cep }}</p>
@@ -30,12 +30,17 @@
     <p>
       Número e complemento: {{ paciente.numero }} {{ paciente.complemento }}
     </p>
-    <h4>Convênio</h4>
+    <h5>Convênio</h5>
     <p>Nome: {{ this.paciente.convenio }}</p>
     <p>Número: {{ this.paciente.nConvenio }}</p>
 
     <button class="btn-normal" (click)="editarPaciente()">Editar</button>
-    <button class="btn-normal" (click)="excluirPaciente()">Excluir</button>
+    <button class="btn-normal" (click)="excluirPaciente()">Excluir</button> 
+    <div id="demo" class="collapse">
+    </div>
+    <!-- <h2>{{ this.paciente.nome }}</h2>
+
+-->
   </div>
 
   <div class="info">
@@ -57,7 +62,6 @@
         <button class="btn-normal" (click)="editarConsulta()">Editar</button>
         <button class="btn-normal" (click)="excluirConsulta()">Excluir</button>
       </div>
-
     </div>
   </div>
 
@@ -83,7 +87,6 @@
         <button class="btn-normal" (click)="editarExame()">Editar</button>
         <button class="btn-normal" (click)="excluirExame()">Excluir</button>
       </div>
-
     </div>
   </div>
 </div>

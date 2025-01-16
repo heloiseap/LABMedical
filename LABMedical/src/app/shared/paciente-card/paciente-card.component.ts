@@ -8,5 +8,5 @@ import { Component, Input } from '@angular/core';
   styleUrl: './paciente-card.component.scss'
 })
 export class PacienteCardComponent {
-  @Input() paciente: {nome: string} | undefined;
+  @Input() paciente: {nome: string, dataNascimento: string, telefone: string, convenio:string} | undefined;
 }

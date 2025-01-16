@@ -21,19 +21,28 @@
 <div>
   <div class="pacientes" *ngIf="this.mostrar">
     <div class="paciente" *ngFor="let paciente of listaPacientes">
-      <h4>{{ paciente.nome }}</h4>
-      {{ paciente.dataNascimento | calculoIdade }} anos
-      <p>{{ paciente.telefone }}</p>
-      <p>{{ paciente?.convenio }}</p>
-      <button
-        class="btn-normal"
-        type="button"
-        routerLink='{{paciente.id}}'
-      >
-        Mais detalhes
-      </button>
-
+      <img src="https://placehold.jp/150x150.png" />
+      <p class="nome">{{ paciente.nome }}</p>
+      <div>
+        <p><b>Idade </b></p>
+        <p>{{ paciente.dataNascimento | calculoIdade }} anos</p>
+        <p><b>Telefone </b></p>
+        <p>{{ paciente.telefone }}</p>
+        <p><b>Convênio </b></p>
+        <p>{{ paciente?.convenio }}</p>
+      </div>
+      <div>
+        <button
+          class="btn-normal"
+          type="button"
+          routerLink="../prontuarios/{{ paciente.id }}"
+        >
+          Mais detalhes
+        </button>
+      </div>
+    </div>
+    <div class="mensagem-erro" *ngIf="resultadoVazio">
+      Nenhum paciente encontrado
+    </div>
   </div>
-  <div class="mensagem-erro" *ngIf="resultadoVazio">Nenhum paciente encontrado</div>
-
 </div>

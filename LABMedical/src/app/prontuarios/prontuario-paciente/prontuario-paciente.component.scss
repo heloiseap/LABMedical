@@ -2,35 +2,56 @@
     display: flex;
     flex-direction: column;
     .info{
-        background-color: #c2b97f;
+        background-color: #4aa73e;
         border-radius: 15px;
         padding: 10px;
         margin: 10px;
     }
 }
+
+.collapsible{
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+.active, .collapsible:hover {
+  background-color: #ccc;
+}
+.conteudo {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
 .btn-normal {
-    appearance: none;
-    background-color: #776472;
-    border: 1px solid rgba(27, 31, 35, 0.15);
-    border-radius: 6px;
-    box-shadow: rgba(27, 31, 35, 0.1) 0 1px 0;
-    box-sizing: border-box;
-    color: #f2f7f2;
-    cursor: pointer;
-    display: inline-block;
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 20px;
-    padding: 6px 16px;
-    position: relative;
-    text-align: center;
-    text-decoration: none;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    vertical-align: middle;
-    white-space: nowrap;
-    margin: 5px;
+  appearance: none;
+  background-color: #3e7237;
+  border: 1px solid #3e7237;
+  border-radius: 6px;
+  box-shadow: #1f3a1c 0 1px 0;
+  box-sizing: border-box;
+  color: #f2f7f2;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  padding: 6px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+  margin: 5px;
   }
   
   .btn-normal:focus:not(:focus-visible):not(.focus-visible) {

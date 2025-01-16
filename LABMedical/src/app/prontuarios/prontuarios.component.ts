@@ -31,9 +31,12 @@ export class ProntuariosComponent {
   }
 
   buscarPaciente() {
-    this.listaPacientes = this.pacienteService.buscarPaciente(this.pesquisa);
-    if (this.listaPacientes == undefined || this.listaPacientes == null) {
-      this.resultadoVazio = true;
+    if(this.pesquisa !== '') {
+      this.listaPacientes = this.pacienteService.buscarPaciente(this.pesquisa);
+      if (this.listaPacientes == undefined || this.listaPacientes == null) {
+        this.resultadoVazio = true;
+      }
+  
     }
 
     this.mostrar = true;
