@@ -1,57 +1,236 @@
 [
-    {
-      "motivo": "Dor de cabeça persistente",
-      "data": "2024-04-15",
-      "horario": "09:00",
-      "descricao": "Paciente relatando dor de cabeça intensa na região frontal há uma semana.",
-      "medicacao": "Dipirona",
-      "dosagemPrecaucoes": "Tomar 1 comprimido de 500mg a cada 6 horas, não exceder 4 comprimidos em 24 horas.",
-      "idPaciente": 1
-    },
-    {
-      "motivo": "Consulta de rotina",
-      "data": "2024-04-15",
-      "horario": "10:30",
-      "descricao": "Consulta de rotina para verificar pressão arterial e sinais vitais.",
-      "medicacao": "N/A",
-      "dosagemPrecaucoes": "N/A",
-      "idPaciente": 2
-    },
-    {
-      "motivo": "Dor abdominal aguda",
-      "data": "2024-04-16",
-      "horario": "08:30",
-      "descricao": "Paciente queixando-se de dor abdominal súbita e intensa no quadrante inferior direito.",
-      "medicacao": "Buscopan",
-      "dosagemPrecaucoes": "Tomar 1 comprimido de 10mg a cada 8 horas, conforme necessário para alívio da dor.",
-      "idPaciente": 3
-    },
-    {
-      "motivo": "Acompanhamento de gravidez",
-      "data": "2024-04-16",
-      "horario": "10:00",
-      "descricao": "Paciente gestante realizando acompanhamento mensal de pré-natal.",
-      "medicacao": "N/A",
-      "dosagemPrecaucoes": "Retornar próximo mês",
-      "idPaciente": 4
-    },
-    {
-      "motivo": "Dor de garganta e febre",
-      "data": "2024-04-17",
-      "horario": "11:30",
-      "descricao": "Paciente apresentando dor de garganta e febre de 38°C nas últimas 24 horas.",
-      "medicacao": "Amoxicilina",
-      "dosagemPrecaucoes": "Tomar 1 cápsula de 500mg a cada 12 horas durante 10 dias.",
-      "idPaciente": 5
-    },
-    {
-      "motivo": "Avaliação de check-up",
-      "data": "2024-04-18",
-      "horario": "14:00",
-      "descricao": "Paciente solicitando avaliação médica geral para check-up de saúde.",
-      "medicacao": "N/A",
-      "dosagemPrecaucoes": "Encaminhamento com nutricionista",
-      "idPaciente": 5
-    }
-  ]
-  
+  {
+    "motivo": "Dor de cabeça persistente",
+    "data": "2024-04-15",
+    "horario": "09:00",
+    "descricao": "Paciente relatando dor de cabeça intensa na região frontal há uma semana.",
+    "medicacao": "Dipirona",
+    "dosagemPrecaucoes": "Tomar 1 comprimido de 500mg a cada 6 horas, não exceder 4 comprimidos em 24 horas.",
+    "idPaciente": 1
+  },
+  {
+    "motivo": "Consulta de rotina",
+    "data": "2024-04-15",
+    "horario": "10:30",
+    "descricao": "Consulta de rotina para verificar pressão arterial e sinais vitais.",
+    "medicacao": "N/A",
+    "dosagemPrecaucoes": "N/A",
+    "idPaciente": 2
+  },
+  {
+    "motivo": "Dor abdominal aguda",
+    "data": "2024-04-16",
+    "horario": "08:30",
+    "descricao": "Paciente queixando-se de dor abdominal súbita e intensa no quadrante inferior direito.",
+    "medicacao": "Buscopan",
+    "dosagemPrecaucoes": "Tomar 1 comprimido de 10mg a cada 8 horas, conforme necessário para alívio da dor.",
+    "idPaciente": 3
+  },
+  {
+    "motivo": "Acompanhamento de gravidez",
+    "data": "2024-04-16",
+    "horario": "10:00",
+    "descricao": "Paciente gestante realizando acompanhamento mensal de pré-natal.",
+    "medicacao": "N/A",
+    "dosagemPrecaucoes": "Retornar próximo mês",
+    "idPaciente": 4
+  },
+  {
+    "motivo": "Dor de garganta e febre",
+    "data": "2024-04-17",
+    "horario": "11:30",
+    "descricao": "Paciente apresentando dor de garganta e febre de 38°C nas últimas 24 horas.",
+    "medicacao": "Amoxicilina",
+    "dosagemPrecaucoes": "Tomar 1 cápsula de 500mg a cada 12 horas durante 10 dias.",
+    "idPaciente": 5
+  },
+  {
+    "motivo": "Avaliação de check-up",
+    "data": "2024-04-18",
+    "horario": "14:00",
+    "descricao": "Paciente solicitando avaliação médica geral para check-up de saúde.",
+    "medicacao": "N/A",
+    "dosagemPrecaucoes": "Encaminhamento com nutricionista",
+    "idPaciente": 5
+  },
+  {
+    "motivo": "Avaliação pós-operatória",
+    "data": "2024-04-30",
+    "horario": "09:00",
+    "descricao": "Lesão na pele do braço direito, possivelmente alérgica.",
+    "medicacao": "N/A",
+    "dosagemPrecaucoes": "Tomar 1 comprimido de 500mg a cada 8 horas.",
+    "idPaciente": 1
+  },
+  {
+    "motivo": "Dificuldade respiratória",
+    "data": "2024-05-08",
+    "horario": "13:00",
+    "descricao": "Queixa de perda de apetite e cansaço nas últimas semanas.",
+    "medicacao": "Ibuprofeno",
+    "dosagemPrecaucoes": "N/A",
+    "idPaciente": 1
+  },
+  {
+    "motivo": "Controle de diabetes",
+    "data": "2024-05-05",
+    "horario": "08:30",
+    "descricao": "Consulta para avaliação após cirurgia recente no abdômen.",
+    "medicacao": "Cetoconazol",
+    "dosagemPrecaucoes": "Ingerir 1 comprimido de 850mg após o café da manhã.",
+    "idPaciente": 8
+  },
+  {
+    "motivo": "Controle de diabetes",
+    "data": "2024-05-03",
+    "horario": "12:00",
+    "descricao": "Revisão de exames laboratoriais realizados no último mês.",
+    "medicacao": "N/A",
+    "dosagemPrecaucoes": "Tomar 1 comprimido de 20mg antes das refeições.",
+    "idPaciente": 7
+  },
+  {
+    "motivo": "Revisão de exames",
+    "data": "2024-05-01",
+    "horario": "10:30",
+    "descricao": "Consulta de rotina para avaliação geral de saúde.",
+    "medicacao": "Paracetamol",
+    "dosagemPrecaucoes": "Tomar 1 comprimido de 20mg antes das refeições.",
+    "idPaciente": 3
+  },
+  {
+    "motivo": "Dificuldade respiratória",
+    "data": "2024-05-14",
+    "horario": "10:30",
+    "descricao": "Consulta para controle de glicemia e ajuste de medicação.",
+    "medicacao": "Paracetamol",
+    "dosagemPrecaucoes": "Tomar 1 comprimido de 500mg a cada 8 horas.",
+    "idPaciente": 11
+  },
+  {
+    "motivo": "Lesão na pele",
+    "data": "2024-04-30",
+    "horario": "15:30",
+    "descricao": "Consulta de rotina para avaliação geral de saúde.",
+    "medicacao": "Metformina",
+    "dosagemPrecaucoes": "Tomar 1 cápsula de 200mg a cada 12 horas durante 7 dias.",
+    "idPaciente": 13
+  },
+  {
+    "motivo": "Consulta de rotina",
+    "data": "2024-05-15",
+    "horario": "10:00",
+    "descricao": "Consulta para controle de glicemia e ajuste de medicação.",
+    "medicacao": "Metformina",
+    "dosagemPrecaucoes": "Tomar 1 comprimido de 500mg a cada 8 horas.",
+    "idPaciente": 2
+  },
+  {
+    "motivo": "Avaliação pós-operatória",
+    "data": "2024-04-20",
+    "horario": "16:00",
+    "descricao": "Revisão de exames laboratoriais realizados no último mês.",
+    "medicacao": "Cetoconazol",
+    "dosagemPrecaucoes": "Tomar 1 comprimido de 20mg antes das refeições.",
+    "idPaciente": 4
+  },
+  {
+    "motivo": "Dor muscular generalizada",
+    "data": "2024-04-26",
+    "horario": "09:00",
+    "descricao": "Consulta para controle de glicemia e ajuste de medicação.",
+    "medicacao": "N/A",
+    "dosagemPrecaucoes": "Tomar 1 comprimido de 20mg antes das refeições.",
+    "idPaciente": 10
+  },
+  {
+    "motivo": "Avaliação pós-operatória",
+    "data": "2024-04-30",
+    "horario": "09:00",
+    "descricao": "Lesão na pele do braço direito, possivelmente alérgica.",
+    "medicacao": "N/A",
+    "dosagemPrecaucoes": "Tomar 1 comprimido de 500mg a cada 8 horas.",
+    "idPaciente": 1
+  },
+  {
+    "motivo": "Dificuldade respiratória",
+    "data": "2024-05-08",
+    "horario": "13:00",
+    "descricao": "Queixa de perda de apetite e cansaço nas últimas semanas.",
+    "medicacao": "Ibuprofeno",
+    "dosagemPrecaucoes": "N/A",
+    "idPaciente": 1
+  },
+  {
+    "motivo": "Controle de diabetes",
+    "data": "2024-05-05",
+    "horario": "08:30",
+    "descricao": "Consulta para avaliação após cirurgia recente no abdômen.",
+    "medicacao": "Cetoconazol",
+    "dosagemPrecaucoes": "Ingerir 1 comprimido de 850mg após o café da manhã.",
+    "idPaciente": 8
+  },
+  {
+    "motivo": "Controle de diabetes",
+    "data": "2024-05-03",
+    "horario": "12:00",
+    "descricao": "Revisão de exames laboratoriais realizados no último mês.",
+    "medicacao": "N/A",
+    "dosagemPrecaucoes": "Tomar 1 comprimido de 20mg antes das refeições.",
+    "idPaciente": 7
+  },
+  {
+    "motivo": "Revisão de exames",
+    "data": "2024-05-01",
+    "horario": "10:30",
+    "descricao": "Consulta de rotina para avaliação geral de saúde.",
+    "medicacao": "Paracetamol",
+    "dosagemPrecaucoes": "Tomar 1 comprimido de 20mg antes das refeições.",
+    "idPaciente": 3
+  },
+  {
+    "motivo": "Dificuldade respiratória",
+    "data": "2024-05-14",
+    "horario": "10:30",
+    "descricao": "Consulta para controle de glicemia e ajuste de medicação.",
+    "medicacao": "Paracetamol",
+    "dosagemPrecaucoes": "Tomar 1 comprimido de 500mg a cada 8 horas.",
+    "idPaciente": 11
+  },
+  {
+    "motivo": "Lesão na pele",
+    "data": "2024-04-30",
+    "horario": "15:30",
+    "descricao": "Consulta de rotina para avaliação geral de saúde.",
+    "medicacao": "Metformina",
+    "dosagemPrecaucoes": "Tomar 1 cápsula de 200mg a cada 12 horas durante 7 dias.",
+    "idPaciente": 13
+  },
+  {
+    "motivo": "Consulta de rotina",
+    "data": "2024-05-15",
+    "horario": "10:00",
+    "descricao": "Consulta para controle de glicemia e ajuste de medicação.",
+    "medicacao": "Metformina",
+    "dosagemPrecaucoes": "Tomar 1 comprimido de 500mg a cada 8 horas.",
+    "idPaciente": 2
+  },
+  {
+    "motivo": "Avaliação pós-operatória",
+    "data": "2024-04-20",
+    "horario": "16:00",
+    "descricao": "Revisão de exames laboratoriais realizados no último mês.",
+    "medicacao": "Cetoconazol",
+    "dosagemPrecaucoes": "Tomar 1 comprimido de 20mg antes das refeições.",
+    "idPaciente": 4
+  },
+  {
+    "motivo": "Dor muscular generalizada",
+    "data": "2024-04-26",
+    "horario": "09:00",
+    "descricao": "Consulta para controle de glicemia e ajuste de medicação.",
+    "medicacao": "N/A",
+    "dosagemPrecaucoes": "Tomar 1 comprimido de 20mg antes das refeições.",
+    "idPaciente": 10
+  }
+]
