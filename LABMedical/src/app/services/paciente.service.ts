@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import pacientes from '../../mock-db/pacientes.json';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -25,8 +26,9 @@ export class PacienteService {
     return resultado.filter((array: string | any[]) => array.length > 0)[0];
   }
 
-  buscarPacienteId(parametro: string) {
-    return pacientes.filter((paciente) => paciente.id === parseInt(parametro))[0];
+  buscarPacienteId(parametro: string): Observable<any> {
+    const paciente = pacientes.find((paciente) => paciente.id === parseInt(parametro));
+    return of(paciente)
   }
 
   pegarDez() {
