@@ -10,43 +10,24 @@ export class TokenService {
   }
   constructor(private localStorageService: LocalStorageService) {}
 
-  isLocalStorageAvailable(): boolean {
-    try {
-      const testKey = '__test_key__';
-      localStorage.setItem(testKey, testKey);
-      localStorage.removeItem(testKey);
-      return true;
-    } catch (e) {
-      return false;
-    }
-  }
+  // isLocalStorageAvailable(): boolean {
+  //   try {
+  //     const testKey = '__test_key__';
+  //     localStorage.setItem(testKey, testKey);
+  //     localStorage.removeItem(testKey);
+  //     return true;
+  //   } catch (e) {
+  //     return false;
+  //   }
+  // }
 
   get logado() {
-    if (this.isLocalStorageAvailable()) {
-      return this.localStorageService.getItem('logado');
-    } else {
-      return '';
-    }
+          return this.localStorageService.getItem('logado');
   }
 
-  get medico(): string {
-    if (this.isLocalStorageAvailable()) {
-      return JSON.stringify(this.localStorageService.getItem('nomeUser'));
-    } else {
-      return '';
-    }
-  }
 
   setLogado(value: string) {
-    if (this.isLocalStorageAvailable()) {
       this.localStorageService.setItem('logado', value);
-    }
-  }
-
-  setMedico(value: string) {
-    if (this.isLocalStorageAvailable()) {
-      this.localStorageService.setItem('nomeUser', value);
-    }
   }
 
   temPermissao() {
@@ -57,13 +38,13 @@ export class TokenService {
     }
   }
 
-  nomeMedico() {
-    if (this.medico != '') {
-      return JSON.stringify(this.localStorageService.getItem('nomeUser'));
-    } else {
-      return '';
-    }
-  }
+  // nomeMedico() {
+  //   if (this.medico != '') {
+  //     return JSON.stringify(this.localStorageService.getItem('nomeUser'));
+  //   } else {
+  //     return '';
+  //   }
+  // }
 
   //gerar token sem backend
   gerarMockToken(email: string): string {

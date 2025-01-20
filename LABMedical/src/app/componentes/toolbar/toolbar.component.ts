@@ -36,10 +36,8 @@ export class ToolbarComponent implements OnInit {
 
 
   sair() {
-    this.tokenService.setLogado('false');
-    this.tokenService.setMedico('');
-    this.tokenService.setUser('');
-    this.changeDetectorRef.detectChanges()
+    this.authService.logout()
     this.router.navigate(['login'])
+
   }
 }

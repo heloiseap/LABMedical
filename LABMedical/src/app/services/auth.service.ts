@@ -62,7 +62,8 @@ export class AuthService {
 
   logout(): void {
     this.localStorageService.setItem('token', '')
-    this.localStorageService.clear()    // this.localStorageService.removeItem('token');//pq n ta funcoinando??
+    this.localStorageService.clear()
+    // this.localStorageService.removeItem('token');//pq n ta funcoinando??
     // this.localStorageService.removeItem('logado')
   }
 
