@@ -67,7 +67,19 @@ export const routes: Routes = [
         canActivate: [authGuard]
       },
       {
+        path: 'exame/:id',
+        component: RegistrarExameComponent,
+        pathMatch: 'full',
+        canActivate: [authGuard]
+      },
+      {
         path: 'consulta',
+        component: RegistrarConsultaComponent,
+        pathMatch: 'full',
+        canActivate: [authGuard]
+      },
+      {
+        path: 'consulta/:id',
         component: RegistrarConsultaComponent,
         pathMatch: 'full',
         canActivate: [authGuard]
@@ -78,6 +90,12 @@ export const routes: Routes = [
         pathMatch: 'full',
         canActivate: [authGuard]
       },
+      {
+        path: 'paciente/:id',
+        component: RegistrarPacienteComponent,
+        pathMatch: 'full',
+        canActivate: [authGuard]
+      }
     ],
   },
   {

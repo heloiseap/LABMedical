@@ -1,5 +1,6 @@
-<app-toolbar></app-toolbar>
+<div *ngIf="!this.isLogin"><app-toolbar></app-toolbar>
 <app-menu-lateral></app-menu-lateral>
+</div>
 <div class="conteudo">
   <router-outlet />
 </div>

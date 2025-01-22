@@ -6,9 +6,10 @@ import {
   Validators,
 } from '@angular/forms';
 import { EnderecoService } from '../../services/endereco.service';
-import { PacienteService } from '../../mod-paciente/paciente.service';
+import { PacienteService } from '../../services/paciente.service';
 import { CommonModule } from '@angular/common';
 import { ValidadorCustomizadoService } from '../../services/validador-customizado.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-registrar-paciente',
@@ -56,74 +57,96 @@ export class RegistrarPacienteComponent implements OnInit {
     bairro: '',
     pontoReferencia: '',
   };
+  id: string = '';
+  generos = new Map<string, string>([
+    ["mulherCis", "Mulher cis"],
+    ["mulherTrans", "Mulher trans"],
+    ["homemCis", "Homem cis"],
+    ["homemTrans", "Homem trans"],
+    ["naoBinario", "Não binário"],
+    ["naoInforma", "Não informado"],
+  ]);
+  generosReversed = new Map<string, string>(
+    Array.from(this.generos).map(([key, value]) => [value, key])
+  );
+
+
   constructor(
+    private route: ActivatedRoute,
     private enderecoService: EnderecoService,
     private pacienteService: PacienteService,
     private validadorCustomizadoService: ValidadorCustomizadoService
   ) {}
 
-  ngOnInit() {
-    this.registroPacienteForm = new FormGroup({
-      nome: new FormControl('', [
-        Validators.required,
-        Validators.minLength(8),
-        Validators.maxLength(64),
-        this.validadorCustomizadoService.validacaoNomeCompleto(),
-      ]),
-      genero: new FormControl('', [Validators.required]),
-      dataNascimento: new FormControl('', [Validators.required]),
-      cpf: new FormControl('', [
-        Validators.required,
-        this.validadorCustomizadoService.validacaoCpf(),
-        Validators.pattern(
-          '([0-9]{2}[\\.\\-]?[0-9]{3}[\\.\\-]?[0-9]{3}[\\/\\-]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\\.\\-]?[0-9]{3}[\\.\\-]?[0-9]{3}[-]?[0-9]{2})'
-        ),
-      ]),
-      rg: new FormControl('', [
-        Validators.required,
-        this.validadorCustomizadoService.validacaoRg(),
-      ]),
-      estadoCivil: new FormControl('', [Validators.required]),
-      telefone: new FormControl('', [
-        Validators.required,
-        Validators.pattern(
-          '^\\(?[1-9]{2}\\)? ?(?:[2-8]|9 [0-9])[0-9]{3}-?[0-9]{4}$'
-        ),
-      ]),
-      email: new FormControl('', [Validators.email]),
-      naturalidade: new FormControl('', [
-        Validators.required,
-        Validators.minLength(8),
-        Validators.maxLength(64),
-      ]),
-      contatoEmergencia: new FormControl('', [
-        Validators.required,
-        this.validadorCustomizadoService.validacaoCpf(),
-        // Validators.pattern(
-        //   '([0-9]{2}[\\.\\-]?[0-9]{3}[\\.\\-]?[0-9]{3}[\\/\\-]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\\.\\-]?[0-9]{3}[\\.\\-]?[0-9]{3}[-]?[0-9]{2})'
-        // ),
-      ]),
-      emergenciaNome: new FormControl('', [
-        Validators.required,
-        Validators.minLength(8),
-        Validators.maxLength(64),
-      ]),
-      cuidados: new FormControl(''),
-      alergias: new FormControl(''),
-      convenio: new FormControl(''),
-      nConvenio: new FormControl(''),
-      validadeConvenio: new FormControl(''),
-      cep: new FormControl('', [
-        Validators.required,
-        this.validadorCustomizadoService.validacaoCep(),
-      ]),
-      cidade: new FormControl(''),
-      estado: new FormControl(''),
-      logradouro: new FormControl(''),
-      numero: new FormControl('', [Validators.required]),
-      complemento: new FormControl(''),
-      bairro: new FormControl(''),
-      referencia: new FormControl(''),
+  ngOnInit(): void {
+    this.route.params.subscribe((params) => {
+      this.registroPacienteForm = new FormGroup({
+        nome: new FormControl('', [
+          Validators.required,
+          Validators.minLength(8),
+          Validators.maxLength(64),
+          this.validadorCustomizadoService.validacaoNomeCompleto(),
+        ]),
+        genero: new FormControl('', [Validators.required]),
+        dataNascimento: new FormControl('', [Validators.required]),
+        cpf: new FormControl('', [
+          Validators.required,
+          this.validadorCustomizadoService.validacaoCpf(),
+          Validators.pattern(
+            '([0-9]{2}[\\.\\-]?[0-9]{3}[\\.\\-]?[0-9]{3}[\\/\\-]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\\.\\-]?[0-9]{3}[\\.\\-]?[0-9]{3}[-]?[0-9]{2})'
+          ),
+        ]),
+        rg: new FormControl('', [
+          Validators.required,
+          this.validadorCustomizadoService.validacaoRg(),
+        ]),
+        estadoCivil: new FormControl('', [Validators.required]),
+        telefone: new FormControl('', [
+          Validators.required,
+          Validators.pattern(
+            '^\\(?[1-9]{2}\\)? ?(?:[2-8]|9 [0-9])[0-9]{3}-?[0-9]{4}$'
+          ),
+        ]),
+        email: new FormControl('', [Validators.email]),
+        naturalidade: new FormControl('', [
+          Validators.required,
+          Validators.minLength(8),
+          Validators.maxLength(64),
+        ]),
+        contatoEmergencia: new FormControl('', [
+          Validators.required,
+          this.validadorCustomizadoService.validacaoCpf(),
+          // Validators.pattern(
+          //   '([0-9]{2}[\\.\\-]?[0-9]{3}[\\.\\-]?[0-9]{3}[\\/\\-]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\\.\\-]?[0-9]{3}[\\.\\-]?[0-9]{3}[-]?[0-9]{2})'
+          // ),
+        ]),
+        emergenciaNome: new FormControl('', [
+          Validators.required,
+          Validators.minLength(8),
+          Validators.maxLength(64),
+        ]),
+        cuidados: new FormControl(''),
+        alergias: new FormControl(''),
+        convenio: new FormControl(''),
+        nConvenio: new FormControl(''),
+        validadeConvenio: new FormControl(''),
+        cep: new FormControl('', [
+          Validators.required,
+          this.validadorCustomizadoService.validacaoCep(),
+        ]),
+        cidade: new FormControl(''),
+        estado: new FormControl(''),
+        logradouro: new FormControl(''),
+        numero: new FormControl('', [Validators.required]),
+        complemento: new FormControl(''),
+        bairro: new FormControl(''),
+        referencia: new FormControl(''),
+      });
+
+      if (params['id']) {
+        this.id = params['id'];
+        this.carregarPaciente(this.id);
+      }
     });
   }
 
@@ -156,10 +179,41 @@ export class RegistrarPacienteComponent implements OnInit {
     }
   }
 
-  registrarPaciente() {
+  carregarPaciente(id: string) {
+    this.pacienteService.buscarPacienteId(id).subscribe((pacienteEdicao) => {
+      // console.log(pacienteEdicao.genero)
+      this.registroPacienteForm.patchValue({ 
+        nome: pacienteEdicao.nome,
+        genero: this.generosReversed.get(pacienteEdicao.genero),
+        dataNascimento: pacienteEdicao.dataNascimento,
+        //cpf: pacienteEdicao.cpf,
+        rg: pacienteEdicao.rg,
+                //estado civil
+        telefone: pacienteEdicao.telefone,
+        email: pacienteEdicao.email,
+        naturalidade: pacienteEdicao.naturalidade,
+        contatoEmergencia: pacienteEdicao.contatoEmergencia,
+        emergenciaNome: pacienteEdicao.emergenciaNome,
+        cuidados: pacienteEdicao.cuidadosEspecificos,
+        alergias: pacienteEdicao.alergias,
+        convenio: pacienteEdicao.convenio,
+        nConvenio: pacienteEdicao.nConvenio,
+        validadeConvenio: pacienteEdicao.valConvenio,
+        cep: pacienteEdicao.cep,
+        cidade: pacienteEdicao.cidade,
+        estado: pacienteEdicao.estado,
+        logradouro: pacienteEdicao.logradouro,
+        numero: pacienteEdicao.numero,
+        complemento: pacienteEdicao.complemento,
+        bairro: pacienteEdicao.bairro,
+        referencia: pacienteEdicao.referencia
+       });
+    });
+  }
+
+  salvarPaciente() {
     this.pacienteService.adicionarPaciente(this.paciente);
     if (this.registroPacienteForm.valid) {
-
       // confirm('Confirmar os dados inseridos?')
       let nomeInserido = this.registroPacienteForm.controls['nome'].value;
 
@@ -179,9 +233,12 @@ export class RegistrarPacienteComponent implements OnInit {
             this.registroPacienteForm.controls['naturalidade'].value,
           contatoEmergencia:
             this.registroPacienteForm.controls['contatoEmergencia'].value,
-          nomeEmergencia: this.registroPacienteForm.controls['emergenciaNome'].value,
-          alergias: this.registroPacienteForm.controls['alergias'].value.split(","),
-          cuidadosEspecificos: this.registroPacienteForm.controls['cuidados'].value.split(","),
+          nomeEmergencia:
+            this.registroPacienteForm.controls['emergenciaNome'].value,
+          alergias:
+            this.registroPacienteForm.controls['alergias'].value.split(','),
+          cuidadosEspecificos:
+            this.registroPacienteForm.controls['cuidados'].value.split(','),
           convenio: this.registroPacienteForm.controls['convenio'].value,
           numConvenio: this.registroPacienteForm.controls['nConvenio'].value,
           valConvenio:
@@ -193,10 +250,10 @@ export class RegistrarPacienteComponent implements OnInit {
           numero: this.registroPacienteForm.controls['numero'].value,
           complemento: this.registroPacienteForm.controls['complemento'].value,
           bairro: this.registroPacienteForm.controls['bairro'].value,
-          pontoReferencia: this.registroPacienteForm.controls['referencia'].value,
+          pontoReferencia:
+            this.registroPacienteForm.controls['referencia'].value,
         };
         this.pacienteService.adicionarPaciente(this.paciente);
-
       } else {
         alert('Paciente já cadastrado');
       }
@@ -204,4 +261,5 @@ export class RegistrarPacienteComponent implements OnInit {
       this.registroPacienteForm.markAllAsTouched();
     }
   }
+
 }

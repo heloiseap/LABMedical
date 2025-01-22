@@ -18,10 +18,10 @@
         {{ this.paciente.contatoEmergencia }}
       </p>
       <h5>Alergias</h5>
-      <p *ngIf="paciente.alergias.length == 0">Nenhuma informada</p>
+      <p *ngIf="paciente.alergias == '' || paciente.alergias == []">Nenhuma informada</p>
       <p *ngFor="let alergias of paciente.alergias">{{ alergias }}</p>
       <h5>Cuidados específicos</h5>
-      <p *ngIf="paciente.cuidadosEspecificos.length == 0">Nenhum informado</p>
+      <p *ngIf="paciente.cuidadosEspecificos == '' || paciente.cuidadosEspecificos == [] ">Nenhum informado</p>
       <p *ngFor="let cuidados of paciente.cuidadosEspecificos">
         {{ cuidados }}
       </p>
@@ -68,15 +68,15 @@
         <p>Não há consultas cadastradas</p>
       </div>
       <div class="div-consulta" *ngFor="let consulta of consultas">
-        <div *ngIf="consulta != ''">
-          <h3>Consulta de {{ consulta.data }} {{ consulta.horario }}</h3>
-          <h4>Motivo</h4>
+        <div *ngIf="consulta != ''" class='consulta'>
+          <h4>Consulta de {{ consulta.data }} {{ consulta.horario }}</h4>
+          <h5>Motivo</h5>
           <p>{{ consulta.motivo }}</p>
-          <h4>Descricao do problema</h4>
+          <h5>Descricao do problema</h5>
           <p>{{ consulta.descricao }}</p>
           <h4>Medicação</h4>
           <p>{{ consulta.medicacao }}</p>
-          <h4>Dosagem e precauções</h4>
+          <h5>Dosagem e precauções</h5>
           <p>{{ consulta.dosagemPrecaucoes }}</p>
           <button class="btn-normal" (click)="editarConsulta()">Editar</button>
           <button class="btn-normal" (click)="excluirConsulta()">
@@ -104,18 +104,18 @@
         <p>Não há exames cadastrados</p>
       </div>
       <div class="div-exames" *ngFor="let exame of exames">
-        <div *ngIf="exame != ''">
-          <h3>
+        <div *ngIf="exame != ''" class="exame">
+          <h4>
             {{ exame.nomeExame }}: {{ exame.dataExame }}
             {{ exame.horarioExame }}
-          </h3>
-          <h4>Tipo de exame:</h4>
+          </h4>
+          <h5>Tipo de exame:</h5>
           <p>{{ exame.tipoExame }}</p>
-          <h4>Laboratório</h4>
+          <h5>Laboratório</h5>
           <p>{{ exame.laboratorio }}</p>
-          <h4>URL documento</h4>
+          <h5>URL documento</h5>
           <p>{{ exame.urlDocumento }}</p>
-          <h4>Resultado</h4>
+          <h5>Resultado</h5>
           <p>{{ exame.resultado }}</p>
           <button class="btn-normal" (click)="editarExame()">Editar</button>
           <button class="btn-normal" (click)="excluirExame()">Excluir</button>

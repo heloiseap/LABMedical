@@ -2,9 +2,9 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Route, Router, RouterLink } from '@angular/router';
-import { PacienteService } from '../mod-paciente/paciente.service';
-import { ConsultaService } from '../mod-consulta/consulta.service';
-import { ExameService } from '../mod-exame/exame.service';
+import { PacienteService } from '../services/paciente.service';
+import { ConsultaService } from '../services/consulta.service';
+import { ExameService } from '../services/exame.service';
 import { CalculoIdadePipe } from '../pipes/calculo-idade.pipe';
 
 @Component({
@@ -50,9 +50,10 @@ export class ProntuariosComponent {
 
   editarPaciente(id: string) {
     // console.log('ok')
-    // this.router.navigate(['../registrar/paciente'+ {id}])
+    this.router.navigate(['../editar/paciente'+ {id}])
     // let editar = true
     //todo
+    //conferir rota p desativar botao de salvar
   }
 
   excluirPaciente(idExcluir: string) {

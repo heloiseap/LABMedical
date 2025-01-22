@@ -6,8 +6,8 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { ConsultaService } from '../../mod-consulta/consulta.service';
-import { PacienteService } from '../../mod-paciente/paciente.service';
+import { ConsultaService } from '../../services/consulta.service';
+import { PacienteService } from '../../services/paciente.service';
 
 
 @Component({

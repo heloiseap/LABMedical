@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterOutlet } from '@angular/router';
-import { PacienteService } from '../../mod-paciente/paciente.service';
-import { ConsultaService } from '../../mod-consulta/consulta.service';
-import { ExameService } from '../../mod-exame/exame.service';
-import { CommonModule, NgFor } from '@angular/common';
+import { PacienteService } from '../../services/paciente.service';
+import { ConsultaService } from '../../services/consulta.service';
+import { ExameService } from '../../services/exame.service';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -38,10 +38,9 @@ export class ProntuarioPacienteComponent implements OnInit {
 
   mostrarPronturario(id: string) {
     this.numId = id
-    this.paciente = this.pacienteService.buscarPacienteId(id)
+    this.pacienteService.buscarPacienteId(id).subscribe((paciente)=>this.paciente=paciente)
     this.consultas = this.consultaService.buscarConsultas(id)
     this.exames = this.exameService.buscarExames(id)
-
 
     for (var i in this.consultas){
       if (this.consultas[i]!=''){

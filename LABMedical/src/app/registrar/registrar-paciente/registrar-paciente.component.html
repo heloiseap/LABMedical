@@ -1,6 +1,6 @@
 <form
   class="formulario"
-  (ngSubmit)="registrarPaciente()"
+  (ngSubmit)="salvarPaciente()"
   [formGroup]="registroPacienteForm"
 > <div>
   <div class="secao">
@@ -480,10 +480,10 @@
   </div>
 </div>
   <div class="secao">
-    <button type="submit" class="btn-normal" (click)="registrarPaciente()">
-      Registrar
+    <button type="submit" class="btn-normal" (click)="salvarPaciente()">
+      Salvar
     </button>
-    <button type="button" class="btn-normal">Editar</button>
-    <button type="button" class="btn-normal">Deletar</button>
+    <!-- <button type="button" class="btn-normal">Editar</button>
+    <button type="button" class="btn-normal">Deletar</button> -->
   </div>
 </form>

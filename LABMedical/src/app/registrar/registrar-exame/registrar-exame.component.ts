@@ -6,8 +6,8 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { ExameService } from '../../mod-exame/exame.service';
-import { PacienteService } from '../../mod-paciente/paciente.service';
+import { ExameService } from '../../services/exame.service';
+import { PacienteService } from '../../services/paciente.service';
 
 @Component({
   selector: 'app-registrar-exame',

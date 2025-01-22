@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { PacienteService } from '../mod-paciente/paciente.service';
-import { ExameService } from '../mod-exame/exame.service';
-import { ConsultaService } from '../mod-consulta/consulta.service';
+import { PacienteService } from '../services/paciente.service';
+import { ExameService } from '../services/exame.service';
+import { ConsultaService } from '../services/consulta.service';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
