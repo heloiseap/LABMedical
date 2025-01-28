@@ -25,7 +25,7 @@ export class ValidadorCustomizadoService {
 
   validacaoCpf(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
-      const cpf = control.value.toString();
+      const cpf = control.value;
       const cpfTamanho = cpf.length;
       if (cpfTamanho == 11) {
         const digitosVerificadores = cpf.slice(9);
@@ -34,7 +34,6 @@ export class ValidadorCustomizadoService {
         cpfParcial += this.digitosValidacao(cpfParcial);
         
         if (digitosVerificadores == cpfParcial.slice(9)){
-          console.log(cpfParcial.slice(9))
           return { validacaoCpf: true };
 
         }
@@ -75,7 +74,6 @@ export class ValidadorCustomizadoService {
     let soma = 0;
     for (let i = cpfParcial.length - 1; i > -1; i--) {
         soma += parseInt(cpfParcial[i]) * (cpfParcial.length+1-i);
-        console.log(i, soma);
     }
     let resto = soma % 11;
     return resto < 2 ? '0' : (11 - resto).toString();
@@ -84,7 +82,7 @@ export class ValidadorCustomizadoService {
   validacaoCep(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
       const cep = control.value;
-      if (cep.toString().length != 8) {
+      if (cep.length != 8) {
         return { validacaoCep: true };
       }
       return null;
@@ -144,8 +142,5 @@ export class ValidadorCustomizadoService {
   //     return null;
   //   };
   // }
-}
-function somaParaValidacao(cpfParcial: any) {
-  throw new Error('Function not implemented.');
 }
 

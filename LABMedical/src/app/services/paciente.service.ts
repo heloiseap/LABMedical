@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
 import pacientes from '../../mock-db/pacientes.json';
 import { Observable, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PacienteService {
-  constructor() {}
+  urlPath: string = 'localhost:8081/pacientes'
+
+  constructor(private httpClient: HttpClient) {}
 
   listaPacientes = pacientes;
   quantidadePacientes() {
@@ -52,5 +55,10 @@ export class PacienteService {
     this.listaPacientes.push(pacienteNovo);
     localStorage.setItem('pacientes', JSON.stringify(this.listaPacientes));
     console.log(pacienteNovo);
+  }
+
+  editarPaciente(id: string, pacienteAntigo: any) {
+    console.log(pacienteAntigo)
+    //todo
   }
 }

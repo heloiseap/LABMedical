@@ -352,7 +352,7 @@
     <div>
       <label for="cep">CEP *</label>
       <input
-        type="number"
+        type="text"
         id="cep"
         name="cep"
         formControlName="cep"
@@ -480,10 +480,13 @@
   </div>
 </div>
   <div class="secao">
+    <!-- desativar se for na pagina de edicao -->
+
     <button type="submit" class="btn-normal" (click)="salvarPaciente()">
       Salvar
     </button>
-    <!-- <button type="button" class="btn-normal">Editar</button>
-    <button type="button" class="btn-normal">Deletar</button> -->
+    <!-- desativar se for na paina de salvamento -->
+    <button type="button" class="btn-normal" (click)="atualizarPaciente()">Atualizar</button> 
+    <button type="button" class="btn-normal">Deletar</button>
   </div>
 </form>

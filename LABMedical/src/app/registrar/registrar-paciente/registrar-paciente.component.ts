@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -10,6 +10,7 @@ import { PacienteService } from '../../services/paciente.service';
 import { CommonModule } from '@angular/common';
 import { ValidadorCustomizadoService } from '../../services/validador-customizado.service';
 import { ActivatedRoute } from '@angular/router';
+import { Paciente } from '../../interfaces/paciente';
 
 @Component({
   selector: 'app-registrar-paciente',
@@ -19,6 +20,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrl: './registrar-paciente.component.scss',
 })
 export class RegistrarPacienteComponent implements OnInit {
+
   registroPacienteForm!: FormGroup;
   endereco = {
     cep: '',
@@ -30,33 +32,7 @@ export class RegistrarPacienteComponent implements OnInit {
     bairro: '',
     referencia: '',
   };
-  paciente = {
-    id: 0,
-    nome: '',
-    genero: '',
-    dataNascimento: '',
-    CPF: 0,
-    rg: '',
-    estadoCivil: '',
-    telefone: '',
-    email: '',
-    naturalidade: '',
-    contatoEmergencia: '',
-    nomeEmergencia: '',
-    alergias: [],
-    cuidadosEspecificos: [],
-    convenio: 'Sem convênio',
-    numConvenio: '',
-    valConvenio: '',
-    cep: '',
-    cidade: '',
-    estado: '',
-    logradouro: '',
-    numero: 0,
-    complemento: '',
-    bairro: '',
-    pontoReferencia: '',
-  };
+
   id: string = '';
   generos = new Map<string, string>([
     ["mulherCis", "Mulher cis"],
@@ -69,13 +45,23 @@ export class RegistrarPacienteComponent implements OnInit {
   generosReversed = new Map<string, string>(
     Array.from(this.generos).map(([key, value]) => [value, key])
   );
-
+  estadoCivilMapa = new Map<string, string>([
+    ["solteira", "Solteiro(a)"],
+    ["casada", "Casado(a)"],
+    ["viuva", "Viúvo(a)"],
+    ["separada", "Separado(a)"],
+    ["divorciada", "Divorciado(a)"]
+  ])
+  estadoCivilMapaReverso = new Map<string, string>(
+    Array.from(this.estadoCivilMapa).map(([key, value]) => [value, key])
+  );
 
   constructor(
     private route: ActivatedRoute,
     private enderecoService: EnderecoService,
     private pacienteService: PacienteService,
-    private validadorCustomizadoService: ValidadorCustomizadoService
+    private validadorCustomizadoService: ValidadorCustomizadoService,
+    
   ) {}
 
   ngOnInit(): void {
@@ -92,9 +78,9 @@ export class RegistrarPacienteComponent implements OnInit {
         cpf: new FormControl('', [
           Validators.required,
           this.validadorCustomizadoService.validacaoCpf(),
-          Validators.pattern(
-            '([0-9]{2}[\\.\\-]?[0-9]{3}[\\.\\-]?[0-9]{3}[\\/\\-]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\\.\\-]?[0-9]{3}[\\.\\-]?[0-9]{3}[-]?[0-9]{2})'
-          ),
+          // Validators.pattern(
+          //   '([0-9]{2}[\\.\\-]?[0-9]{3}[\\.\\-]?[0-9]{3}[\\/\\-]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\\.\\-]?[0-9]{3}[\\.\\-]?[0-9]{3}[-]?[0-9]{2})'
+          // ),
         ]),
         rg: new FormControl('', [
           Validators.required,
@@ -103,9 +89,9 @@ export class RegistrarPacienteComponent implements OnInit {
         estadoCivil: new FormControl('', [Validators.required]),
         telefone: new FormControl('', [
           Validators.required,
-          Validators.pattern(
-            '^\\(?[1-9]{2}\\)? ?(?:[2-8]|9 [0-9])[0-9]{3}-?[0-9]{4}$'
-          ),
+          // Validators.pattern(
+          //   '^\\(?[1-9]{2}\\)? ?(?:[2-8]|9 [0-9])[0-9]{3}-?[0-9]{4}$'
+          // ),
         ]),
         email: new FormControl('', [Validators.email]),
         naturalidade: new FormControl('', [
@@ -114,10 +100,9 @@ export class RegistrarPacienteComponent implements OnInit {
           Validators.maxLength(64),
         ]),
         contatoEmergencia: new FormControl('', [
-          Validators.required,
-          this.validadorCustomizadoService.validacaoCpf(),
+          Validators.required,          
           // Validators.pattern(
-          //   '([0-9]{2}[\\.\\-]?[0-9]{3}[\\.\\-]?[0-9]{3}[\\/\\-]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\\.\\-]?[0-9]{3}[\\.\\-]?[0-9]{3}[-]?[0-9]{2})'
+          //   '^\\(?[1-9]{2}\\)? ?(?:[2-8]|9 [0-9])[0-9]{3}-?[0-9]{4}$'
           // ),
         ]),
         emergenciaNome: new FormControl('', [
@@ -132,7 +117,7 @@ export class RegistrarPacienteComponent implements OnInit {
         validadeConvenio: new FormControl(''),
         cep: new FormControl('', [
           Validators.required,
-          this.validadorCustomizadoService.validacaoCep(),
+          this.validadorCustomizadoService.validacaoCep(), //fix
         ]),
         cidade: new FormControl(''),
         estado: new FormControl(''),
@@ -152,7 +137,7 @@ export class RegistrarPacienteComponent implements OnInit {
 
   pesquisarCep(): void {
     if (
-      !!this.registroPacienteForm.controls.cep.errors &&
+      !this.registroPacienteForm.controls.cep.errors &&
       !!this.registroPacienteForm.controls.cep.value
     ) {
       this.enderecoService
@@ -165,13 +150,14 @@ export class RegistrarPacienteComponent implements OnInit {
             logradouro: data.logradouro,
             numero: '',
             complemento: '',
-            bairro: '',
+            bairro: data.bairro,
             referencia: '',
           };
           this.registroPacienteForm.patchValue({
             cidade: this.endereco.cidade,
             estado: this.endereco.estado,
             logradouro: this.endereco.logradouro,
+            bairro: this.endereco.bairro
           });
         });
     } else {
@@ -181,19 +167,19 @@ export class RegistrarPacienteComponent implements OnInit {
 
   carregarPaciente(id: string) {
     this.pacienteService.buscarPacienteId(id).subscribe((pacienteEdicao) => {
-      // console.log(pacienteEdicao.genero)
+      console.log(pacienteEdicao)
       this.registroPacienteForm.patchValue({ 
         nome: pacienteEdicao.nome,
         genero: this.generosReversed.get(pacienteEdicao.genero),
         dataNascimento: pacienteEdicao.dataNascimento,
-        //cpf: pacienteEdicao.cpf,
+        cpf: pacienteEdicao.cpf,
         rg: pacienteEdicao.rg,
-                //estado civil
+        estadoCivil: this.estadoCivilMapaReverso.get(pacienteEdicao.estadoCivil),        
         telefone: pacienteEdicao.telefone,
         email: pacienteEdicao.email,
         naturalidade: pacienteEdicao.naturalidade,
         contatoEmergencia: pacienteEdicao.contatoEmergencia,
-        emergenciaNome: pacienteEdicao.emergenciaNome,
+        emergenciaNome: pacienteEdicao.nomeEmergencia,
         cuidados: pacienteEdicao.cuidadosEspecificos,
         alergias: pacienteEdicao.alergias,
         convenio: pacienteEdicao.convenio,
@@ -212,54 +198,68 @@ export class RegistrarPacienteComponent implements OnInit {
   }
 
   salvarPaciente() {
-    this.pacienteService.adicionarPaciente(this.paciente);
-    if (this.registroPacienteForm.valid) {
+    if (this.registroPacienteForm.valid) { //pq n entraaaaa
+      console.log("ok")
       // confirm('Confirmar os dados inseridos?')
       let nomeInserido = this.registroPacienteForm.controls['nome'].value;
-
       if (this.pacienteService.buscarPaciente(nomeInserido).length === 0) {
-        this.paciente = {
-          id: 0,
-          nome: this.registroPacienteForm.controls['nome'].value,
-          genero: this.registroPacienteForm.controls['genero'].value,
-          dataNascimento:
-            this.registroPacienteForm.controls['dataNascimento'].value,
-          CPF: this.registroPacienteForm.controls['cpf'].value,
-          rg: this.registroPacienteForm.controls['rg'].value,
-          estadoCivil: this.registroPacienteForm.controls['estadoCivil'].value,
-          telefone: this.registroPacienteForm.controls['telefone'].value,
-          email: this.registroPacienteForm.controls['email'].value,
-          naturalidade:
-            this.registroPacienteForm.controls['naturalidade'].value,
-          contatoEmergencia:
-            this.registroPacienteForm.controls['contatoEmergencia'].value,
-          nomeEmergencia:
-            this.registroPacienteForm.controls['emergenciaNome'].value,
-          alergias:
-            this.registroPacienteForm.controls['alergias'].value.split(','),
-          cuidadosEspecificos:
-            this.registroPacienteForm.controls['cuidados'].value.split(','),
-          convenio: this.registroPacienteForm.controls['convenio'].value,
-          numConvenio: this.registroPacienteForm.controls['nConvenio'].value,
-          valConvenio:
-            this.registroPacienteForm.controls['validadeConvenio'].value,
-          cep: this.registroPacienteForm.controls['cep'].value,
-          cidade: this.registroPacienteForm.controls['cidade'].value,
-          estado: this.registroPacienteForm.controls['estado'].value,
-          logradouro: this.registroPacienteForm.controls['logradouro'].value,
-          numero: this.registroPacienteForm.controls['numero'].value,
-          complemento: this.registroPacienteForm.controls['complemento'].value,
-          bairro: this.registroPacienteForm.controls['bairro'].value,
-          pontoReferencia:
-            this.registroPacienteForm.controls['referencia'].value,
-        };
-        this.pacienteService.adicionarPaciente(this.paciente);
+        this.pacienteService.adicionarPaciente(this.definirPaciente());
       } else {
         alert('Paciente já cadastrado');
       }
     } else {
+      this.definirPaciente()
       this.registroPacienteForm.markAllAsTouched();
     }
+  }
+
+  atualizarPaciente() {
+    //salva na id da url
+    if (this.registroPacienteForm.valid) {
+      // confirm('Confirmar os dados inseridos?')
+      this.pacienteService.editarPaciente(this.id,this.definirPaciente());
+    }
+    }
+
+  definirPaciente(): Paciente{
+    let generoInserido = this.registroPacienteForm.controls['genero'].value;
+    let estadoCivilInserido = this.registroPacienteForm.controls['estadoCivil'].value;
+    let paciente = {
+      nome: this.registroPacienteForm.controls['nome'].value,
+      genero: this.generos.get(generoInserido) ||"", //todo FIX
+      dataNascimento:
+        this.registroPacienteForm.controls['dataNascimento'].value,
+      CPF: this.registroPacienteForm.controls['cpf'].value,
+      rg: this.registroPacienteForm.controls['rg'].value,
+      estadoCivil: this.estadoCivilMapa.get(estadoCivilInserido) || "", //todo FIX
+      telefone: this.registroPacienteForm.controls['telefone'].value,
+      email: this.registroPacienteForm.controls['email'].value,
+      naturalidade:
+        this.registroPacienteForm.controls['naturalidade'].value,
+      contatoEmergencia:
+        this.registroPacienteForm.controls['contatoEmergencia'].value,
+      nomeEmergencia:
+        this.registroPacienteForm.controls['emergenciaNome'].value,
+      alergias:
+        this.registroPacienteForm.controls['alergias'].value.split(','),
+      cuidadosEspecificos:
+        this.registroPacienteForm.controls['cuidados'].value.split(','),
+      convenio: this.registroPacienteForm.controls['convenio'].value,
+      numConvenio: this.registroPacienteForm.controls['nConvenio'].value,
+      valConvenio:
+        this.registroPacienteForm.controls['validadeConvenio'].value,
+      cep: this.registroPacienteForm.controls['cep'].value,
+      cidade: this.registroPacienteForm.controls['cidade'].value,
+      estado: this.registroPacienteForm.controls['estado'].value,
+      logradouro: this.registroPacienteForm.controls['logradouro'].value,
+      numero: this.registroPacienteForm.controls['numero'].value,
+      complemento: this.registroPacienteForm.controls['complemento'].value,
+      bairro: this.registroPacienteForm.controls['bairro'].value,
+      pontoReferencia:
+        this.registroPacienteForm.controls['referencia'].value,
+    };
+    console.log(paciente)
+    return paciente;
   }
 
 }
